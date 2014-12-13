@@ -1,0 +1,65 @@
+[
+    {
+        "ActivityId": 546,
+        "Date": "/Date(1415894400000)/",
+        "StrDate": "2014.11.14",
+        "ViewCount": 41,
+        "ShareCount": 6,
+        "CanGetPrizeCount": 0,
+        "ExchangePrizeCount": 0
+    },
+    {
+        "ActivityId": 546,
+        "Date": "/Date(1415808000000)/",
+        "StrDate": "2014.11.13",
+        "ViewCount": 32,
+        "ShareCount": 4,
+        "CanGetPrizeCount": 0,
+        "ExchangePrizeCount": 0
+    },
+    {
+        "ActivityId": 546,
+        "Date": "/Date(1415721600000)/",
+        "StrDate": "2014.11.12",
+        "ViewCount": 33,
+        "ShareCount": 4,
+        "CanGetPrizeCount": 0,
+        "ExchangePrizeCount": 0
+    },
+    {
+        "ActivityId": 546,
+        "Date": "/Date(1415635200000)/",
+        "StrDate": "2014.11.11",
+        "ViewCount": 59,
+        "ShareCount": 7,
+        "CanGetPrizeCount": 0,
+        "ExchangePrizeCount": 0
+    },
+    {
+        "ActivityId": 546,
+        "Date": "/Date(1415548800000)/",
+        "StrDate": "2014.11.10",
+        "ViewCount": 103,
+        "ShareCount": 13,
+        "CanGetPrizeCount": 0,
+        "ExchangePrizeCount": 0
+    },
+    {
+        "ActivityId": 546,
+        "Date": "/Date(1415462400000)/",
+        "StrDate": "2014.11.09",
+        "ViewCount": 376,
+        "ShareCount": 32,
+        "CanGetPrizeCount": 1,
+        "ExchangePrizeCount": 2
+    },
+    {
+        "ActivityId": 546,
+        "Date": "/Date(1415376000000)/",
+        "StrDate": "2014.11.08",
+        "ViewCount": 1342,
+        "ShareCount": 190,
+        "CanGetPrizeCount": 8,
+        "ExchangePrizeCount": 1
+    }
+]

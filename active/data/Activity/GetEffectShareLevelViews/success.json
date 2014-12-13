@@ -1,0 +1,43 @@
+{
+	"effectShareLevelViews": [
+		{
+			"ShareLevel": 1,
+			"Count": 30,
+			"Rate": 10.27
+		}, {
+			"ShareLevel": 2,
+			"Count": 108,
+			"Rate": 36.99
+		}, {
+			"ShareLevel": 3,
+			"Count": 71,
+			"Rate": 24.32
+		}, {
+			"ShareLevel": 4,
+			"Count": 45,
+			"Rate": 15.41
+		}, {
+			"ShareLevel": 5,
+			"Count": 26,
+			"Rate": 8.90
+		}, {
+			"ShareLevel": 6,
+			"Count": 8,
+			"Rate": 2.74
+		}, {
+			"ShareLevel": 7,
+			"Count": 3,
+			"Rate": 1.03
+		}, {
+			"ShareLevel": 8,
+			"Count": 1,
+			"Rate": 0.34
+		}
+	],
+	"pagerInfo": {
+		"PageIndex": 1,
+		"PageSize": 20,
+		"RecordCount": 8,
+		"PageCount": 1
+	}
+}

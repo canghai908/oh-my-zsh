@@ -1,0 +1,26 @@
+{
+    "prizeSummarys": [
+        {
+            "activityId": 546,
+            "PrizeContent": "1元购买原味奶茶或冬瓜茶1份",
+            "GetPrizeId": 20950,
+            "CanGetPrize": 6,
+            "GetPrize": 1,
+            "ExchangePrize": 1,
+            "SurplusPrizeCount": 887,
+            "IsLimitPrizeCount": true,
+            "Rate": 66.67
+        },
+        {
+            "activityId": 546,
+            "PrizeContent": "1元购买特色芋圆、仙草任选1份",
+            "GetPrizeId": 20952,
+            "CanGetPrize": 3,
+            "GetPrize": 3,
+            "ExchangePrize": 2,
+            "SurplusPrizeCount": 385,
+            "IsLimitPrizeCount": true,
+            "Rate": 33.33
+        }
+    ]
+}
