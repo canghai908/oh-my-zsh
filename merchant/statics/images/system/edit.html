@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)http://jfx.jssdw.com/activity/add -->
+<html lang="zh-cn">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<!-- 测试时使用，阻止浏览器缓存-->
+		<meta http-equiv="Expires" content="0">
+		<meta http-equiv="Cache-Control" content="no-cache">
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>编辑活动</title>
+		<link href="./favicon.ico" type="image/x-icon" rel="icon">
+		<link href="./favicon.ico" type="image/x-icon" rel="shortcut icon">
+		<link href="./statics/css/style.css" rel="stylesheet">
+		<script src="./statics/plug-in/jquery-1.8.2.min.js"></script>
+		<script src="./statics/plug-in/store+json2.min.js"></script>
+		<script src="./statics/js/master.js"></script>
+
+		<style type="text/css">
+			.send {
+				position: relative;
+				width: 150px;
+				height: 35px;
+				line-height: 35px;
+				text-align: center;
+				color: white;
+				background: #F8C301;
+				-moz-border-radius: 5px;
+				-webkit-border-radius: 5px;
+				border-radius: 5px;
+				/* 圆角 */
+				
+				margin-left: 10px;
+				margin-top: 10px;
+			}
+			.send .arrow {
+				position: absolute;
+				top: -16px;
+				left: 20px;
+				/* 圆角的位置需要细心调试哦 */
+				
+				width: 0;
+				height: 0;
+				font-size: 0;
+				border: solid 8px;
+				border-color: transparent transparent #F8C301 transparent;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="frame_header">
+			<div class="h41 w1000 bc clearfix">
+				<div class="fl">
+					<a href="#">
+						<img alt="logo" src="./statics/images/system/logo.gif" />
+					</a>
+				</div>
+				<div class="icons fr">
+					<a class="icon1" href="/User/Info" id="name1" title=''></a>
+					<a class="icon3 ml20" href="javascript:void(0);" id="quit">退出</a>
+				</div>
+			</div>
+			<div class="h68 w1000 bc clearfix">
+				<div class="left_menu">
+					<a id="menu_Sys" href="/merchant/system.html" class="menu_1">系统概述</a>
+	                <a id="menu_Activity" href="/merchant/activity_Active.html" class="menu_2 ml10 cur_2">活动管理</a>
+	                <a id="menu_Prize" href="/merchant/ticket.html" class="menu_3 ml10">兑奖管理</a>
+				</div>
+				<div class="right_menu clearfix">
+					<input id="menu_activities" class="activities" type="button" onclick="master.addact()" />
+					<input id="menu_prize" class="prize ml5" type="button" onclick="location.href = '/merchant/prize.html'" />
+					<div id="addwaring" style="position:absolute; margin-top:3px;display:none;z-index:99;">
+						<img src="./statics/images/system/addwarning.png" alt="" />
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+    <div>
+		<div>
+
+
+			<link href="./statics/css/jquery.Jcrop.css" rel="stylesheet">
+			<link href="./statics/css/uploadify.css" rel="stylesheet">
+			<link href="./statics/css/spectrum.css" rel="stylesheet">
+
+			<link href="./statics/css/jquery-ui-1.9.2.custom.min.css" rel="stylesheet">
+			<link href="./statics/css/Main.css" rel="stylesheet">
+			<script src="./statics/plug-in/jquery-ui-1.8.24.min.js"></script>
+			<script src="./statics/plug-in/jquery.uploadify.min.js"></script>
+			<script src="./statics/plug-in/spectrum.js"></script>
+			<script src="./statics/plug-in/ueditor.config.js"></script>
+			<script src="./statics/plug-in/ueditor.all.js"></script>
+			<script src="./statics/plug-in/zh-cn.js"></script>
+			<script src="./statics/js/phonebutton.js"></script>
+			<script src="./statics/plug-in/datepicker.js"></script>
+			<script src="./statics/plug-in/jquery.cookie.js"></script>
+			<script src="./statics/plug-in/jquery.Jcrop.min.js"></script>
+			<script src="./statics/plug-in/json3.min.js"></script>
+			<!-- <script type="text/javascript" src="./statics/js/AddActivities_edit.js"></script> -->
+			<script type="text/javascript" src="./statics/js/EditActivities.js"></script>
+			<script src="./statics/js/subpage.js"></script>
+			<script type="text/javascript">
+				window.userUpload = 'gq6dsljwgm4tkmzvgq5diojvgy6tmmryga4b';
+		        editactivitie.allowsdmax = new Date('2015/11/03 23:59:59');//最大允许的开始日期（账户过期前3天）
+		        editactivitie.allowedmax = new Date('2015/11/06 23:59:59');//账户过期日期
+		        editactivitie.ise = '1';
+
+		        $(function () {
+		            var leftMenu = $(".left_menu a");//获取菜单
+		            leftMenu[0].className = "menu_1";//设置class
+		            leftMenu[1].className = "menu_2  ml10 cur_2";//设置class 
+		            leftMenu[2].className = "menu_3 ml10";//设置class
+		            //背景图中分阴影
+		            function changeShadowPosition() {
+		                var windowWidth = parseInt($(window).width());
+		                var pos = 1400 - ((windowWidth - 1000) / 2 + 550) - 10;
+		                $('.page-shadow').css("backgroundPosition", -pos + "px 0");
+		            }
+		            changeShadowPosition();
+		            $(window).resize(function () {
+		                changeShadowPosition();
+		            })
+		        });
+		        $(window).load(function () {
+		        	var activitis = store.get('activitis');
+					$.ajax({
+					    url: "/merchant/promotion_get?promotion_id="+ activitis.id,
+					    type: "get",
+					    dataType:"json",
+					    success: function(A) {
+					        editactivitie.title = A.title;
+					        editactivitie.shareIco = A.favicon_url;
+					        editactivitie.actImg = A.ActivityPicPath;
+					        editactivitie.bgcolor = A.BackGroundColor;
+					        editactivitie.bgImage = A.BackGroundImage;
+					        editactivitie.bgImageIsrepeat = A.IsBT;
+					        editactivitie.content = A.Content;
+					        editactivitie.starttime = A.start_datetime;
+					        editactivitie.endtime = A.end_datetime;
+					        editactivitie.actsatte = '6';
+					        editactivitie.exMethod = A.ExchangeMethod;
+					        editactivitie.phone = A.Phone;
+					        editactivitie.description = A.description;
+					        editactivitie.purl = '';
+					        editactivitie.Init();
+					    },
+					    error:function(){
+					    	alert("返回数据错误")
+					    }
+					});
+		            
+		        });
+			</script>
+			<style type="text/css">
+				.list_wrapper li .uploadify:hover .active_btn {
+					cursor: pointer;
+					background: url(./statics/images/system/up_bg2.png) 0 0 no-repeat;
+				}
+				.list_wrapper li .select .uploadify:hover .upload {
+					background: url(./statics/images/system/upload_2.png) 0 0 no-repeat;
+				}
+				.list_wrapper li .select .uploadify:hover .re_upload {
+					background: url(./statics/images/system/re_upload_2.png) 0 0 no-repeat;
+				}
+				.shareupbtn {
+					width: 92px;
+					height: 30px;
+					border: 0;
+					cursor: pointer;
+					background: url(./statics/images/system/up_img.png) 0 0 no-repeat;
+				}
+				.uploadify:hover .shareupbtn {
+					background: url(./statics/images/system/upload_2.png) 0 0 no-repeat;
+				}
+			</style>
+			<div class="page-shadow">
+        <div class="frame_cont bc clearfix">
+            <div class="left_cont">
+                <div class="tit">活动页内容编辑</div>
+                <ul class="mt40 list_wrapper">
+                    <li class="clearfix">
+                        <div class="fl ft l30">活动标题</div>
+                        <div class="fl relative">
+                            <input id="activityTitle" onfocus="editactivitie.titlefocus()" onblur="editactivitie.titleblur()" type="text" maxlength="50" class="input_field" />
+                            <div id="titleWarning" style="display: none; left: 345px;" class="warning">请输入活动标题</div>
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                        <div class="fl ft">分享图标</div>
+                        <div class="fl relative" style="height: 40px;">
+                            <input id="shareIcon" onfocus="this.blur()" type="button" class="share_btn" />
+                            <div id="uploadSuccShare" style="display: none;" onmouseover="javascript:$('#delShareIco').show()" onmouseout="javascript:$('#delShareIco').hide()">
+                                <img id="uploadSuccShareIco" height="40" width="40" style="float: left; border: 1px solid #dcdcdc;" />
+                                <img id="delShareIco" src="./statics/images/system/guanbi.png" width="20" height="20" style="float: left; cursor: pointer; margin-left: -20px; display: none;"
+                                    onclick="editactivitie.DelShareIco()" />
+                            </div>
+                            <div id="ShareIcoWarning" style="display: none; left: 345px;" class="warning">请上传分享图标</div>
+                        </div>
+                    </li>
+                    <!--截图弹出框-->
+                    <div id="shareModal" style="display: none; color: #666; font-family: 微软雅黑; width: 570px;">
+                        <div style="height: 370px;">
+                            <div style="padding: 10px; line-height: 30px; height: 30px;">
+                                <label style="float: left; width: 60px; font-size: 14px; font-weight: 600;">选择图片</label>
+                                <div style="float: left; margin-left: 10px;">
+                                    <input type="button" onfocus="this.blur()" id="filePic" style="width: 92px; height: 30px; z-index: 1000; border: 0; cursor: pointer; background: url(../images/up_img.png) 0 0 no-repeat;" />
+                                </div>
+                                <label style="float: left; margin-left: 10px; color: #dbdbdb;">图片大小不超过5M</label>
+                            </div>
+                            <div style="padding: 10px;">
+                                <label style="float: left; width: 60px; font-size: 14px; font-weight: 600;">图片截取</label>
+                                <div style="float: left; margin-left: 10px; height: 300px; width: 300px; overflow: hidden; border: 1px solid #dcdcdc">
+                                    <img id="imgPic" style="display: none;" src="" alt="" />
+                                </div>
+                                <div id="shareupque" style="position: absolute; width: 300px; text-align: center; left: 93px; z-index: 999;"></div>
+                                <div style="float: left; margin-left: 20px; height: 300px; width: 150px;">
+                                    <div style="word-break: break-all; word-wrap: break-word;">请注意小尺寸图像是否清晰</div>
+                                    <div style="margin: 10px auto 0 auto; width: 70px; height: 70px; overflow: hidden; border: 1px solid #dcdcdc">
+                                        <img id="precutview70" style="display: none;" src="" alt="" />
+                                    </div>
+                                    <div style="margin: 0 auto; width: 72px; text-align: center; word-break: break-all; word-wrap: break-word;">
+                                        中尺寸图像<br />
+                                        70*70像素<br />
+                                        (自动生成)
+                                    </div>
+                                    <div style="margin: 10px auto 0 auto; width: 40px; height: 40px; overflow: hidden; border: 1px solid #dcdcdc">
+                                        <img id="precutview40" style="display: none;" src="" alt="" />
+                                    </div>
+                                    <div style="margin: 0 auto; width: 72px; text-align: center; word-break: break-all; word-wrap: break-word;">
+                                        小尺寸图像<br />
+                                        40*40像素<br />
+                                        (自动生成)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pop_bd" style="border-top: 1px solid #e5e5e5; padding-top: 20px; width: 575px; text-align: right;">
+                            <button type="button" onclick="editactivitie.shareIconcut()" onfocus="this.blur()" style="cursor: pointer;" class="save"></button>
+                            <button type="button" onclick="javascript:$('#shareModal').dialog('close');" onfocus="this.blur()" style="cursor: pointer;" class="cancel"></button>
+                        </div>
+                    </div>
+                    <!--截图弹出框结束-->
+                    <li class="clearfix">
+                        <div class="fl ft">活动图片</div>
+                        <div class="fl relative">
+                            <!--id="upActivityPic"表示选择图片的大按钮-->
+                            <input type="button" onfocus="this.blur()" class="active_btn" id="upActivityPic" />
+                            <div id="actimgupque" style="position: absolute; width: 290px; top: 0px; left: 1px;"></div>
+                            <!--id="uploadSuccShow"表示上传成功后把上传的图片显示到这个层里的img里-->
+                            <div style="display: none;" id="uploadSuccShow" onmouseover="javascript:$('#delActivityPic').show();" onmouseout="javascript:$('#delActivityPic').hide()">
+                                <img id="uploadSuccShowPic" style="float: left; border: 1px solid #dcdcdc; max-width: 290px;" />
+                                <img id="delActivityPic" src="./statics/images/system/guanbi.png" width="20" height="20" style="float: left; cursor: pointer; margin-left: -20px; display: none;"
+                                    onclick="editactivitie.DelActivityPic()" />
+                            </div>
+                            <div class="warning2">图片大小不超过5M</div>
+                            <div id="activityPicWarning" style="display: none; left: 345px;" class="warning">请上传活动图片</div>
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                        <div class="fl ft">背景设计</div>
+                        <div class="fl">
+                            <div class="select_btn clearfix">
+                                <a id="bgdefault" class="first_btn_sed" onclick="editactivitie.bgdefault_click()">默认配色</a>
+                                <a id="bgcustom" class="second_btn" onclick="editactivitie.bgcustom_click()">自定义配色</a>
+                                <a id="bgimage" class="last_btn" onclick="editactivitie.bgimage_click()">上传背景图片</a>
+                            </div>
+                            <div class="select">
+                                <div id="bgdefaultcolor" class="change_color clearfix">
+                                    <div id="dfcolor1" class="select_color" onclick="editactivitie.dfcolorChose(1)">
+                                        <div class="commom color1"></div>
+                                    </div>
+                                    <div id="dfcolor2" class="select_color" onclick="editactivitie.dfcolorChose(2)">
+                                        <div class="commom color2"></div>
+                                    </div>
+                                    <div id="dfcolor3" class="select_color" onclick="editactivitie.dfcolorChose(3)">
+                                        <div class="commom color3"></div>
+                                    </div>
+                                    <div id="dfcolor4" class="select_color" onclick="editactivitie.dfcolorChose(4)">
+                                        <div class="commom color4"></div>
+                                    </div>
+                                    <div id="dfcolor5" class="select_color" onclick="editactivitie.dfcolorChose(5)">
+                                        <div class="commom color5"></div>
+                                    </div>
+                                    <div id="dfcolor6" class="select_color" onclick="editactivitie.dfcolorChose(6)">
+                                        <div class="commom color6"></div>
+                                    </div>
+                                    <div id="dfcolor7" class="select_color" onclick="editactivitie.dfcolorChose(7)">
+                                        <div class="commom color7"></div>
+                                    </div>
+                                </div>
+                                <!--自定义背景色-->
+
+                                <div id="bgcustomcolor" class="change_color2 clearfix" style="display: none;">
+                                    <span class="fl ml10 mr5">背景：</span>
+                                    <div id="colorsharing1" class="fl bg_color mr5" style="background: #ffffff"></div>
+                                    <span class="fl mr5 ">#</span>
+                                    <input id="color-bg1" maxlength="8" style="padding-left: 3px; ime-mode: disabled;" onblur="editactivitie.WriteBackgroundColor()" class="bg_txt fl" type="text" value="" />
+                                </div>
+                                <!--end自定义背景色-->
+
+                                <!--上传背景图片-->
+                                <div id="bgimagecolor" class="change_color2 clearfix" style="display: none;">
+                                    <div class="fl" style="margin-left: 15px; margin-right: 5px;">
+                                        <input type="button" onfocus="this.blur()" id="upbgimg" />
+                                    </div>
+                                    <span id="upbgimgtip" class="fl color_d f14 l30">图片大小不超过5M</span>
+                                    <div id="bgimgupque" style="width: 222px; position: absolute; margin-left: 112px; margin-top: -5px;"></div>
+                                </div>
+                                <div id="bgimagecolorSucc" class="change_color3  clearfix" style="display: none">
+                                    <img class="fl ml15 mr10" src="./statics/images/system/wendang.png" alt="" />
+                                    <div class="fl">
+                                        <div id="bgImageSuccName" class=" blod l26 ">
+                                            <span>引导页面—1.png</span>
+                                            <img src="./statics/images/system/guanbi.png" onclick="editactivitie.delbgimg()" width="20" height="20" alt="" style="cursor: pointer" />
+                                        </div>
+                                        <div class=" f14 l28">
+                                            排列方式:
+                                        <input id="bgImagePull" onclick="editactivitie.bgImageRepeat('repeat')" onfocus="this.blur()" class="radio_btn radio_select" type="button" />平铺
+                                        <input id="bgImageTile" onclick="editactivitie.bgImageRepeat('no-repeat')" onfocus="this.blur()" class="radio_btn" type="button" />不平铺
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
+                                    <!--重新上传背景图片-->
+                                    <div class="clearfix mt10 mb10">
+                                        <div class="fl" style="margin-left: 15px; margin-right: 5px;">
+                                            <input type="button" onfocus="this.blur()" id="upbgimgAgain" />
+                                        </div>
+                                        <span class="fl color_d f14 l30">图片大小不超过5M</span>
+                                        <div id="bgimgreupque" style="width: 222px; position: absolute; margin-left: 112px; margin-top: -5px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                        <div class="fl ft">活动内容</div>
+                        <div class="fl relative">
+                            <script type="text/plain" id="myEditor" style="width: 336px; height: 243px;"></script>
+                            <div id="contentWarning" style="display: none; left: 345px;" class="warning">请输入活动内容</div>
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                        <div class="fl ft l30">开始日期</div>
+                        <div id="startDInfo" onclick="editactivitie.DateInfoClick()" class="fl">
+                            <div id="startDateDiv" class="fl tf_select w152 ">
+
+                                <input id="startDate" class="select_txt w118" type="text" value="2014年12月07日" readonly="readonly" />
+                            </div>
+                            <div id="startHourDiv" class="fl tf_select w85">
+                                <input id="startHour" class="select_txt w55" type="text" value="11:00" readonly="readonly" />
+                                <ol class="js-countrylist " id="ol1">
+                                        <li value="11">11:00</li>
+                                        <li value="12">12:00</li>
+                                        <li value="13">13:00</li>
+                                        <li value="14">14:00</li>
+                                        <li value="15">15:00</li>
+                                        <li value="16">16:00</li>
+                                        <li value="17">17:00</li>
+                                        <li value="18">18:00</li>
+                                        <li value="19">19:00</li>
+                                        <li value="20">20:00</li>
+                                        <li value="21">21:00</li>
+                                        <li value="22">22:00</li>
+                                        <li value="23">23:00</li>
+                                </ol>
+                            </div>
+                            
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                        <div class="fl ft l30">结束日期</div>
+                        <div id="endDInfo" onclick="editactivitie.DateInfoClick()" class="fl relative">
+                            <div id="endDateDiv" class="fl tf_select w152">
+
+                                <input id="endDate" class="select_txt w118" type="text" value="2014年12月22日" readonly="readonly" />
+                            </div>
+                            <div id="endHourDiv" class="fl tf_select w85">
+                                <input id="endHour" class="select_txt w55" type="text" value="00:00" readonly="readonly" />
+                                <ol class="js-countrylist " id="ol2">
+                                        <li value="0">00:00</li>
+                                        <li value="1">01:00</li>
+                                        <li value="2">02:00</li>
+                                        <li value="3">03:00</li>
+                                        <li value="4">04:00</li>
+                                        <li value="5">05:00</li>
+                                        <li value="6">06:00</li>
+                                        <li value="7">07:00</li>
+                                        <li value="8">08:00</li>
+                                        <li value="9">09:00</li>
+                                        <li value="10">10:00</li>
+                                        <li value="11">11:00</li>
+                                        <li value="12">12:00</li>
+                                        <li value="13">13:00</li>
+                                        <li value="14">14:00</li>
+                                        <li value="15">15:00</li>
+                                        <li value="16">16:00</li>
+                                        <li value="17">17:00</li>
+                                        <li value="18">18:00</li>
+                                        <li value="19">19:00</li>
+                                        <li value="20">20:00</li>
+                                        <li value="21">21:00</li>
+                                        <li value="22">22:00</li>
+                                        <li value="23">23:00</li>
+                                </ol>
+                            </div>
+                            <div id="DateWarning" style="display: none; left: 345px;" class="warning">时间选择有误</div>
+                        </div>
+                    </li>
+                    <li class="pr" id="sdtishi" style="display:none;">
+                        <div class="tishi">请预留足够的审核时间和活动推广时间，建议一周后开始</div>
+                    </li>
+                    <li id="Awards" class="clearfix">
+                        <div class="fl ft">奖品设置</div>
+                            <div class="fl">
+                                <div class="prize_setting f_w_n relative">
+                                    <div class="h30 l30 fb mb5 clearfix"><span class="fl">奖项一：</span></div>
+                                    <div class="h30 l30 mb10">满&nbsp;<input id="pri_ShareCount1" style="ime-mode:disabled" onkeyup="editactivitie.pri_ShareCountkeyup(this)" onfocus="editactivitie.pri_infoFocus(1)" onblur="editactivitie.pri_ShareCountblur(this.value)" class="select_txt w45 mr5 border_style" type="text" value="20" maxlength="3" />个分享，获<input id="pri_Content1" onfocus="editactivitie.pri_infoFocus(1)" onblur="editactivitie.pri_infoblur(1)" class="select_txt w165 ml5 border_style" type="text" maxlength="20" value="8GB U盘一个" /></div>
+                                    <div class="h30 l30 clearfix">
+                                        <span class="fl">奖品数量&nbsp;</span>
+                                        
+                                        <input id="pri_Count1" style="ime-mode:disabled" onfocus="editactivitie.pri_infoFocus(1)" onblur="editactivitie.pri_infoblur(1)" class="select_txt w70 fl ml5 border_style2" type="text" value="10" maxlength="3" />
+                                        <input type="hidden" value="10" />
+                                        <span class="fl">&nbsp;份</span>
+                                        <input id="pri_id1" type="hidden" value="36366" />
+                                    </div>
+                                    <div id="pri_Warning1" style="display: none; left: 345px;" class="warning">请设置奖项</div>
+                                </div>
+                            </div>
+                    </li>
+                    <li class="clearfix">
+                        <div class="fl ft h22"></div>
+                        <div class="fl">
+                                <a id="addMoreAwards" href="javascript:editactivitie.AddAwards(-1,'','','限定','',true);" class="f14 h22 l22 color_ca">+添加更多奖项</a>
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                        <div class="fl ft l30">兑奖方法</div>
+                        <div class="fl relative">
+                            <input id="ExchangeMethod" onfocus="editactivitie.emfocus()" type="text" maxlength="30" class="input_field" value="到店直接兑奖" />
+                            <div id="emWarning" style="left: 345px; color: #dbdbdb" class="warning">最多30个字</div>
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                        <div class="fl ft l30">咨询电话</div>
+                        <div class="fl relative">
+                            <input id="telePhone" onfocus="editactivitie.telePhonefocus()" onblur="editactivitie.telePhoneblur()" type="text" maxlength="20" class="input_field" style="color: #dbdbdb" value="请输入11位手机号码或带区号的固话号码或400X-XXX-XXX" />
+                            <div id="phoneWarning" style="display: none; left: 345px;" class="warning">请输入咨询电话</div>
+                        </div>
+                    </li>
+                    <li class="pt15 clearfix">
+                        <div class="fl ft h30"></div>
+                        <div class="fl">
+                            
+                            <input class="zancun" onclick="editactivitie.zancun()" onfocus="this.blur()" type="button" />
+                            <input class="tijiao" onclick="editactivitie.tijiao()" onfocus="this.blur()" type="button" />
+                            
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!--弹出框-->
+            <div id="tijiaoOKDialog" style="display: none">
+                <div class="pop_bd pt80 mb80 bc">
+                    <div class="submit_cont clearfix">
+                        <img class="fl" src="./statics/images/system/wenj.png" />
+                        <div class="fl txt_c">
+                            <div class="pt20">您的活动申请已提交，我们会在24小时内完成审核，请注意查看邮箱通知。</div>
+                            <input type="button" onfocus="this.blur()" name="btnOK" class="confirm mt30" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!---->
+
+            <div class="right_cont">
+                <div class="friend_link">
+                    <div class="right_tit1 mb10">朋友圈分享效果预览</div>
+                    <div class="preview1 mb40 clearfix">
+                        <div class="year fl">07</div>
+                        <div class="months fl">12月</div>
+                        <div class="detail fl">
+                            <img id="preShareIco" class="fl" width="40" height="40" src="./statics/images/system/pic_1.png" style="border: 1px solid #dcdcdc;" alt="" />
+                            <div id="preTitle_pyq" class="fr w188">慕斯十周年首发积【攒】，满30个可获得免费慕斯抱枕。</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="active_preview">
+                    <div class="right_tit1 mt15 mb10">活动页效果预览</div>
+                    <div class="active_tit"></div>
+                    <div id="preActivityInfo" class="active_cont">
+                        <div id="preTitle" class="active_cont_tit">微信观看imax《超凡蜘蛛侠2》仅要20元</div>
+                        <div class="mt10 mb15">
+                            <img id="preActivityPic" src="./statics/images/system/pic_2.png" style="border: 1px solid #dcdcdc; max-width: 290px;" alt="" />
+                        </div>
+                        <div class="zan_wrapper1">
+                            <div class="user_img"></div>
+                            <p class="user_tip">昆山市玉山镇玉熙宾馆</p>
+                            <p class="user_time">认证时间：2014.11.06</p>
+                            <span class="apply_01">举报</span>
+                        </div>
+                        <div class="zan_wrapper1">
+                            <div class="act_img"></div>
+                            <p class="act_word">活动规则公示</p>
+                            <div class="act_up"></div>
+                        </div>
+                        <div class="zan_wrapper1 zan_wrapper2">
+                            <div class="act_img act_img_2"></div>
+                            <p class="act_word">如何集分享</p>
+                            <div class="act_up"></div>
+                        </div>
+                        <div id="preContet" style="font-size: 14px;" class="active_txt"></div>
+                        <div id="preContetAppend" style="display: none;">
+                            <p class="mt25">活动时间：2014年3月18日——2014年4月20日</p>
+                            <p>活动地址：高新区竹园路209号</p>
+                            <p class="color_red mt25">预约热线：0575-86026366</p>
+                            <p class="color_red">QQ在线：275905393</p>
+                            <p class="color_red">微信：xcquanchenguoji</p>
+                        </div>
+                        <input type="button" class="fenxiang_btn mt20" />
+                        <div class="zan_wrapper mt20" style="background-color: #f8f8f8">
+                            <div class="share_txt" style="text-align: center;">
+                                您已集<span class="pl5 color_d f24" style="color: #347f0c; font-size: 30px; font-weight: bold; margin: 0 15px;">0</span>个分享
+                            </div>
+                                <div class="share_icon" style="">
+                                        <img class="icon" src="./statics/images/system/zan.png" alt="" /> 
+                                        <img class="icon" src="./statics/images/system/zan.png" alt="" /> 
+                                        <img class="icon" src="./statics/images/system/zan.png" alt="" /> 
+                                        <img class="icon" src="./statics/images/system/zan.png" alt="" /> 
+                                        <img class="icon" src="./statics/images/system/zan.png" alt="" /> 
+                                        <img class="icon" src="./statics/images/system/zan.png" alt="" /> 
+                                        <img class="icon" src="./statics/images/system/zan.png" alt="" /> 
+                                        <img class="icon" src="./statics/images/system/zan.png" alt="" /> 
+                                        <img class="icon" src="./statics/images/system/zan.png" alt="" /> 
+                                        <img class="icon" src="./statics/images/system/zan.png" alt="" /> 
+                                        <img class="icon" src="./statics/images/system/zan.png" alt="" /> 
+                                        <img class="icon" src="./statics/images/system/zan.png" alt="" /> 
+                                        <img class="icon" src="./statics/images/system/zan.png" alt="" /> 
+                                        <img class="icon" src="./statics/images/system/zan.png" alt="" /> 
+                                        <img class="icon" src="./statics/images/system/zan.png" alt="" /> 
+                                        <img class="icon" src="./statics/images/system/zan.png" alt="" /> 
+                                        <img class="icon" src="./statics/images/system/zan.png" alt="" /> 
+                                        <img class="icon" src="./statics/images/system/zan.png" alt="" /> 
+                                        <img class="icon" src="./statics/images/system/zan.png" alt="" /> 
+                                        <img class="icon" src="./statics/images/system/zan.png" alt="" /> 
+                                </div>
+                            <div class="share_txt share_txt2">
+                                活动剩余时间：<span class="color_d f20" id="preremday">29</span>天
+                                              <span class=" color_d f20" id="preremhour">23</span>小时
+                                              <span class=" color_d f20" id="preremmins">59</span>分钟
+                            </div>
+                            <p class="tit_txt">您已获得：</p>
+                                <p class="prize_radio_disabled mb10 clearfix" id="preprize1" style="">
+                                    <span class="unselect"></span>
+                                    <span class="prize_word">8GB U盘一个</span>
+                                    <span class="prize_surplus">剩余10份</span>
+                                </p>
+                            <button id="prepriInfo" style="line-height: 46px; font-size: 18px; border-radius: 4px; color: #A1A1A1; letter-spacing: 4px; background: #DCDCDC; border: 0; width: 100%; text-align: center;">立即兑奖</button>
+                        </div>
+                        <div class="ph_logo"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="login_ft">
+        苏ICP备08010158号
+    </div>
+	</body>
+</html>

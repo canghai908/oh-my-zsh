@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<!-- saved from url=(0035)http://jfx.jssdw.com/prize/exchange -->
+<html lang="zh-cn">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<!-- 测试时使用，阻止浏览器缓存-->
+		<meta http-equiv="Expires" content="0">
+		<meta http-equiv="Cache-Control" content="no-cache">
+		<meta http-equiv="Pragma" content="no-cache">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>奖品兑换</title>
+		<link href="./favicon.ico" type="image/x-icon" rel="icon">
+		<link href="./favicon.ico" type="image/x-icon" rel="shortcut icon">
+		<link href="./statics/css/style.css" rel="stylesheet">
+		<script src="./statics/plug-in/jquery-1.8.2.min.js"></script>
+		<script src="./statics/plug-in/store+json2.min.js"></script>
+		<script src="./statics/js/master.js"></script>
+
+		<style type="text/css">
+			.send {
+				position: relative;
+				width: 150px;
+				height: 35px;
+				line-height: 35px;
+				text-align: center;
+				color: white;
+				background: #F8C301;
+				-moz-border-radius: 5px;
+				-webkit-border-radius: 5px;
+				border-radius: 5px;
+				/* 圆角 */
+				
+				margin-left: 10px;
+				margin-top: 10px;
+			}
+			.send .arrow {
+				position: absolute;
+				top: -16px;
+				left: 20px;
+				/* 圆角的位置需要细心调试哦 */
+				
+				width: 0;
+				height: 0;
+				font-size: 0;
+				border: solid 8px;
+				border-color: transparent transparent #F8C301 transparent;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="frame_header">
+			<div class="h41 w1000 bc clearfix">
+				<div class="fl">
+					<a href="#">
+						<img alt="logo" logo.gif" />
+					</a>
+				</div>
+				<div class="icons fr">
+					<a class="icon1" href="/User/Info" id="name1" title='2508938510'>2508938510</a>
+
+					<a class="icon3 ml20" href="/user/signout">退出</a>
+				</div>
+			</div>
+			<div class="h68 w1000 bc clearfix">
+				<div class="left_menu">
+					<a id="menu_Sys" href="/sys/summary" class="menu_1">系统概述</a>
+					<a id="menu_Activity" href="/activity/manage" class="menu_2 ml10">活动管理</a>
+					<a id="menu_Prize" href="/prize/manage" class="menu_3 ml10">兑奖管理</a>
+				</div>
+				<div class="right_menu clearfix">
+					<input id="menu_activities" class="activities" type="button" onclick="master.addact()" />
+					<input id="menu_prize" class="prize ml5" type="button" onclick="location.href = '/prize/exchange'" />
+					<div id="addwaring" style="position:absolute; margin-top:3px;display:none;z-index:99;">
+						<img addwarning.png" alt="" />
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+		<div>
+
+			<link href="./statics/css/Common_backup.css" rel="stylesheet">
+			<link href="./statics/css/jquery-ui-1.10.3.custom.min.css" rel="stylesheet">
+			<link href="./statics/css/Main.css" rel="stylesheet">
+			<script src="./statics/plug-in/jquery.pagination.js"></script>
+			<script src="./statics/plug-in/jquery-ui-1.8.24.min.js"></script>
+			<script src="./statics/plug-in/tj_jquery-Canlendar.js"></script>
+			<script src="./statics/plug-in/datepicker.js"></script>
+			<script src="./statics/plug-in/prizeexchange.js"></script>
+			<script src="./statics/plug-in/json3.min.js"></script>
+			<script type="text/javascript" charset="UTF-8">
+				document.onkeydown = function(event) {
+					var e = event || window.event || arguments.callee.caller.arguments[0];
+					if (e && e.keyCode == 27) { // 按 Esc 
+						//要做的事情
+					}
+					if (e && e.keyCode == 113) { // 按 F2 
+						//要做的事情
+					}
+					if (e && e.keyCode == 13) { // enter 键
+						prizeexchange.authenticationbytext(); //验证
+					}
+				};
+			</script>
+			<div class="frame_cont bc clearfix">
+				<div class="prize_tit"></div>
+				<div class="change_password" id="change_password" style="height:150px;">
+					<div class="pop_cont bc">
+						<div class="clearfix" style="color: red; font-size: 14px; height: 18px; margin-left: 8px; margin-bottom: 5px; visibility: hidden;" id="prompt"></div>
+						<div class="clearfix">
+							<input type="text" id="prizeskey" class="prize_input fl" value="输入兑奖密码" onfocus="if(value=='输入兑奖密码') {value=''}" onblur="if(value=='') {value='输入兑奖密码'}" />
+							<input type="button" class="yanzheng_btn ml10" onclick="prizeexchange.authenticationbytext()" />
+						</div>
+						<div id="div01" style="display:none;">
+							<div class="main_wrapper mt15">
+								<div class="cont_main" id="divShow" style="display: none; height: 160px; z-index: 10">
+								</div>
+								<div class="finish" style="display: none; height: 197px;">
+									<div class="inner" style="margin: 77px 0 0 55px">&nbsp;&nbsp;&nbsp;兑奖成功！</div>
+								</div>
+							</div>
+						</div>
+						<input type="button" class="submit_btn mt40 mb40" onclick="prizeexchange.redeem_prizes()" id="submit_btn" style="display: none;" />
+					</div>
+				</div>
+				<div id="showdetails1"></div>
+			</div>
+			<script type="text/javascript">
+				$(document).ready(function() {
+					prizeexchange.Init(); //加载
+
+				});
+			</script>
+
+
+		</div>
+		<div class="login_ft">
+
+			苏ICP备08010158号
+
+
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<!-- saved from url=(0046)http://jfx.jssdw.com/activity/Manage?state=All -->
+<html lang="zh-cn">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<!-- 测试时使用，阻止浏览器缓存-->
+		<meta http-equiv="Expires" content="0">
+		<meta http-equiv="Cache-Control" content="no-cache">
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>活动管理</title>
+		<link href="./favicon.ico" type="image/x-icon" rel="icon">
+		<link href="./favicon.ico" type="image/x-icon" rel="shortcut icon">
+		<link href="./statics/css/style.css" rel="stylesheet">
+		<script src="./statics/plug-in/jquery-1.8.2.min.js"></script>
+		<script src="./statics/plug-in/store+json2.min.js"></script>
+		<script src="./statics/js/master.js"></script>
+
+		<style type="text/css">
+			.send {
+			            position: relative;
+			            width: 150px;
+			            height: 35px;
+			            line-height: 35px;
+			            text-align: center;
+			            color: white;
+			            background: #F8C301;
+			            -moz-border-radius: 5px;
+			            -webkit-border-radius: 5px;
+			            border-radius: 5px; /* 圆角 */
+			            margin-left: 10px;
+			            margin-top: 10px;
+			        }
+			        .send .arrow {
+			            position: absolute;
+			            top: -16px;
+			            left: 20px; /* 圆角的位置需要细心调试哦 */
+			            width: 0;
+			            height: 0;
+			            font-size: 0;
+			            border: solid 8px;
+			            border-color: transparent transparent #F8C301 transparent;
+			        }
+		</style>
+	</head>
+
+	<body>
+		<div class="frame_header">
+			<div class="h41 w1000 bc clearfix">
+				<div class="fl">
+					<a href="#">
+						<img alt="logo" src="./statics/images/system/logo.gif" />
+					</a>
+				</div>
+				<div class="icons fr">
+					<a class="icon1" href="/User/Info" id="name1" title=''></a>
+					<a class="icon3 ml20" href="javascript:void(0);" id="quit">退出</a>
+				</div>
+			</div>
+			<div class="h68 w1000 bc clearfix">
+				<div class="left_menu">
+					<a id="menu_Sys" href="/merchant/system.html" class="menu_1">系统概述</a>
+	                <a id="menu_Activity" href="/merchant/activity_Active.html" class="menu_2 ml10">活动管理</a>
+	                <a id="menu_Prize" href="/merchant/ticket.html" class="menu_3 ml10">兑奖管理</a>
+				</div>
+				<div class="right_menu clearfix">
+					<input id="menu_activities" class="activities" type="button" onclick="master.addact()" />
+					<input id="menu_prize" class="prize ml5" type="button" onclick="location.href = '/merchant/prize.html'" />
+					<div id="addwaring" style="position:absolute; margin-top:3px;display:none;z-index:99;">
+						<img src="./statics/images/system/addwarning.png" alt="" />
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+    <div>
+		<div>
+
+			<link href="./statics/css/PopStyle.css" rel="stylesheet" />
+			<div>
+				<div class="frame_menu">
+					<div id="divState" class="frame_subnav w1000 bc clearfix">
+						<a href="/merchant/activity_Active.html">进行中</a>
+						<a href="/merchant/activity_Checking.html">审核中</a>
+						<a href="/merchant/activity_Over.html">已结束</a>
+						<a href="/merchant/activity_Save.html">暂存</a>
+						<a href="/merchant/activity_All.html">全部活动</a>
+					</div>
+				</div>
+				<div class="frame_cont bc clearfix">
+					<div id="AllList">
+						<strong></strong>
+					</div>
+					<div class="pagination"></div>
+				</div>
+			</div>
+			<div id="popUp"></div>
+			<div id="SubmitCheck"></div>
+			<div id="divDelete"></div>
+			<div id="divReturn"></div>
+			<style type="text/css">
+				.Acolor {
+				        border-bottom: 3px solid #00a3e7;
+				    }
+			</style>
+
+			<script src="./statics/plug-in/jquery-ui-1.8.24.js"></script>
+			<script src="./statics/plug-in/third-party/zeroclipboard/ZeroClipboard2.js"></script>
+			<script src="./statics/js/ActivityInfo.js"></script>
+			<script src="./statics/plug-in/jquery.pagination.js"></script>
+			<script src="./statics/plug-in/jquery.cookie.js"></script>
+			<script src="./statics/plug-in/grayscale.js"></script>
+			<link href="./statics/css/jquery-ui-1.10.3.custom.css" rel="stylesheet">
+			<link href="./statics/css/Main.css" rel="stylesheet">
+			<script src="./statics/js/subpage.js"></script>
+			<script type="text/javascript">
+				ZeroClipboard.setMoviePath("/swf/ZeroClipboard.swf");
+			        var StateStr = 'Checking';
+			        var isnew = '';
+			        Manage.ajax_url = "/merchant/promotion_list";
+			        Manage.show = function(list){
+			        	for (var i = 0; i < list.length; i++) {
+	                        function htmlD(){
+	                                 Manage.htmlDiv += '<div class="coupons mt15 clearfix"><div class="fl mt15 ml20">' +
+	                                '<a  Onclick="Manage.Detailed(' + list[i].merchant_id + ','+list[i].id+');"><img class="img"  style="width:70px;height:70px;"  src=' + list[i].favicon_url + ' onload="Manage.imgLoaded(this);" /></a>' +
+	                                '<div id="divText">' + list[i].state + '</div>' +
+	                            '</div>' +
+	                            '<div class="fl ml20 ">' +
+	                                '<div  class="title mt15 clearfix"><a class="fl" title="' +list[i].title + '" Onclick="Manage.Detailed(' + list[i].merchant_id + ','+list[i].id+');">' + list[i].title + '</a>';
+	                            
+	                                Manage.htmlDiv += '</div><ul class="summary_cont clearfix">' +
+	                                '<li  class="w230">开始时间：<strong class="f14">' + null + '</strong></li>' +
+	                                '<li>今日浏览量：<strong class="zancun_color">' + list[i].visit_num + '</strong></li>' +
+	                                '<li>分享总次数：<strong class="jinxing_color">' + list[i].share_num + '</strong></li>' +
+	                                '<li>获&nbsp;奖&nbsp;人&nbsp;数：<strong class="shenghe_color">' + null + '</strong></li>' +
+	                                '<li class="w230">结束时间：<strong class="f14">' + null + '</strong></li>' +
+	                                '<li>昨日浏览量：<strong class="zancun_color">' + null + '</strong></li>' +
+	                                '<li>传播层级数：<strong class="jinxing_color">' + list[i].depth + '</strong></li>' +
+	                                '<li>已兑奖人数：<strong class="shenghe_color">' + null + '</strong></li>' +
+	                        ' </ul>' +
+	                        '</div>';
+	                        };
+	                       
+	                        //0  未审核，在仓库中
+	                        //1  申请发布，审核中
+	                        //2  审核通过，正式发布
+	                        //3  审核失败
+	                        //4  活动结束
+	                        //64  活动删除
+
+	                        if (list[i].state == "1") {
+	                            htmlD();
+	                            Manage.htmlDiv +='<ul class="operation mt15 mr15 fr">' +
+	                             '<li class="applicationtj"><a Onclick="Manage.Detailed(' + list[i].merchant_id + ','+list[i].id+');">编辑</a></li>' +
+	                        '<li class="analysis"><a Onclick="Manage.EffectAnalysis(' + list[i].id + ')">效果分析</a></li>' +
+	                        "<li class='promotion'><a  Onclick=\'Manage.GetLink(" + list[i].id + ",1)\'>获取推广链接</a></li>" +
+	                        '</ul>' + '</div>';
+	                        };
+	                    };	
+			        };
+				    Manage.init(StateStr, isnew);
+			</script>
+		</div>
+		<div class="login_ft">
+
+			苏ICP备08010158号
+
+
+		</div>
+	</body>
+
+</html>

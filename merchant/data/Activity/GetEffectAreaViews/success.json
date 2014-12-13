@@ -1,0 +1,170 @@
+{
+    "effectAreaViews": [
+        {
+            "Area": "江苏",
+            "ActivityId": 546,
+            "ViewCount": 1547,
+            "ShareCount": 210,
+            "Rate": 63.87,
+            "Rev": 1
+        },
+        {
+            "Area": "上海",
+            "ActivityId": 546,
+            "ViewCount": 260,
+            "ShareCount": 38,
+            "Rate": 10.73,
+            "Rev": 1
+        },
+        {
+            "Area": "浙江",
+            "ActivityId": 546,
+            "ViewCount": 129,
+            "ShareCount": 9,
+            "Rate": 5.33,
+            "Rev": 1
+        },
+        {
+            "Area": "安徽",
+            "ActivityId": 546,
+            "ViewCount": 109,
+            "ShareCount": 6,
+            "Rate": 4.5,
+            "Rev": 1
+        },
+        {
+            "Area": "北京",
+            "ActivityId": 546,
+            "ViewCount": 94,
+            "ShareCount": 8,
+            "Rate": 3.88,
+            "Rev": 1
+        },
+        {
+            "Area": "广东",
+            "ActivityId": 546,
+            "ViewCount": 56,
+            "ShareCount": 3,
+            "Rate": 2.31,
+            "Rev": 1
+        },
+        {
+            "Area": "天津",
+            "ActivityId": 546,
+            "ViewCount": 37,
+            "ShareCount": 0,
+            "Rate": 1.53,
+            "Rev": 1
+        },
+        {
+            "Area": "湖北",
+            "ActivityId": 546,
+            "ViewCount": 28,
+            "ShareCount": 1,
+            "Rate": 1.16,
+            "Rev": 1
+        },
+        {
+            "Area": "山东",
+            "ActivityId": 546,
+            "ViewCount": 26,
+            "ShareCount": 2,
+            "Rate": 1.07,
+            "Rev": 1
+        },
+        {
+            "Area": "四川",
+            "ActivityId": 546,
+            "ViewCount": 21,
+            "ShareCount": 1,
+            "Rate": 0.87,
+            "Rev": 1
+        },
+        {
+            "Area": "福建",
+            "ActivityId": 546,
+            "ViewCount": 16,
+            "ShareCount": 1,
+            "Rate": 0.66,
+            "Rev": 1
+        },
+        {
+            "Area": "河北",
+            "ActivityId": 546,
+            "ViewCount": 14,
+            "ShareCount": 7,
+            "Rate": 0.58,
+            "Rev": 1
+        },
+        {
+            "Area": "河南",
+            "ActivityId": 546,
+            "ViewCount": 13,
+            "ShareCount": 2,
+            "Rate": 0.54,
+            "Rev": 1
+        },
+        {
+            "Area": "湖南",
+            "ActivityId": 546,
+            "ViewCount": 11,
+            "ShareCount": 0,
+            "Rate": 0.45,
+            "Rev": 1
+        },
+        {
+            "Area": "江西",
+            "ActivityId": 546,
+            "ViewCount": 10,
+            "ShareCount": 0,
+            "Rate": 0.41,
+            "Rev": 1
+        },
+        {
+            "Area": "陕西",
+            "ActivityId": 546,
+            "ViewCount": 10,
+            "ShareCount": 1,
+            "Rate": 0.41,
+            "Rev": 1
+        },
+        {
+            "Area": "内蒙古",
+            "ActivityId": 546,
+            "ViewCount": 7,
+            "ShareCount": 1,
+            "Rate": 0.29,
+            "Rev": 1
+        },
+        {
+            "Area": "台湾",
+            "ActivityId": 546,
+            "ViewCount": 5,
+            "ShareCount": 1,
+            "Rate": 0.21,
+            "Rev": 1
+        },
+        {
+            "Area": "甘肃",
+            "ActivityId": 546,
+            "ViewCount": 5,
+            "ShareCount": 0,
+            "Rate": 0.21,
+            "Rev": 1
+        },
+        {
+            "Area": "重庆",
+            "ActivityId": 546,
+            "ViewCount": 4,
+            "ShareCount": 0,
+            "Rate": 0.17,
+            "Rev": 1
+        }
+    ],
+    "pagerInfo": {
+        "PageIndex": 1,
+        "PageSize": 20,
+        "RecordCount": 32,
+        "PageCount": 2
+    }
+}

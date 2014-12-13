@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8" />
+    <!-- 测试时使用，阻止浏览器缓存-->
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Summary</title>
+    <link href="./favicon.ico" type="image/x-icon" rel="icon">
+    <link href="./favicon.ico" type="image/x-icon" rel="shortcut icon">
+    <link href="./statics/css/style.css" rel="stylesheet">
+    <script src="./statics/plug-in/jquery-1.8.2.min.js"></script>
+    <script src="./statics/plug-in/store+json2.min.js"></script>
+    <script src="./statics/js/master.js"></script>
+
+    <style type="text/css">
+    .send {
+        position: relative;
+        width: 150px;
+        height: 35px;
+        line-height: 35px;
+        text-align: center;
+        color: white;
+        background: #F8C301;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        /* 圆角 */
+        
+        margin-left: 10px;
+        margin-top: 10px;
+    }
+    .send .arrow {
+        position: absolute;
+        top: -16px;
+        left: 20px;
+        /* 圆角的位置需要细心调试哦 */
+        
+        width: 0;
+        height: 0;
+        font-size: 0;
+        border: solid 8px;
+        border-color: transparent transparent #F8C301 transparent;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="frame_header">
+        <div class="h41 w1000 bc clearfix">
+            <div class="fl">
+                <a href="#">
+                    <img alt="logo" src="./statics/images/system/logo.gif" />
+                </a>
+            </div>
+            <div class="icons fr">
+                <a class="icon1" href="/User/Info" id="name1" title=''></a>
+                <a class="icon3 ml20" href="javascript:void(0);" id="quit">退出</a>
+            </div>
+        </div>
+        <div class="h68 w1000 bc clearfix">
+            <div class="left_menu">
+                <a id="menu_Sys" href="/merchant/system.html" class="menu_1">系统概述</a>
+                <a id="menu_Activity" href="/merchant/activity_Active.html" class="menu_2 ml10">活动管理</a>
+                <a id="menu_Prize" href="/merchant/ticket.html" class="menu_3 ml10">兑奖管理</a>
+            </div>
+            <div class="right_menu clearfix">
+                <input id="menu_activities" class="activities" type="button" onclick="master.addact()" />
+                <input id="menu_prize" class="prize ml5" type="button" onclick="location.href = '/merchant/prize.html'" />
+                <div id="addwaring" style="position:absolute; margin-top:3px;display:none;z-index:99;">
+                    <img src="./statics/images/system/addwarning.png" alt="" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+
+        <div class="page-shadow">
+            <div class="frame_cont bc clearfix">
+                <div class="er_code">
+                    <img src="./statics/images/system/ewm.png" />
+                </div>
+                <div class="overview_left fl">
+                    <div class="statistic_data mt15 clearfix">
+                        <div class="txt1 ml20 fl">当前浏览量:</div>
+                        <div class="numbers fl" data-curcount="0"></div>
+                        <div class="txt1 ml30 fl">当前分享量:</div>
+                        <div class="numbers fl" data-curcount="0"></div>
+                        <div class="fr">
+                            <div class="txt_n clearfix">
+                                <img src="./statics/images/system/phonerx.jpg" style="margin-right: 10px; margin-top: 5px;" />
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="statistical_cont clearfix">
+                        <div class="statistical_cell bg_r fl">
+                            <div class="fl">
+                                <p class="f18 mt5">今日浏览量</p>
+                                <p class="f35 l42 mt10">5</p>
+                            </div>
+                            <div class="fr chart" id="viewCountChart">
+                            </div>
+                            <div class="clear"></div>
+                            <div class="clearfix l22">
+                                <div class="fl w148">昨日浏览量<span class="f18 ml10">3</span>
+                                </div>
+                                <div class="fl ml10">本月浏览量<span class="f18 ml10">23</span>
+                                </div>
+                            </div>
+                            <div class="clearfix l22">
+                                <div class="fl w148">前日浏览量<span class="f18 ml10">15</span>
+                                </div>
+                                <div class="fl ml10"><span style="letter-spacing: 3px;">总浏览量</span><span class="f18 ml10">2423</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="statistical_cell bg_c fl ml16">
+                            <div class="fl">
+                                <p class="f18 mt5">今日分享量</p>
+                                <p class="f35 l42 mt10">0</p>
+                            </div>
+                            <div class="fr chart" id="shareCountChart">
+                            </div>
+                            <div class="clear"></div>
+                            <div class="clearfix l22">
+                                <div class="fl w148">昨日分享量<span class="f18 ml10">0</span>
+                                </div>
+                                <div class="fl ml10">本月分享量<span class="f18 ml10">0</span>
+                                </div>
+                            </div>
+                            <div class="clearfix l22">
+                                <div class="fl w148">前日分享量<span class="f18 ml10">0</span>
+                                </div>
+                                <div class="fl ml10"><span style="letter-spacing: 3px;">总分享量</span><span class="f18 ml10">292</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="statistical_cell bg_b fl">
+                            <div class="fl">
+                                <p class="f18 mt5">进行中活动</p>
+                                <p class="f35 l42 mt10" id="hd_num_0"></p>
+                            </div>
+                            <div class="fr chart1" id="activeCountChart">
+                            </div>
+                            <div class="clear"></div>
+                            <div class="clearfix l22">
+                                <div class="fl w148">审核中活动数<span class="f18 ml10" id="hd_num_1"></span>
+                                </div>
+                                <div class="fl ml10">暂存活动数<span class="f18 ml10" id="hd_num_2"></span>
+                                </div>
+                            </div>
+                            <div class="clearfix l22">
+                                <div class="fl w148">已发起活动数<span class="f18 ml10" id="hd_num_3"></span>
+                                </div>
+                                <div class="fl ml10">剩余活动数<span class="f18 ml10" id="hd_num_4"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="statistical_cell bg_j  fl ml16">
+                            <div class="fl">
+                                <p class="f18 mt5">总获奖人数</p>
+                                <p class="f35 l42 mt10">9</p>
+                            </div>
+                            <div class="fr chart1" id="prizeCountChart">
+                            </div>
+                            <div class="clear"></div>
+                            <div class="clearfix l22">
+                                <div class="fl w148">已领码人数<span class="f18 ml10">4</span>
+                                </div>
+                                <div class="fl ml10">获&nbsp;&nbsp;&nbsp;奖&nbsp;&nbsp;&nbsp;率<span class="f18 ml10">4%</span>
+                                </div>
+                            </div>
+                            <div class="clearfix l22">
+                                <div class="fl w148">已兑奖人数<span class="f18 ml10">3</span>
+                                </div>
+                                <div class="fl ml10">未兑奖人数<span class="f18 ml10">1</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="news_list fl">
+                            <div class="hd">
+                                系统通知
+                            </div>
+                            <div class="bd">
+                                <ul class="lists">
+                                    <li class="clearfix">
+                                        <a class="fl" href="javascript:void(0)" onclick="summary.showNoticeInfo('18', ' 2014.11.28 02:57')">集分享贡献值调整通知</a>
+                                        <span class="fr">11.28</span>
+                                    </li>
+                                    <li class="clearfix">
+                                        <a class="fl" href="javascript:void(0)" onclick="summary.showNoticeInfo('15', ' 2014.08.07 09:04')">集分享即将上线</a>
+                                        <span class="fr">08.07</span>
+                                    </li>
+                                    <li class="clearfix">
+                                        <a class="fl" href="javascript:void(0)" onclick="summary.showNoticeInfo('14', ' 2014.08.07 09:02')">集分享-国内最火爆的微信营 ..</a>
+                                        <span class="fr">08.07</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="news_list fl ml16">
+                            <div class="hd hd_bg">
+                                帮助信息
+                            </div>
+                            <div class="bd">
+                                <ul class="lists">
+                                    <li class="clearfix">
+                                        <a class="fl" href="javascript:void(0)" onclick="summary.showHelp('63','用户如何兑奖？')">用户如何兑奖？</a>
+                                        <span class="fr"></span>
+                                    </li>
+                                    <li class="clearfix">
+                                        <a class="fl" href="javascript:void(0)" onclick="summary.showHelp('60','用户如何集分享？')">用户如何集分享？</a>
+                                        <span class="fr"></span>
+                                    </li>
+                                    <li class="clearfix">
+                                        <a class="fl" href="javascript:void(0)" onclick="summary.showHelp('59','活动发布流程及审核机制？')">活动发布流程及审核机制？</a>
+                                        <span class="fr"></span>
+                                    </li>
+                                    <li class="clearfix">
+                                        <a class="fl" href="javascript:void(0)" onclick="summary.showHelp('58','商家认证需要哪些材料？')">商家认证需要哪些材料？</a>
+                                        <span class="fr"></span>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="overview_right fr">
+                    <div class="mt15 identification clearfix">
+                        <img class="fl" src="./statics/images/system/pij_1.gif">
+                        <div class="identi_tit fl" id="merchant_name"> &nbsp;</div>
+                        <div class="fl identi_cont mt5">
+                            <span class="fl" id="merchant_rz">已认证</span>
+
+                            <span class="fr" id="merchant_time"></span>
+                        </div>
+                    </div>
+                    <div class="company_infor clearfix"><span class="bg_1">公司信息</span><span class="bg_2 ml35">法人信息</span>
+                    </div>
+                    <p class="activity_txt">其他商家发布的活动</p>
+                    <div class="activity_coups">
+                        <div class="column">
+                            <div class="coupons_cont clearfix ">
+                                <img class="coup_img" height="70" width="70" src="./statics/images/pictures/68ccd67ab8fb498b97eb75ecb8d6685f_70.png">
+                                <p class="cont_hd h30 l30">围炉夜话 - 恋烤鱼（常 ..</p>
+                                <div class="cont_hd">
+                                    <span class="fl weibo">685214</span>
+                                    <span class="fr pengyou">127063</span>
+                                </div>
+                            </div>
+                            <div class="coupons_hover clearfix" onclick="summary.showActivePic('105','338')" style="display: none;">
+                                <img src="./statics/images/system/shouji.png" class="code_mark">
+                                <a class="check" href="javascript:void(0)">点击手机查看</a>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="coupons_cont clearfix ">
+                                <img class="coup_img" height="70" width="70" src="./statics/images/pictures/37f0594afab54495a9a5f7ddff57fd8c_70.png">
+                                <p class="cont_hd h30 l30">免费邀友来自助！第二波來 ..</p>
+                                <div class="cont_hd">
+                                    <span class="fl weibo">405235</span>
+                                    <span class="fr pengyou">54237</span>
+                                </div>
+                            </div>
+                            <div class="coupons_hover clearfix" onclick="summary.showActivePic('275','337')" style="display: none;">
+                                <img src="./statics/images/system/shouji.png" class="code_mark">
+                                <a class="check" href="javascript:void(0)">点击手机查看</a>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="coupons_cont clearfix ">
+                                <img class="coup_img" height="70" width="70" src="./statics/images/pictures/f715e3ab11224db9bc91cdf554363fec_70.png">
+                                <p class="cont_hd h30 l30">免费邀友来自助！【鼎上清 ..</p>
+                                <div class="cont_hd">
+                                    <span class="fl weibo">305257</span>
+                                    <span class="fr pengyou">27602</span>
+                                </div>
+                            </div>
+                            <div class="coupons_hover clearfix" onclick="summary.showActivePic('275','296')" style="display: none;">
+                                <img src="./statics/images/system/shouji.png" class="code_mark">
+                                <a class="check" href="javascript:void(0)">点击手机查看</a>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="coupons_cont clearfix ">
+                                <img class="coup_img" height="70" width="70" src="./statics/images/pictures/568509eb6ef94658b625ddc652799354_70.png">
+                                <p class="cont_hd h30 l30">【雅典娜】集分享，免费领 ..</p>
+                                <div class="cont_hd">
+                                    <span class="fl weibo">285604</span>
+                                    <span class="fr pengyou">42422</span>
+                                </div>
+                            </div>
+                            <div class="coupons_hover clearfix" onclick="summary.showActivePic('215','223')" style="display: none;">
+                                <img src="./statics/images/system/shouji.png" class="code_mark">
+                                <a class="check" href="javascript:void(0)">点击手机查看</a>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="coupons_cont clearfix ">
+                                <img class="coup_img" height="70" width="70" src="./statics/images/pictures/99a7eb3f0ff44d28af735e2431b9a975_70.png">
+                                <p class="cont_hd h30 l30">【常熟友家酸菜鱼】集分享 ..</p>
+                                <div class="cont_hd">
+                                    <span class="fl weibo">272552</span>
+                                    <span class="fr pengyou">46932</span>
+                                </div>
+                            </div>
+                            <div class="coupons_hover clearfix" onclick="summary.showActivePic('365','434')" style="display: none;">
+                                <img src="./statics/images/system/shouji.png" class="code_mark">
+                                <a class="check" href="javascript:void(0)">点击手机查看</a>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="coupons_cont clearfix ">
+                                <img class="coup_img" height="70" width="70" src="./statics/images/pictures/47156df0a2144aecbdd655adcdbf733e_70.png">
+                                <p class="cont_hd h30 l30">【常熟蛋挞王子一号店】吃 ..</p>
+                                <div class="cont_hd">
+                                    <span class="fl weibo">270529</span>
+                                    <span class="fr pengyou">58646</span>
+                                </div>
+                            </div>
+                            <div class="coupons_hover clearfix" onclick="summary.showActivePic('376','735')" style="display: none;">
+                                <img src="./statics/images/system/shouji.png" class="code_mark">
+                                <a class="check" href="javascript:void(0)">点击手机查看</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="showHelp"></div>
+        <div id="showNoticeInfo"></div>
+        <div id="showActivePic" style="padding: 50px 0 30px 50px;"></div>
+
+
+    </div>
+    <div class="login_ft">
+
+        苏ICP备08010158号
+
+
+    </div>
+</body>
+<script>
+
+	/*function Window_Load(){
+        var str = "Tue Jul 16 01:07:00 CST 2013";
+        alert(formatCSTDate(str,"yyyy-M-d hh:mm:ss")); //2013-7-16 16:24:58
+         
+        alert(formatDate((new Date()),"yyyy-MM-dd")); //2013-07-15 
+        alert(formatDate((new Date()),"yyyy/M/d")); //2013/7/15 
+      } */
+       
+     
+
+
+
+
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+<script src="./statics/js/subpage.js"></script>
+<script src="./statics/plug-in/highcharts.js"></script>
+<script src="./statics/js/summary.js"></script>
+<script src="./statics/plug-in/jquery-ui-1.8.24.js"></script>
+<script src="./statics/js/summary(1).js"></script>
+<link href="./statics/css/jquery-ui-1.10.3.custom.css" rel="stylesheet">
+<link href="./statics/css/Main.css" rel="stylesheet">
+<script type="text/javascript">
+
+
+
+
+
+
+
+
+
+
+$(function() {
+    //背景图中分阴影
+    function changeShadowPosition() {
+        var windowWidth = parseInt($(window).width());
+        var pos = 1400 - ((windowWidth - 1000) / 2 + 700) - 10;
+        $('.page-shadow').css("backgroundPosition", -pos + "px 0");
+    }
+    changeShadowPosition();
+    $(window).resize(function() {
+        changeShadowPosition();
+    });
+    summary.LastSevenDaysViewCount = [4, 2, 1, 5, 15, 3, 5];
+    summary.LastSevenDaysShareCount = [0, 0, 0, 0, 0, 0, 0];
+    summary.NoGetPrizeCount = 1;
+    summary.ExchangePrizeCount = 3;
+    summary.TotalCanGetPrizeCount = 9;
+    summary.UsedCount = 1;
+    summary.SurplusCount = 4;
+    summary.init();
+});
+</script>
+
+</html>

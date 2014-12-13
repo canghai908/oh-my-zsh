@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width">
+		<!-- 测试时使用，阻止浏览器缓存-->
+		<meta http-equiv="Expires" content="0">
+		<meta http-equiv="Cache-Control" content="no-cache">
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<title>用户登录</title>
+		<link href="./statics/css/bootstrap-theme.min.css" rel="stylesheet">
+		<link href="./statics/css/bootstrap.min.css" rel="stylesheet">
+		<link href="./statics/css/style.css" rel="stylesheet">
+		<script src="./statics/plug-in/jquery.min.js"></script>
+		<script src="./statics/plug-in/bootstrap.min.js"></script>
+		<script src="./statics/plug-in/store+json2.min.js"></script>
+		<script src="./statics/js/user.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function () {
+				login.init();
+				
+			});
+		</script>
+	</head>
+
+	<body>
+		<div class="index_j">
+			<div class="main bc clearfix">
+				<div class="fl w434 mt38">
+					<img src="http://ifx.hi-www.com/merchant/statics/images/system/tu_left.gif">
+				</div>
+				<div class="fr w566">
+					<div class="mt104">
+						<img src="http://ifx.hi-www.com/merchant/statics/images/system/jifenx.gif">
+					</div>
+					<p class="txt_detail">首款微信朋友圈专业病毒式营销工具</p>
+					<div class="mt77 clearfix" style="position:relative">
+						<form role="form">
+							<div class="fl name_w mr10 ">
+								<input class="name" type="text" id="txtLoginName" placeholder="用户名">
+							</div>
+							<div class="fl p_w mr10">
+								<input class="passworld" type="password" id="txtPwd" placeholder="密码" onkeypress="if(event.keyCode==13) {btnLogin.click();return false;}">
+							</div>
+							<div class="fl login_w">
+								<input class="login_btn" type="button" id="btnLogin">
+							</div>
+						</form>
+					</div>
+					<div class="prompt_wrapper">
+						<div class="prompt" id="divError">您输入的用户名或密码有误，请检查后重新输入！</div>
+					</div>
+					<div class="tips">病毒式传播，营销效果是集赞模式的150倍！</div>
+					<div class="tips mt20">严格的商家信用认证，及活动审核机制，可信度高！</div>
+					<div class="tips mt20">完善的防作弊机制，营销无风险，结果可控！</div>
+					<div class="tips mt20">强大的系统支持，完善的数据分析报告！</div>
+				</div>
+			</div>
+		</div>
+		<div class="login_ft">
+			苏ICP备08010158号
+		</div>
+	</body>
+
+</html>
