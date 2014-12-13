@@ -1,0 +1,371 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <!-- 测试时使用，阻止浏览器缓存-->
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>活动管理-效果分析</title>
+    <link href="./favicon.ico" type="image/x-icon" rel="icon">
+	<link href="./favicon.ico" type="image/x-icon" rel="shortcut icon">
+	<link href="./statics/css/style.css" rel="stylesheet">
+	<script src="./statics/plug-in/jquery-1.8.2.min.js"></script>
+    <script src="./statics/plug-in/store+json2.min.js"></script>
+	<script src="./statics/js/master.js"></script>
+
+    <style type="text/css">
+        .send {
+            position: relative;
+            width: 150px;
+            height: 35px;
+            line-height: 35px;
+            text-align: center;
+            color: white;
+            background: #F8C301;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            border-radius: 5px; /* 圆角 */
+            margin-left: 10px;
+            margin-top: 10px;
+        }
+        .send .arrow {
+            position: absolute;
+            top: -16px;
+            left: 20px; /* 圆角的位置需要细心调试哦 */
+            width: 0;
+            height: 0;
+            font-size: 0;
+            border: solid 8px;
+            border-color: transparent transparent #F8C301 transparent;
+        }
+    </style>
+</head>
+<body>
+    <div class="frame_header">
+        <div class="h41 w1000 bc clearfix">
+            <div class="fl">
+                <a href="#">
+                    <img alt="logo" src="./statics/images/system/logo.gif" /></a>
+            </div>
+            <div class="icons fr">
+                <a class="icon1" href="/User/Info" id="name1" title='2508938510'>2508938510</a>
+                
+                <a class="icon3 ml20" href="/user/signout">退出</a>
+            </div>
+        </div>
+        <div class="h68 w1000 bc clearfix">
+            <div class="left_menu">
+                <a id="menu_Sys" href="/sys/summary" class="menu_1">系统概述</a>
+                <a id="menu_Activity" href="/activity/manage" class="menu_2 ml10">活动管理</a>
+                <a id="menu_Prize" href="/prize/manage" class="menu_3 ml10">兑奖管理</a>
+            </div>
+            <div class="right_menu clearfix">
+                <input id="menu_activities" class="activities" type="button" onclick="master.addact()"/>
+                <input id="menu_prize" class="prize ml5" type="button" onclick="location.href = '/prize/exchange'" />
+                <div id="addwaring" style="position:absolute; margin-top:3px;display:none;z-index:99;">
+                    <img src="./statics/images/system/addwarning.png" alt="" />
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <div>
+        
+<!--定义页面数据-->
+<script src="./statics/js/effect.js"></script>
+
+
+
+<script src="./statics/plug-in/highcharts.js"></script>
+<script src="./statics/plug-in/exporting.js"></script>
+
+<script src="./statics/js/normal.js"></script>
+<script src="./statics/plug-in/jquery-jtemplates.js"></script>
+<script src="./statics/plug-in/jquery.pagination.js"></script>
+
+<link href="./statics/css/PopStyle.css" rel="stylesheet" />
+
+
+
+    <div class="frame_menu h260">
+
+        <div class="hd bc clearfix">
+            <span class="fl tit_l" style="width:700px;">【巧芋工坊】回馈新老客户啦！分享送好礼，超值回馈，尽享美味！</span>
+            <span class="fr mr5 tit_r"><a href="manage?state=All">返回活动列表</a></span>
+        </div>
+
+        <div class="statistics bc clearfix">
+            <div class="sub_statistics bg_r mr8 fl">
+                <div class="f18 mt10">总浏览量</div>
+                <div class="f60 l75">2422</div>
+                <div class="clearfix l24">
+                    <span class="fl mr10">今日浏览量</span>
+                    <span class="fl f18">0</span>
+                    <span class="fr f18 w63">22</span>
+                    <span class="fr mr10">本周浏览量</span>
+                </div>
+                <div class="clearfix l24">
+                    <span class="fl mr10">昨日浏览量</span>
+                    <span class="fl f18">5</span>
+                    <span class="fr f18 w63">22</span>
+                    <span class="fr mr10">本月浏览量</span>
+                </div>
+            </div>
+            <div class="sub_statistics bg_c mr8 fl">
+                <div class="f18 mt10">总分享量</div>
+                <div class="f60 l75">292</div>
+                <div class="clearfix l24">
+                    <span class="fl mr10">今日分享量</span>
+                    <span class="fl f18">0</span>
+                    <span class="fr f18 w44">8</span>
+                    <span class="fr mr10">传播层级数</span>
+                </div>
+                <div class="clearfix l24">
+                    <span class="fl mr10">昨日分享量</span>
+                    <span class="fl f18">0</span>
+                    <span class="fr f18 w44">54</span>
+                    <span class="fr mr10">最高分享量</span>
+                </div>
+            </div>
+            <div class="sub_statistics bg_j fl">
+                <div class="f18 mt10">总获奖人数</div>
+                <div class="f60 l75">9</div>
+                <div class="clearfix l24">
+                    <span class="fl mr10">已领码人数</span>
+                    <span class="fl f18">4</span>
+                    <span class="fr f18 w55">4.43%</span>
+                    <span class="fr mr10" style="letter-spacing: 11px; margin-right: 1px;">获奖率</span>
+                </div>
+                <div class="clearfix l24">
+                    <span class="fl mr10">已兑奖人数</span>
+                    <span class="fl f18">3</span>
+                    <span class="fr f18 w55">1</span>
+                    <span class="fr mr10">未兑奖人数</span>
+                </div>
+            </div>
+        </div>
+        <div class="frame_subnav w1000 bc clearfix" id="subnav">
+            <a class="status" onclick="effect.effectSummary();" id="effectSummary">概述</a>
+            <a onclick="effect.getSummary(1,this);" id="effectShareCount">分享分析</a>
+            <a onclick="effect.getSummary(2,this);" id="effectShareLevel">传播维度</a>
+            <a onclick="effect.getSummary(3,this);" id="effectArea">地域分析</a>
+            <a onclick="effect.getSummary(4,this);" id="effectPrize">获奖统计</a>
+        </div>
+    </div>
+    <div class="page_bg">
+        <div class="frame_cont bc clearfix ">
+            <div class="mt15 summary_statistics" id="showChart">
+                <div class="h50 clearfix">
+                    <div class="hd_left clearfix">
+                        <span class="fl"><a class="cell_1" title="浏览量">浏览量</a></span>
+                        <span class="fl"><a class="cell_2" title="分享量">分享量</a></span>
+                        <span class="fl"><a class="cell_3" title="获奖人数">获奖人数</a></span>
+                        <span class="fl"><a class="cell_4" title="已兑奖人数">已兑奖人数</a></span>
+                        
+                    </div>
+                    <div class="hd_right">
+                        2014.11.08 - 2014.12.01
+                    </div>
+                </div>
+                <div class="chartContainer" id="chartContainer">
+                </div>
+            </div>
+
+            
+            
+            <textarea id="templateSummaryView" rows="0" cols="0" style="display: none">
+                <!--
+                    <table class="summary_table mt15 mb15">
+                    <tr>
+                        <th style="width:15%;">日期</th>
+                        <th style="width:17%;">浏览量</th>
+                        <th style="width:17%;">分享量</th>
+                        <th style="width:17%;">获奖人数</th>
+                        <th style="width:17%;">已兑奖人数</th>
+                    </tr>
+                    {#if $T.length != 0}
+                        {#foreach $T as item}
+                            <tr class="tr_border">
+                                <td>{$T.item.StrDate}</td>
+                                <td>{$T.item.ViewCount}</td>
+                                <td>{$T.item.ShareCount}</td>
+                                <td>{$T.item.CanGetPrizeCount}</td>
+                                <td><a class="number" name="{$T.item.ExchangePrizeCount}" href="/prize/manage?current={$T.item.StrDate}&action=1&aid={$T.item.ActivityId}">{$T.item.ExchangePrizeCount}</a></td>                                
+                           </tr>
+                        {#/for}
+                    {#else}
+                        <tr class="tr_border">
+                            <td colspan="5">暂无数据</td>
+                        </tr>
+                    {#/if}
+                    </table>
+                    -->
+            </textarea>
+            
+            <textarea id="templateShareCountView" rows="0" cols="0" style="display: none">
+                <!--
+                    <table class="summary_table mt15 mb15">
+                    <tr>
+                        <th style="width:150px">集分享个数</th>
+                        <th style="width:180px">人数</th>
+                        <th style="width:180px">比例</th>
+                        <th style="width:508px"></th>
+                    </tr>
+                    {#if $T.length != 0}
+                    {#foreach $T as item}
+                       <tr class="tr_border">
+                            <td>{$T.item.ShareCount}</td>
+                            <td>{$T.item.SharePersonCount}</td>
+                            <td>{$T.item.Rate}%</td>
+                            <td>
+                            <div class="percentage_bg clearfix">
+                                 <div class="sub_percentage" style="width: {$T.item.Rate}%;"></div>
+                             </div>
+                           </td>
+                        </tr>
+                    {#/for}
+                    {#else}
+                        <tr class="tr_border">
+                            <td colspan="4">暂无数据</td>
+                        </tr>
+                    {#/if}
+                    </table>
+                 -->
+            </textarea>
+            
+            <textarea id="templateShareLevelView" rows="0" cols="0" style="display: none">
+                <!--
+                     <table class="summary_table mt15 mb15">
+                    <tr>
+                        <th style="width:150px">传播层级</th>
+                        <th style="width:180px">分享次数</th>
+                        <th style="width:180px">比例</th>
+                        <th style="width:508px"></th>
+                    </tr>
+                    {#if $T.length != 0}
+                    {#foreach $T as item}
+                        <tr class="tr_border">
+                            <td>{$T.item.ShareLevel}度分享</td>
+                            <td>{$T.item.Count}</td>
+                            <td>{$T.item.Rate}%</td>
+                            <td>
+                                <div class="percentage_bg clearfix">
+                                     <div class="sub_percentage" style="width: {$T.item.Rate}%;"></div>
+                                 </div>
+                            </td>
+                       </tr>
+                    {#/for}
+                    {#else}
+                        <tr class="tr_border">
+                            <td colspan="4">暂无数据</td>
+                        </tr>
+                    {#/if}
+                    </table>
+                 -->
+            </textarea>
+            
+            <textarea id="templateAreaViews" rows="0" cols="0" style="display: none">
+                <!--
+                     <table class="summary_table mt15 mb15">
+                    <tr>
+                        <th style="width:126px">地区</th>
+                        <th style="width:142px">浏览量</th>
+                        <th style="width:132px">分享量</th>
+                        <th style="width:126px">占比</th>
+                        <th style="width:472px"></th>
+                    </tr>
+                    {#if $T.length != 0}
+                    {#foreach $T as item}
+                        <tr class="tr_border">
+                            <td>{$T.item.Area}</td>
+                            <td>{$T.item.ViewCount}</td>
+                            <td>{$T.item.ShareCount}</td>
+                            <td>{$T.item.Rate}%</td>
+                            <td>
+                                <div class="percentage_bg clearfix">
+                                     <div class="sub_percentage" style="width: {$T.item.Rate}%;"></div>
+                                 </div>
+                            </td>
+                       </tr>
+                    {#/for}
+                    {#else}
+                        <tr class="tr_border">
+                            <td colspan="5">暂无数据</td>
+                        </tr>
+                    {#/if}
+                     </table>
+                 -->
+            </textarea>
+            
+            <textarea id="templatePrizeInfo" rows="0" cols="0" style="display: none">
+                <!--
+                     <table class="summary_table mt15 mb15">
+                    <tr>
+                        <th style="width:610px">奖品</th>
+                        <th style="width:142px">获奖人数</th>
+                        <th style="width:140px">已领码人数</th>
+                        <th style="width:140px">已兑奖人数</th>                    
+                        <th style="width:140px">剩余奖品数</th>
+                        <th style="width:126px">占比</th>
+                        <th style="width:410px"></th>
+                    </tr>
+                    {#if $T.length != 0}
+                    {#foreach $T as item}
+                        <tr class="tr_border">
+                            <td style="padding-left: 5px;text-align: left;">{$T.item.PrizeContent}</td>
+                            <td>{$T.item.CanGetPrize}</td>
+                            <td><a class="number" name={$T.item.GetPrize} href="/prize/manage?pid={$T.item.GetPrizeId}&aid={$T.item.activityId}&st=0&action=2">{$T.item.GetPrize}</a></td>
+                            <td><a class="number" name={$T.item.ExchangePrize} href="/prize/manage?pid={$T.item.GetPrizeId}&aid={$T.item.activityId}&st=1&action=2">{$T.item.ExchangePrize}</a></td>
+                            <td>{#if $T.item.IsLimitPrizeCount == false} -- {#else} {$T.item.SurplusPrizeCount} {#/if}</td>        
+                            <td>{$T.item.Rate}%</td>
+                            <td>
+                                <div class="percentage_bg clearfix" style="width:300px;">
+                                     <div class="sub_percentage" style="width: {$T.item.Rate}%;"></div>
+                                 </div>
+                            </td>
+                       </tr>
+                    {#/for}
+                    {#else}
+                        <tr class="tr_border">
+                            <td colspan="7">暂无数据</td>
+                        </tr>
+                    {#/if}
+                     </table>
+                 -->
+            </textarea>
+            <div id="AllList">
+            </div>
+            <div id="detailPage" class="pagination">
+            </div>
+        </div>
+    </div>
+
+	<script type="text/javascript">
+	    $(document).ready(function () {
+	        $("#menu_Activity").addClass("cur_2");
+	        var activtyState = '4';
+	        effect.activtyState = activtyState;
+	        effect.userid = '489';
+	        effect.activityId = '546';
+	        effect.startTime = new Date(2014,11-1,8);
+	        effect.init();
+	    });
+	</script>
+
+
+
+    </div>
+    <div class="login_ft">
+        
+        苏ICP备08010158号
+
+
+    </div>
+</body>
+</html>
