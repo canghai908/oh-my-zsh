@@ -15,14 +15,14 @@
 	-->
 		<script type="text/javascript" src="http://ifx.hi-www.com/merchant/statics/plug-in/jquery-1.8.2.min.js"></script>
 		<script type="text/javascript">
-	      function jsonAjaxPost(){
+	      
              $.ajax({
                type:"get",//请求方式
                url:"http://ifx.hi-www.com/merchant/promotion_get?promotion_id=60",
                timeout:30000,//超时时间：30秒
                dataType:"json",//设置返回数据的格式
                //请求成功后的回调函数 data为json格式
-				success:error:function(data){
+				success:function(data){
                         alert("data.title");
               },
 			 // success:function(data){
@@ -33,7 +33,7 @@
                         alert("请求出错");
               }
            });
-          }
+          
 	</script>
 	</head>
 	<body>
