@@ -1,0 +1,63 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<base href="<%=basePath%>">
+
+		<title>Jquery Ajax Json Servlet Demo</title>
+		<meta http-equiv="pragma" content="no-cache">
+		<meta http-equiv="cache-control" content="no-cache">
+		<meta http-equiv="expires" content="0">
+		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+		<meta http-equiv="description" content="This is my page">
+		<!--
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	-->
+		<script type="text/javascript" src="http://ifx.hi-www.com/merchant/statics/plug-in/jquery-1.8.2.min.js"></script>
+		<script type="text/javascript">
+	      function jsonAjaxPost(){
+             $.ajax({
+               type:"get",//请求方式
+               url:"http://ifx.hi-www.com/merchant/prize_list?promotion_id=14",
+               timeout:30000,//超时时间：30秒
+               dataType:"json",//设置返回数据的格式
+               //请求成功后的回调函数 data为json格式
+				success:error:function(data){
+                        alert("data");
+              },
+			 // success:function(data){
+               //   $("#resultJsonText").text("你的名字："+data.yourName+"  你输入的内容:"+data.yourContent);
+            
+              //请求出错的处理
+              error:function(){
+                        alert("请求出错");
+              }
+           });
+          }
+	</script>
+	</head>
+	<body>
+	<form id="form1" method="post">
+		<p>
+			评论：
+		</p>
+		<p>
+			姓名：
+			<input type="text" name="username" id="username" />
+		</p>
+		<p>
+			内容：
+			<textarea name="content" id="content" rows="2" cols="20"></textarea>
+		</p>
+		<p>
+			<input type="button" id="send" value="提交" onclick="jsonAjaxPost()" />
+		</p>
+	</form>
+	<div class="comment">
+		返回数据：
+		<p id="resultJsonText"></p>
+	</div>
+	<div id="resText">
+	</div>
+	</body>
+</html>
