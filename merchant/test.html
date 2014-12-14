@@ -23,6 +23,7 @@
                dataType:"json",//设置返回数据的格式
                //请求成功后的回调函数 data为json格式
 				success:function(data){
+				 $("#resultJsonText").text("你的名字："+data.title+"  你输入的内容:"+data.description);
                         alert(data.title);
               },
 			 // success:function(data){
@@ -37,27 +38,7 @@
 	</script>
 	</head>
 	<body>
-	<form id="form1" method="post">
-		<p>
-			评论：
-		</p>
-		<p>
-			姓名：
-			<input type="text" name="username" id="username" />
-		</p>
-		<p>
-			内容：
-			<textarea name="content" id="content" rows="2" cols="20"></textarea>
-		</p>
-		<p>
-			<input type="button" id="send" value="提交" onclick="jsonAjaxPost()" />
-		</p>
-	</form>
-	<div class="comment">
-		返回数据：
-		<p id="resultJsonText"></p>
-	</div>
-	<div id="resText">
-	</div>
+	
+	
 	</body>
 </html>
