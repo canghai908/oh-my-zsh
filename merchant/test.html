@@ -21,8 +21,8 @@
                dataType:"json",//设置返回数据的格式
                //请求成功后的回调函数 data为json格式
 				success:function(data){
-				 $("#resultJsonText").text("你的名字："+data.title+"  你输入的内容:"+data.description);
-                      alert(data.Content);
+				 $("#box").html( data.Content);
+                     
               },
 			 // success:function(data){
                //   $("#resultJsonText").text("你的名字："+data.yourName+"  你输入的内容:"+data.yourContent);
@@ -36,7 +36,7 @@
 	</script>
 	</head>
 	<body>
-	
+	<div id="box"></div>
 	
 	</body>
 </html>
