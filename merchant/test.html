@@ -18,12 +18,12 @@
 	      function jsonAjaxPost(){
              $.ajax({
                type:"get",//请求方式
-               url:"http://ifx.hi-www.com/merchant/prize_list?promotion_id=14",
+               url:"http://ifx.hi-www.com/merchant/promotion_get?promotion_id=60",
                timeout:30000,//超时时间：30秒
                dataType:"json",//设置返回数据的格式
                //请求成功后的回调函数 data为json格式
 				success:error:function(data){
-                        alert("data");
+                        alert("data.");
               },
 			 // success:function(data){
                //   $("#resultJsonText").text("你的名字："+data.yourName+"  你输入的内容:"+data.yourContent);
