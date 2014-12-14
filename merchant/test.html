@@ -2,8 +2,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 	<head>
-		<base href="<%=basePath%>">
-
 		<title>Jquery Ajax Json Servlet Demo</title>
 		<meta http-equiv="pragma" content="no-cache">
 		<meta http-equiv="cache-control" content="no-cache">
@@ -24,7 +22,7 @@
                //请求成功后的回调函数 data为json格式
 				success:function(data){
 				 $("#resultJsonText").text("你的名字："+data.title+"  你输入的内容:"+data.description);
-                       // alert(data.title);
+                      alert(data.content);
               },
 			 // success:function(data){
                //   $("#resultJsonText").text("你的名字："+data.yourName+"  你输入的内容:"+data.yourContent);
