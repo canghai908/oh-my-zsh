@@ -21,7 +21,7 @@
                dataType:"json",//设置返回数据的格式
                //请求成功后的回调函数 data为json格式
 				success:function(data){
-				 $("#box").html( data.Content);
+				 $("#box").html("<html>+data.Content+"</html>");
                      
               },
 			 // success:function(data){
