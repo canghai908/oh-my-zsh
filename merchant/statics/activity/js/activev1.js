@@ -174,7 +174,7 @@ active.prototype.loadInfo = function () {
             html += self.createLightHtml(activityInfo.share_cycle, 5);
             html += self.createSurplusHtml(activityInfo.start_datetime == self.ActivityStat.Over, activityInfo.end_datetime);
             //html += self.createPrizeHtml(self.visitor == self.parent, activityInfo, visitorInfo);
-            // $('#divVisitor').html(html);
+            $('#divVisitor').html(html);
             self.bindSelect();
             self.bindExchange();
             self.BindRemind();
