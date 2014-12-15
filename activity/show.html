@@ -44,15 +44,25 @@
 </head>
 <body>
 						
+	<div class="layout-bottom" id="activity">
+		<script id="activity-template" type="text/x-handlebars-template">
+			<h3>{{title}}</h3>
+			<div class="act_over">{{title}}</div>
+			<img src="{{ActivityPicPath}}" alt="活动图片" class="img-responsive" />
 
-	<script id="table-template" type="text/x-handlebars-template">
-                          
-    </script>
 
-	<div class="act_over">活动已结束</div>
+
+
+
+
+
+		</script>
+	</div>
+
+	
 	<div class="container" style="background:#FFFFFF">
-		<h3>【巧芋工坊】回馈新老客户啦！分享送好礼，超值回馈，尽享美味！</h3>
-		<img src="http://jfx.jssdw.com/Content/Upload/ActivityPic/489/5742c99ae8d04c348b4be8cc42fe9e0d.jpg" alt="活动图片" class="img-responsive" />
+		
+		
 		<div class="publicity">
 			<div class="publicity_line publicity_businessicon">
 				<div class="publicity_line_business">昆山市玉山镇玉熙宾馆</div>
@@ -220,7 +230,7 @@
 	<script>
 
 		// 支持车型列表模板
-	    $.car = function() {
+	    $.activity = function() {
 	        $.ajax({
 	            url:"http://ifx.hi-www.com/merchant/promotion_get?promotion_id=60",
 	            type: "GET",
@@ -236,8 +246,8 @@
 	                // 插入字符模板
 	                var models = data.models;
 
-	                var tpl =  $("#table-template").html();
-	                var divScroll = $("#divScroll");
+	                var tpl =  $("#activity-template").html();
+	                var activity = $("#activity");
 
 	                //预编译模板
 	                var template = Handlebars.compile(tpl);
@@ -245,7 +255,7 @@
 	                //匹配json内容
 	                var html = template(models);
 	                //输入模板
-	                divScroll.html(html);
+	                activity.html(html);
 	                
 	            },
 	            error: function(XMLHttpRequest, textStatus, errorThrown) {
@@ -254,7 +264,7 @@
 	        });
 	    };	
 
-	    $.car();
+	    $.activity();
 	</script>
 	
 </body>
