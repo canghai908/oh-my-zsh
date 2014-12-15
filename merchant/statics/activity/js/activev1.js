@@ -155,10 +155,12 @@ active.prototype.loadInfo = function () {
         data: "ajaxtime=true",
         dataType: "json",
         success: function(data) {
+          
             //alert(data.Content);
             console.log(data);
             $("#js-title").html(data.title);
             $("#js-ActivityPicPath").attr("src",data.ActivityPicPath);
+            document.getElementById("js-Content-test").innerHTML = "&#38;" + "&#35;" + data.Content + "&#59;"; 
             //$("#js-Content").append(data.Content);
             //alert(data.Content)
             //$("#js-Content").html($("#js-Content").html());
