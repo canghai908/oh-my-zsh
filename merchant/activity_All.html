@@ -166,7 +166,7 @@
 							            	var state = "活动删除";
 							                break;     
 							        };
-alert(6)
+
 		                                 Manage.htmlDiv += '<div class="coupons mt15 clearfix"><div class="fl mt15 ml20">' +
 		                                '<a  Onclick="Manage.Detailed(' + li.merchant_id + ','+li.id+');"><img class="img"  style="width:70px;height:70px;"  src=' + li.favicon_url + ' onload="Manage.imgLoaded(this);" /></a>' +
 		                                '<div id="divText">' + state + '</div>' +
@@ -185,6 +185,7 @@ alert(6)
 		                                '<li>已兑奖人数：<strong class="shenghe_color">' + null + '</strong></li>' +
 		                        ' </ul>' +
 		                        '</div>';
+		                        alert(Manage.htmlDiv)
 		                        };
 		                       htmlD();
 		                        
