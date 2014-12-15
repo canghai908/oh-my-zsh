@@ -159,7 +159,7 @@ active.prototype.loadInfo = function () {
             console.log(data);
 
             // 插入字符模板
-            var models = data.models;
+            var models = data;
 
             var tpl =  $("#activity-template").html();
             var activity = $("#activity");
