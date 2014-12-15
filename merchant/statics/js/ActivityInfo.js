@@ -152,7 +152,7 @@ var Manage = {
                     // var ManageViews = data.activityManageViews;        //活动试图
                     // var recordCount = data.pagerInfo.RecordCount;    //活动的记录数
                     Manage.show(list);
-
+                    alert(Manage.htmlDiv)
                     $("#AllList").html(Manage.htmlDiv);   //HTML拼接赋值
                         var $list = $("#AllList .coupons");
                         $list.each(function (i, n) {
