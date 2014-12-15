@@ -143,6 +143,7 @@ var Manage = {
             data: { "StateStr": StateStr, "pageIndex": pageIndex },
             //evalJSON: false,
             //evalJS: false,
+            async:false,
             cache: false,
             dataType:"json",
             success: function (data) {
