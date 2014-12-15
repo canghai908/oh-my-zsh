@@ -131,7 +131,7 @@
 
 			        		ep.all('li','sum', 'list', 'prize',function (li, sum, list, prize) {
 			        			function htmlD(){
-		                        	switch (list[i].state) {
+		                        	switch (li.state) {
 							            case 0:
 							                // console.log(0);
 							                var state = "未审核";
@@ -153,11 +153,11 @@
 							                break;     
 							        };
 		                                 Manage.htmlDiv += '<div class="coupons mt15 clearfix"><div class="fl mt15 ml20">' +
-		                                '<a  Onclick="Manage.Detailed(' + list[i].merchant_id + ','+list[i].id+');"><img class="img"  style="width:70px;height:70px;"  src=' + list[i].favicon_url + ' onload="Manage.imgLoaded(this);" /></a>' +
+		                                '<a  Onclick="Manage.Detailed(' + li.merchant_id + ','+li.id+');"><img class="img"  style="width:70px;height:70px;"  src=' + li.favicon_url + ' onload="Manage.imgLoaded(this);" /></a>' +
 		                                '<div id="divText">' + state + '</div>' +
 		                            '</div>' +
 		                            '<div class="fl ml20 ">' +
-		                                '<div  class="title mt15 clearfix"><a class="fl" title="' +list[i].title + '" Onclick="Manage.Detailed(' + list[i].merchant_id + ','+list[i].id+');">' + list[i].title + '</a>';
+		                                '<div  class="title mt15 clearfix"><a class="fl" title="' +li.title + '" Onclick="Manage.Detailed(' + li.merchant_id + ','+li.id+');">' + li.title + '</a>';
 		                            
 		                                Manage.htmlDiv += '</div><ul class="summary_cont clearfix">' +
 			                                '<li  class="w230">开始时间：<strong class="f14">' + null + '</strong></li>' +
@@ -179,12 +179,12 @@
 		                        //4  活动结束
 		                        //64  活动删除
 
-		                        if (list[i].state == "2") {
+		                        if (li.state == "2") {
 		                            htmlD();
 		                            Manage.htmlDiv +='<ul class="operation mt15 mr15 fr">' +
-		                             '<li class="applicationtj"><a Onclick="Manage.Detailed(' + list[i].merchant_id + ','+list[i].id+');">编辑</a></li>' +
-		                        '<li class="analysis"><a Onclick="Manage.EffectAnalysis(' + list[i].id + ')">效果分析</a></li>' +
-		                        "<li class='promotion'><a  Onclick=\'Manage.GetLink(" + list[i].id + ",1)\'>获取推广链接</a></li>" +
+		                             '<li class="applicationtj"><a Onclick="Manage.Detailed(' + li.merchant_id + ','+li.id+');">编辑</a></li>' +
+		                        '<li class="analysis"><a Onclick="Manage.EffectAnalysis(' + li.id + ')">效果分析</a></li>' +
+		                        "<li class='promotion'><a  Onclick=\'Manage.GetLink(" + li.id + ",1)\'>获取推广链接</a></li>" +
 		                        '</ul>' + '</div>';
 		                        };
 			        		});
@@ -192,7 +192,7 @@
 							ep.emit("li", list[i]);
 
 							$.ajax({
-				                url: "/merchant/promotion_data_sum?promotion_id=" + list[i].id,
+				                url: "/merchant/promotion_data_sum?promotion_id=" + li.id,
 				                type: "get",
 				                dataType:"json",
 				                async:false,
@@ -209,7 +209,7 @@
 				            });
 							
 							$.ajax({
-				                url: "/merchant/promotion_data_list?promotion_id=" + list[i].id,
+				                url: "/merchant/promotion_data_list?promotion_id=" + li.id,
 				                type: "get",
 				                dataType:"json",
 				                async:false,
@@ -226,7 +226,7 @@
 				            });
 
 				            $.ajax({
-				                url: "/merchant/prize_list?promotion_id=" + list[i].id,
+				                url: "/merchant/prize_list?promotion_id=" + li.id,
 				                type: "get",
 				                dataType:"json",
 				                async:false,
