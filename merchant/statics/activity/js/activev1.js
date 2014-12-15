@@ -159,8 +159,9 @@ active.prototype.loadInfo = function () {
             console.log(data);
             $("#js-title").html(data.title);
             $("#js-ActivityPicPath").attr("src",data.ActivityPicPath);
-            //$("#js-Content").html(data.Content);
-            $(data.Content).appendTo("#js-Content");
+            $("#js-Content").html(data.Content);
+
+            //$(data.Content).appendTo("#js-Content");
             // var html = '';
             // var activityInfo = data;
             // //var visitorInfo = data.VisitorInfo;
