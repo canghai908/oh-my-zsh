@@ -168,7 +168,7 @@ active.prototype.loadInfo = function () {
                     }[m]
                 }) : '';
             };
-alert(data.title)
+alert(data.err_msg)
             self.title = data.title;
             $("#js-title").html(data.title);
             $("#js-ActivityPicPath").attr("src",data.ActivityPicPath);
