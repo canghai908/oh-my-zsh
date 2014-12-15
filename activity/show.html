@@ -16,6 +16,7 @@
 	<link href="http://ifx.hi-www.com/merchant/statics/activity/css/bootstrap-theme.min.css" rel="stylesheet" />
 	<script src="http://ifx.hi-www.com/merchant/statics/activity/js/jquery.min.js"></script>
 	<script src="http://ifx.hi-www.com/merchant/statics/activity/js/bootstrap.min.js"></script>
+	<script src="http://ifx.hi-www.com/merchant/statics/plug-in/handlebars-v2.0.0.js"></script>
     <script src="http://ifx.hi-www.com/merchant/statics/activity/js/WeixinApi.js"></script>
     <script type="text/javascript">
         WeixinApi.ready(function (Api) {
@@ -42,8 +43,13 @@
 	</script>
 </head>
 <body>
-				<div class="act_over">活动已结束</div>
+						
 
+	<script id="table-template" type="text/x-handlebars-template">
+                          
+    </script>
+
+	<div class="act_over">活动已结束</div>
 	<div class="container" style="background:#FFFFFF">
 		<h3>【巧芋工坊】回馈新老客户啦！分享送好礼，超值回馈，尽享美味！</h3>
 		<img src="http://jfx.jssdw.com/Content/Upload/ActivityPic/489/5742c99ae8d04c348b4be8cc42fe9e0d.jpg" alt="活动图片" class="img-responsive" />
@@ -210,7 +216,46 @@
 			</div>
 		</div>
 	</div>
+	
+	<script>
 
+		// 支持车型列表模板
+	    $.car = function() {
+	        $.ajax({
+	            url:"http://ifx.hi-www.com/merchant/promotion_get?promotion_id=60",
+	            type: "GET",
+	            async: true, //转化为同步执行
+	            timeout:30000,//超时时间：30秒
+	            data: "ajaxtime=true",
+	            dataType: "json",
+	            success: function(data) {
+	            	
+	                //alert(data.Content);
+	                console.log(data);
 
+	                // 插入字符模板
+	                var models = data.models;
+
+	                var tpl =  $("#table-template").html();
+	                var divScroll = $("#divScroll");
+
+	                //预编译模板
+	                var template = Handlebars.compile(tpl);
+
+	                //匹配json内容
+	                var html = template(models);
+	                //输入模板
+	                divScroll.html(html);
+	                
+	            },
+	            error: function(XMLHttpRequest, textStatus, errorThrown) {
+	                console.log("请在线上测试");
+	            }
+	        });
+	    };	
+
+	    $.car();
+	</script>
+	
 </body>
 </html>
