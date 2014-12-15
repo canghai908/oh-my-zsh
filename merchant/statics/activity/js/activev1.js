@@ -161,7 +161,7 @@ active.prototype.loadInfo = function () {
             $("#js-title").html(data.title);
             $("#js-ActivityPicPath").attr("src",data.ActivityPicPath);
             
-            document.getElementById("js-Content-test").innerHTML = data.Content; 
+            document.getElementById("js-Content-test").innerHTML = UE.utils.html(data.Content); 
             var ll = $("#js-Content-test").html();
             console.log(ll)
             //$("#js-Content").append(data.Content);
