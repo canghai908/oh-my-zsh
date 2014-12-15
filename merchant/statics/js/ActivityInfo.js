@@ -153,7 +153,7 @@ var Manage = {
                     // var recordCount = data.pagerInfo.RecordCount;    //活动的记录数
                     var ep = EventProxy.create();
                     ep.all('step_1', function (li) {
-                        alert(3)
+                        alert(Manage.htmlDiv)
                         $("#AllList").html(Manage.htmlDiv);   //HTML拼接赋值
                         var $list = $("#AllList .coupons");
                         $list.each(function (i, n) {
