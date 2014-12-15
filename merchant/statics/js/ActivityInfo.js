@@ -157,16 +157,16 @@ var Manage = {
                         var $list = $("#AllList .coupons");
                         $list.each(function (i, n) {
                             var $n = $(n);
-                            if (li.state == "4") {
+                            if (list[i].state == "4") {
                                 $n.find("div #divText").addClass("guild  jiesu_color");
                             }
-                            else if (li.state == "1") {
+                            else if (list[i].state == "1") {
                                 $n.find("div #divText").addClass("guild shenghe_color");
                             }
-                            else if (li.state == "2" || li.state == "3") {
+                            else if (list[i].state == "2" || list[i].state == "3") {
                                 $n.find("div #divText").addClass("guild jinxing_color");
                             }
-                            else if (li.state == "5" || li.state == "6") {
+                            else if (list[i].state == "5" || list[i].state == "6") {
                                 $n.find("div #divText").addClass("guild zancun_color");
                             }
                         });
@@ -183,9 +183,6 @@ var Manage = {
                         ep.emit('step_1');
                     };
                     step1();
-
-
-                    
 
                 }
                 else {
