@@ -151,7 +151,7 @@ var Manage = {
                     var list = data.list;
                     // var ManageViews = data.activityManageViews;        //活动试图
                     // var recordCount = data.pagerInfo.RecordCount;    //活动的记录数
-                    alert(1)
+                    alert(list)
                     Manage.show(list);
 
                     $("#AllList").html(Manage.htmlDiv);   //HTML拼接赋值
