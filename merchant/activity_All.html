@@ -131,10 +131,11 @@
 
 			        		// EventProxy此时是一个全局变量
 							var ep = new EventProxy();
-							ep.all('sum', 'list', 'prize',function (sum, list, prize) {
+							ep.all('li','sum', 'list', 'prize',function (li, sum, list, prize) {
 								console.log(sum);
 								console.log(list);
 								console.log(prize);
+								var list[i] = li;
 								console.log(list[i]);
 							  	// 在所有指定的事件触发后，将会被调用执行
 							  	// 参数对应各自的事件名
@@ -226,7 +227,9 @@
 		                            Manage.htmlDiv += '<ul class="operation  mt15 mr15 fr"><li class="promotion"><a >已删除</a></li></ul></div>';
 		                        };
 							});
-	
+							
+							ep.emit("li", list[i]);
+
 							$.ajax({
 				                url: "/merchant/promotion_data_sum?promotion_id=" + list[i].id,
 				                type: "get",
