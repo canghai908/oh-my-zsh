@@ -160,6 +160,7 @@ active.prototype.loadInfo = function () {
             console.log(data);
             $("#js-title").html(data.title);
             $("#js-ActivityPicPath").attr("src",data.ActivityPicPath);
+            console.log(typeof(data.Content))
             document.getElementById("js-Content-test").innerHTML = data.Content; 
             //$("#js-Content").append(data.Content);
             //alert(data.Content)
