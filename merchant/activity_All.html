@@ -126,10 +126,16 @@
 			        var isnew = '';
 			        Manage.ajax_url = "/merchant/promotion_list";
 			        Manage.show = function(list){
+			        	var ep = new EventProxy();
+
+			        	ep.after('got_file',list.length, function (list) {
+						  alert(5)
+						});
+
 			        	for (var i = 0; i < list.length; i++) {
 
 			        		// EventProxy此时是一个全局变量
-							var ep = new EventProxy();
+							
 							ep.all('li','sum', 'list', 'prize',function (li, sum, list, prize) {
 								console.log(sum);
 								console.log(list);
@@ -282,7 +288,7 @@
 				            });
 
 
-				            
+				            ep.group('got_file');
 
 	                        
 	                    };	
