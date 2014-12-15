@@ -157,20 +157,24 @@ active.prototype.loadInfo = function () {
         success: function(data) {
             //alert(data.Content);
             console.log(data);
+            $("#js-title").html(data.title);
+            $("#js-ActivityPicPath").attr("src",data.ActivityPicPath);
+            $("#js-Content").html(data.Content);
 
-            // 插入字符模板
-            var models = data;
+            // var html = '';
+            // var activityInfo = data;
+            // //var visitorInfo = data.VisitorInfo;
+            // //var nextPrizeCount = data.NextPrizeCount;
+            // html += self.createShareHtml(self.visitor == self.parent, visitorInfo.ChildrenShareCount);
+            // html += self.createLightHtml(visitorInfo.ChildrenShareCount, nextPrizeCount);
+            // html += self.createSurplusHtml(activityInfo.ActivityStat == self.ActivityStat.Over, activityInfo.LeaveTime);
+            // html += self.createPrizeHtml(self.visitor == self.parent, activityInfo, visitorInfo);
+            // $('#divVisitor').html(html);
+            self.bindSelect();
+            self.bindExchange();
+            self.BindRemind();
 
-            var tpl =  $("#activity-template").html();
-            var activity = $("#activity");
-
-            //预编译模板
-            var template = Handlebars.compile(tpl);
-
-            //匹配json内容
-            var html = template(models);
-            //输入模板
-            activity.html(html);
+           
         }
     });
 };
