@@ -8,7 +8,6 @@ var active = function (u, a, v, p, l, i, b, t) {
     this.title = t;
     var self = this;
     self.Publicity();
-    alert(5)
     if (document.addEventListener) {
         document.addEventListener('WeixinJSBridgeReady', function () { self.weixinReady.call(self); }, false);
     } else if (document.attachEvent) {
@@ -147,6 +146,7 @@ active.prototype.weixinReady = function () {
 };
 //加载集分享信息
 active.prototype.loadInfo = function () {
+    alert(666)
     var self = this;
     $.ajax({
         url:"http://ifx.hi-www.com/merchant/promotion_get?promotion_id=60",
