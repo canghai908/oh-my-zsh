@@ -151,10 +151,42 @@ var Manage = {
                     var list = data.list;
                     // var ManageViews = data.activityManageViews;        //活动试图
                     // var recordCount = data.pagerInfo.RecordCount;    //活动的记录数
+                    var ep = EventProxy.create();
+                    ep.all('step_0)','step_1', function (li) {
+                        $("#AllList").html(Manage.htmlDiv);   //HTML拼接赋值
+                        var $list = $("#AllList .coupons");
+                        $list.each(function (i, n) {
+                            var $n = $(n);
+                            if (li.state == "4") {
+                                $n.find("div #divText").addClass("guild  jiesu_color");
+                            }
+                            else if (li.state == "1") {
+                                $n.find("div #divText").addClass("guild shenghe_color");
+                            }
+                            else if (li.state == "2" || li.state == "3") {
+                                $n.find("div #divText").addClass("guild jinxing_color");
+                            }
+                            else if (li.state == "5" || li.state == "6") {
+                                $n.find("div #divText").addClass("guild zancun_color");
+                            }
+                        });
+                        if ($.cookie("ismark") != undefined && $.cookie("ismark") != "null")         //如果Cookie存在
+                        {
+                            $(".coupons").eq(0).css("border", "2px solid #00A1E7");                     //给活动第一行突出显示
+                            $.cookie("ismark", null, { path: "/" });                                                        //清除Cookie
+                        }
+                    });
+                    ep.emit("step_0", list[i]);
 
-                    Manage.show(list);
+                    function step1(){
+                        Manage.show(list);
+                        ep.emit('step_1');
+                    };
+                    step1();
+
 
                     
+
                 }
                 else {
                     if (StateStr == "All") {            //如果是全部的就可以创建活动
