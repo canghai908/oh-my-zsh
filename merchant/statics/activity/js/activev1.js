@@ -150,12 +150,12 @@ active.prototype.loadInfo = function () {
     $.ajax({
         url:"http://ifx.hi-www.com/merchant/promotion_get?promotion_id=60",
         type: "GET",
-        async: true, //转化为同步执行
+        async: false, //转化为同步执行
         timeout:30000,//超时时间：30秒
         data: "ajaxtime=true",
         dataType: "json",
         success: function(data) {
-            
+
             var thishtml = function (str) {
                 return str ? str.replace(/&((g|l|quo)t|amp|#39|nbsp);/g, function (m) {
                     return {
