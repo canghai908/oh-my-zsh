@@ -47,8 +47,8 @@
 	<div class="container" style="background:#FFFFFF">
 		<div class="layout-bottom" id="activity">
 			<script id="activity-template" type="text/x-handlebars-template">
+				<div class="act_over">活动进行中</div>
 				<h3>{{title}}</h3>
-				<div class="act_over">{{title}}</div>
 				<img src="{{ActivityPicPath}}" alt="活动图片" class="img-responsive" />
 				<div class="publicity">
 					<div class="publicity_line publicity_businessicon">
@@ -67,7 +67,7 @@
 					</div>
 					<div id="divPublicityHow" style="display: none;"></div>
 				</div>
-				<div class="act">{{Content}}</div>
+				<div class="act">{{{Content}}}</div>
 				<!-- 分享提示向导-->
 				<div id="timelineGuid" onclick="this.style.display='none'" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 2000; display: none;">
 					<img src="/Content/images/guide.png" style="position: fixed; right: 18px; top: 5px; width: 260px; height: 180px; z-index: 2001;" />
