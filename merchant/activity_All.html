@@ -127,9 +127,37 @@
 			        Manage.show = function(list){
 			        	for (var i = 0; i < list.length; i++) {
 	                        function htmlD(){
+	                        	//0  未审核，在仓库中
+	                        //1  申请发布，审核中
+	                        //2  审核通过，正式发布
+	                        //3  审核失败
+	                        //4  活动结束
+	                        //64  活动删除
+	                        	switch (list[i].state) {
+						            case 0:
+						                // console.log(0);
+						                var state = "未审核";
+						                break;
+						            case 1:
+						                var state = "审核中";
+						                break;
+						            case 2:
+						            	var state = "正式发布";
+						                break;
+						            case 3:
+						            	var state = "审核失败";
+						                break;
+						            case 4:
+						            	var state = "活动结束";
+						                break; 
+						            case 64:
+						            	var state = "活动删除";
+						                break;     
+						        };
+
 	                                 Manage.htmlDiv += '<div class="coupons mt15 clearfix"><div class="fl mt15 ml20">' +
 	                                '<a  Onclick="Manage.Detailed(' + list[i].merchant_id + ','+list[i].id+');"><img class="img"  style="width:70px;height:70px;"  src=' + list[i].favicon_url + ' onload="Manage.imgLoaded(this);" /></a>' +
-	                                '<div id="divText">' + list[i].state + '</div>' +
+	                                '<div id="divText">' + state + '</div>' +
 	                            '</div>' +
 	                            '<div class="fl ml20 ">' +
 	                                '<div  class="title mt15 clearfix"><a class="fl" title="' +list[i].title + '" Onclick="Manage.Detailed(' + list[i].merchant_id + ','+list[i].id+');">' + list[i].title + '</a>';
@@ -147,12 +175,7 @@
 	                        '</div>';
 	                        };
 	                       htmlD();
-	                        //0  未审核，在仓库中
-	                        //1  申请发布，审核中
-	                        //2  审核通过，正式发布
-	                        //3  审核失败
-	                        //4  活动结束
-	                        //64  活动删除
+	                        
 
 	                        if (list[i].state == "0") {  
 	                              
