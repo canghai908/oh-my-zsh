@@ -135,8 +135,7 @@
 								console.log(sum);
 								console.log(list);
 								console.log(prize);
-								var list[i] = li;
-								console.log(list[i]);
+								console.log(li);
 							  	// 在所有指定的事件触发后，将会被调用执行
 							  	// 参数对应各自的事件名
 							  	function htmlD(){
@@ -146,7 +145,7 @@
 		                        //3  审核失败
 		                        //4  活动结束
 		                        //64  活动删除
-		                        	switch (list[i].state) {
+		                        	switch (li.state) {
 							            case 0:
 							                // console.log(0);
 							                var state = "未审核";
@@ -167,7 +166,7 @@
 							            	var state = "活动删除";
 							                break;     
 							        };
-
+return;
 		                                 Manage.htmlDiv += '<div class="coupons mt15 clearfix"><div class="fl mt15 ml20">' +
 		                                '<a  Onclick="Manage.Detailed(' + list[i].merchant_id + ','+list[i].id+');"><img class="img"  style="width:70px;height:70px;"  src=' + list[i].favicon_url + ' onload="Manage.imgLoaded(this);" /></a>' +
 		                                '<div id="divText">' + state + '</div>' +
