@@ -163,14 +163,14 @@ active.prototype.loadInfo = function () {
             //alert(data.Content)
             //$("#js-Content").html($("#js-Content").html());
             //$(data.Content).appendTo("#js-Content");
-            // var html = '';
-            // var activityInfo = data;
+            var html = '';
+            var activityInfo = data;
             // //var visitorInfo = data.VisitorInfo;
             // //var nextPrizeCount = data.NextPrizeCount;
-            // html += self.createShareHtml(self.visitor == self.parent, visitorInfo.ChildrenShareCount);
-            // html += self.createLightHtml(visitorInfo.ChildrenShareCount, nextPrizeCount);
-            // html += self.createSurplusHtml(activityInfo.ActivityStat == self.ActivityStat.Over, activityInfo.LeaveTime);
-            // html += self.createPrizeHtml(self.visitor == self.parent, activityInfo, visitorInfo);
+            html += self.createShareHtml(self.visitor == self.parent, visitorInfo.share_cycle);
+            html += self.createLightHtml(visitorInfo.share_cycle, nextPrizeCount);
+            html += self.createSurplusHtml(activityInfo.start_datetime == self.ActivityStat.Over, activityInfo.end_datetime);
+            //html += self.createPrizeHtml(self.visitor == self.parent, activityInfo, visitorInfo);
             // $('#divVisitor').html(html);
             self.bindSelect();
             self.bindExchange();
