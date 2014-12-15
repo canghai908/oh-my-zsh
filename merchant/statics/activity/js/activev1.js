@@ -168,7 +168,7 @@ active.prototype.loadInfo = function () {
             // //var visitorInfo = data.VisitorInfo;
             // //var nextPrizeCount = data.NextPrizeCount;
             html += self.createShareHtml(self.visitor == self.parent, activityInfo.share_cycle);
-            html += self.createLightHtml(activityInfo.share_cycle, nextPrizeCount);
+            html += self.createLightHtml(activityInfo.share_cycle, 5);
             html += self.createSurplusHtml(activityInfo.start_datetime == self.ActivityStat.Over, activityInfo.end_datetime);
             //html += self.createPrizeHtml(self.visitor == self.parent, activityInfo, visitorInfo);
             // $('#divVisitor').html(html);
