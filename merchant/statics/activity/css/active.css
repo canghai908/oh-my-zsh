@@ -32,21 +32,21 @@
 }
 
 .publicity_businessicon {
-	background-image: url(/content/images/pic_r_1.png);
+	background-image: url(../images/pic_r_1.png);
 	background-repeat: no-repeat;
 	background-position: 10px 10px;
 	background-size: 40px 40px;
 }
 
 .publicity_infoicon {
-	background-image: url(/content/images/pic_r_2.png);
+	background-image: url(../images/pic_r_2.png);
 	background-repeat: no-repeat;
 	background-position: 10px 10px;
 	background-size: 40px 40px;
 }
 
 .publicity_howicon {
-	background-image: url(/content/images/pic_r_8.gif);
+	background-image: url(../images/pic_r_8.gif);
 	background-repeat: no-repeat;
 	background-position: 10px 10px;
 	background-size: 40px 40px;
@@ -71,7 +71,7 @@
 	position: absolute;
 	right: 20px;
 	top: 20px;
-	background: url(/content/images/pic_r_4.png) no-repeat;
+	background: url(../images/pic_r_4.png) no-repeat;
 	background-size: 19px 19px;
 	width: 19px;
 	height: 19px;
@@ -174,21 +174,21 @@
 
 .publicity-pic-1 {
 	height: 100px;
-	background: url(/content/images/img_j.png) center right no-repeat;
+	background: url(../images/img_j.png) center right no-repeat;
 	background-size: 148px 90px;
 	padding-right: 158px;
 }
 
 .publicity-pic-2 {
 	height: 131px;
-	background: url(/content/images/img_k.png) center left no-repeat;
+	background: url(../images/img_k.png) center left no-repeat;
 	background-size: 150px 121px;
 	padding-left: 160px;
 }
 
 .publicity-pic-3 {
 	height: 78px;
-	background: url(/content/images/img_l.png) center right no-repeat;
+	background: url(../images/img_l.png) center right no-repeat;
 	background-size: 148px 68px;
 	padding-right: 158px;
 }
@@ -267,7 +267,7 @@
 	width: 99px;
 	height: 16px;
 	margin: 0 auto;
-	background: url(/content/images/logo-share.png) no-repeat center center;
+	background: url(../images/logo-share.png) no-repeat center center;
 	background-size: 99px 16px;
 }
 
@@ -335,7 +335,7 @@
 	width: 22px;
 	height: 22px;
 	display: inline-block;
-	background: url(/content/images/share-color.png) no-repeat;
+	background: url(../images/share-color.png) no-repeat;
 	background-size: 22px 22px;
 	margin: 5px 0 5px 5px;
 }
@@ -344,7 +344,7 @@
 	width: 22px;
 	height: 22px;
 	display: inline-block;
-	background: url(/content/images/share-gray.png) no-repeat;
+	background: url(../images/share-gray.png) no-repeat;
 	background-size: 22px 22px;
 	margin: 5px 0 5px 5px;
 }
@@ -394,8 +394,8 @@
 }
 
 .v-prize-item-selected .v-prize-select-icon {
-	background: url(/content/images/un_select.gif) no-repeat 0 center;
-	background-image: url(/content/images/selected.png);
+	background: url(../images/un_select.gif) no-repeat 0 center;
+	background-image: url(../images/selected.png);
 	background-repeat: no-repeat;
 	background-position: 0 center;
 	background-size: 26px 20px;
@@ -422,7 +422,7 @@
 }
 
 .v-prize-item-unselect .v-prize-select-icon {
-	background-image: url(/content/images/un_select.gif);
+	background-image: url(../images/un_select.gif);
 	background-repeat: no-repeat;
 	background-position: 0 center;
 	background-size: 20px 20px;
@@ -443,7 +443,7 @@
 }
 
 .v-prize-item-disabled .v-prize-select-icon {
-	background-image: url(/content/images/disabled.gif);
+	background-image: url(../images/disabled.gif);
 	background-repeat: no-repeat;
 	background-position: 0 center;
 	background-size: 20px 20px;
@@ -464,8 +464,8 @@
 }
 
 .v-prize-item-selected-disabled .v-prize-select-icon {
-	background: url(/content/images/un_select.gif) no-repeat 0 center;
-	background-image: url(/content/images/selected.png);
+	background: url(../images/un_select.gif) no-repeat 0 center;
+	background-image: url(../images/selected.png);
 	background-repeat: no-repeat;
 	background-position: 0 center;
 	background-size: 26px 20px;
@@ -722,7 +722,7 @@
 	font-size: 20px;
 	padding: 5px 0 0 45px;
 	height: 35px;
-	background: url(/content/images/share.png) no-repeat 15px 7px;
+	background: url(../images/share.png) no-repeat 15px 7px;
 	background-size: 24px 24px;
 	margin: 0;
 	font-weight: bold;
