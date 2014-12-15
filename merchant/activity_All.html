@@ -225,30 +225,9 @@
 		                            Manage.htmlDiv += '<ul class="operation  mt15 mr15 fr"><li class="promotion"><a >已删除</a></li></ul></div>';
 		                        };
 
-		                        $("#AllList").html(Manage.htmlDiv);   //HTML拼接赋值
-			                    var $list = $("#AllList .coupons");
-			                    $list.each(function (i, n) {
-			                        var $n = $(n);
-			                        if (li.state == "4") {
-			                            $n.find("div #divText").addClass("guild  jiesu_color");
-			                        }
-			                        else if (li.state == "1") {
-			                            $n.find("div #divText").addClass("guild shenghe_color");
-			                        }
-			                        else if (li.state == "2" || li.state == "3") {
-			                            $n.find("div #divText").addClass("guild jinxing_color");
-			                        }
-			                        else if (li.state == "5" || li.state == "6") {
-			                            $n.find("div #divText").addClass("guild zancun_color");
-			                        }
-			                    });
-			                    if ($.cookie("ismark") != undefined && $.cookie("ismark") != "null")         //如果Cookie存在
-			                    {
-			                        $(".coupons").eq(0).css("border", "2px solid #00A1E7");                     //给活动第一行突出显示
-			                        $.cookie("ismark", null, { path: "/" });                                                        //清除Cookie
-			                    }
 
-			                    alert(li)
+
+
 
 							});
 							
@@ -301,6 +280,30 @@
 				                  	 
 				                }
 				            });
+
+
+				            $("#AllList").html(Manage.htmlDiv);   //HTML拼接赋值
+			                    var $list = $("#AllList .coupons");
+			                    $list.each(function (i, n) {
+			                        var $n = $(n);
+			                        if (list[i].state == "4") {
+			                            $n.find("div #divText").addClass("guild  jiesu_color");
+			                        }
+			                        else if (list[i].state == "1") {
+			                            $n.find("div #divText").addClass("guild shenghe_color");
+			                        }
+			                        else if (list[i].state == "2" || list[i].state == "3") {
+			                            $n.find("div #divText").addClass("guild jinxing_color");
+			                        }
+			                        else if (list[i].state == "5" || list[i].state == "6") {
+			                            $n.find("div #divText").addClass("guild zancun_color");
+			                        }
+			                    });
+			                    if ($.cookie("ismark") != undefined && $.cookie("ismark") != "null")         //如果Cookie存在
+			                    {
+			                        $(".coupons").eq(0).css("border", "2px solid #00A1E7");                     //给活动第一行突出显示
+			                        $.cookie("ismark", null, { path: "/" });                                                        //清除Cookie
+			                    }
 
 
 	                        
