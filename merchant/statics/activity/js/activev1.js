@@ -146,7 +146,6 @@ active.prototype.weixinReady = function () {
 };
 //加载集分享信息
 active.prototype.loadInfo = function () {
-    alert(666)
     var self = this;
     $.ajax({
         url:"http://ifx.hi-www.com/merchant/promotion_get?promotion_id=60",
@@ -192,6 +191,9 @@ active.prototype.loadInfo = function () {
             self.BindRemind();
 
            
+        },
+        error:function(){
+            alert(888)
         }
     });
 };
