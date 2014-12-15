@@ -116,6 +116,7 @@
 			<script src="./statics/plug-in/jquery.pagination.js"></script>
 			<script src="./statics/plug-in/jquery.cookie.js"></script>
 			<script src="./statics/plug-in/grayscale.js"></script>
+			<script src="https://raw.github.com/JacksonTian/eventproxy/master/lib/eventproxy.js"></script>
 			<link href="./statics/css/jquery-ui-1.10.3.custom.css" rel="stylesheet">
 			<link href="./statics/css/Main.css" rel="stylesheet">
 			<script src="./statics/js/subpage.js"></script>
@@ -126,93 +127,151 @@
 			        Manage.ajax_url = "/merchant/promotion_list";
 			        Manage.show = function(list){
 			        	for (var i = 0; i < list.length; i++) {
-	                        function htmlD(){
+
+			        		// EventProxy此时是一个全局变量
+							var ep = new EventProxy();
+							ep.all('sum', 'list', 'prize',function (sum, list, prize) {
+								console.log(sum);
+								console.log(list);
+								console.log(prize);
+							  	// 在所有指定的事件触发后，将会被调用执行
+							  	// 参数对应各自的事件名
+							  	function htmlD(){
 	                        	//0  未审核，在仓库中
-	                        //1  申请发布，审核中
-	                        //2  审核通过，正式发布
-	                        //3  审核失败
-	                        //4  活动结束
-	                        //64  活动删除
-	                        	switch (list[i].state) {
-						            case 0:
-						                // console.log(0);
-						                var state = "未审核";
-						                break;
-						            case 1:
-						                var state = "审核中";
-						                break;
-						            case 2:
-						            	var state = "正式发布";
-						                break;
-						            case 3:
-						            	var state = "审核失败";
-						                break;
-						            case 4:
-						            	var state = "活动结束";
-						                break; 
-						            case 64:
-						            	var state = "活动删除";
-						                break;     
-						        };
+		                        //1  申请发布，审核中
+		                        //2  审核通过，正式发布
+		                        //3  审核失败
+		                        //4  活动结束
+		                        //64  活动删除
+		                        	switch (list[i].state) {
+							            case 0:
+							                // console.log(0);
+							                var state = "未审核";
+							                break;
+							            case 1:
+							                var state = "审核中";
+							                break;
+							            case 2:
+							            	var state = "正式发布";
+							                break;
+							            case 3:
+							            	var state = "审核失败";
+							                break;
+							            case 4:
+							            	var state = "活动结束";
+							                break; 
+							            case 64:
+							            	var state = "活动删除";
+							                break;     
+							        };
 
-	                                 Manage.htmlDiv += '<div class="coupons mt15 clearfix"><div class="fl mt15 ml20">' +
-	                                '<a  Onclick="Manage.Detailed(' + list[i].merchant_id + ','+list[i].id+');"><img class="img"  style="width:70px;height:70px;"  src=' + list[i].favicon_url + ' onload="Manage.imgLoaded(this);" /></a>' +
-	                                '<div id="divText">' + state + '</div>' +
-	                            '</div>' +
-	                            '<div class="fl ml20 ">' +
-	                                '<div  class="title mt15 clearfix"><a class="fl" title="' +list[i].title + '" Onclick="Manage.Detailed(' + list[i].merchant_id + ','+list[i].id+');">' + list[i].title + '</a>';
-	                            
-	                                Manage.htmlDiv += '</div><ul class="summary_cont clearfix">' +
-	                                '<li  class="w230">开始时间：<strong class="f14">' + null + '</strong></li>' +
-	                                '<li>今日浏览量：<strong class="zancun_color">' + list[i].visit_num + '</strong></li>' +
-	                                '<li>分享总次数：<strong class="jinxing_color">' + list[i].share_num + '</strong></li>' +
-	                                '<li>获&nbsp;奖&nbsp;人&nbsp;数：<strong class="shenghe_color">' + null + '</strong></li>' +
-	                                '<li class="w230">结束时间：<strong class="f14">' + null + '</strong></li>' +
-	                                '<li>昨日浏览量：<strong class="zancun_color">' + null + '</strong></li>' +
-	                                '<li>传播层级数：<strong class="jinxing_color">' + list[i].depth + '</strong></li>' +
-	                                '<li>已兑奖人数：<strong class="shenghe_color">' + null + '</strong></li>' +
-	                        ' </ul>' +
-	                        '</div>';
-	                        };
-	                       htmlD();
+		                                 Manage.htmlDiv += '<div class="coupons mt15 clearfix"><div class="fl mt15 ml20">' +
+		                                '<a  Onclick="Manage.Detailed(' + list[i].merchant_id + ','+list[i].id+');"><img class="img"  style="width:70px;height:70px;"  src=' + list[i].favicon_url + ' onload="Manage.imgLoaded(this);" /></a>' +
+		                                '<div id="divText">' + state + '</div>' +
+		                            '</div>' +
+		                            '<div class="fl ml20 ">' +
+		                                '<div  class="title mt15 clearfix"><a class="fl" title="' +list[i].title + '" Onclick="Manage.Detailed(' + list[i].merchant_id + ','+list[i].id+');">' + list[i].title + '</a>';
+		                            
+		                                Manage.htmlDiv += '</div><ul class="summary_cont clearfix">' +
+		                                '<li  class="w230">开始时间：<strong class="f14">' + null + '</strong></li>' +
+		                                '<li>今日浏览量：<strong class="zancun_color">' + list[i].visit_num + '</strong></li>' +
+		                                '<li>分享总次数：<strong class="jinxing_color">' + list[i].share_num + '</strong></li>' +
+		                                '<li>获&nbsp;奖&nbsp;人&nbsp;数：<strong class="shenghe_color">' + null + '</strong></li>' +
+		                                '<li class="w230">结束时间：<strong class="f14">' + null + '</strong></li>' +
+		                                '<li>昨日浏览量：<strong class="zancun_color">' + null + '</strong></li>' +
+		                                '<li>传播层级数：<strong class="jinxing_color">' + list[i].depth + '</strong></li>' +
+		                                '<li>已兑奖人数：<strong class="shenghe_color">' + null + '</strong></li>' +
+		                        ' </ul>' +
+		                        '</div>';
+		                        };
+		                       htmlD();
+		                        
+
+		                        if (list[i].state == "0") {  
+		                              
+		                            Manage.htmlDiv += '<ul class="operation  mt15 mr15 fr"><li class="promotion"><a >未审核，在仓库中</a></li><li class="Deletet"><a Onclick="Manage.DeleteSave(' + list[i].id + ',' + list[i].title + ');">删除</a></li></ul></div>';
+		                        }else if (list[i].state == "1") {          //如果是审核中
+		                            
+		                            Manage.htmlDiv +='<ul class="operation mt15 mr15 fr">' +
+		                              '<li class="application"><a Onclick="Manage.ApplyReturn(' + list[i].id + ',' + list[i].UserId + ');">立即撤回</a></li>' +
+		                             '<li class="analysis"><a Onclick="Manage.EffectAnalysis(' + list[i].id + ')">效果分析</a> </li>' +
+		                                 '<li class="promotion"><a  Onclick="Manage.GetLink(' + list[i].id + ',1);">获取推广链接</a></li>' +
+		                             '</ul>' + '</div>';
+		                        }
+		                        else if (list[i].state == "2") {
+		                            
+		                            Manage.htmlDiv +='<ul class="operation mt15 mr15 fr">' +
+		                             '<li class="applicationtj"><a Onclick="Manage.Detailed(' + list[i].merchant_id + ','+list[i].id+');">编辑</a></li>' +
+		                        '<li class="analysis"><a Onclick="Manage.EffectAnalysis(' + list[i].id + ')">效果分析</a></li>' +
+		                        "<li class='promotion'><a  Onclick=\'Manage.GetLink(" + list[i].id + ",1)\'>获取推广链接</a></li>" +
+		                        '</ul>' + '</div>';
+		                        }
+		                        else if (list[i].state == "3") {
+		                            
+		                            Manage.htmlDiv += '<ul class="operation  mt15 mr15 fr"><li class="promotion"><a >审核失败</a></li><li class="Deletet"><a Onclick="Manage.DeleteSave(' + list[i].id + ',' + list[i].title + ');">删除</a></li></ul></div>';
+		                           
+		                        }
+		                        else if (list[i].state == "4") { 
+		                              
+		                            Manage.htmlDiv +=
+		                                 '<ul class="operation mt55 mr15 fr">' +
+		                            '<li class="analysis"><a Onclick="Manage.EffectAnalysis(' + list[i].id + ')">效果分析</a></li>' +
+		                            '<li class="promotion"><a  Onclick="Manage.GetLink(' + list[i].id + ',1);">获取推广链接</a></li>' +
+		                            '</ul>' + '</div>';
+		                        }
+		                        else if (list[i].state == "64") {   
+		                                          
+		                            Manage.htmlDiv += '<ul class="operation  mt15 mr15 fr"><li class="promotion"><a >已删除</a></li></ul></div>';
+		                        };
+							});
+	
+							$.ajax({
+				                url: "/merchant/promotion_data_sum?promotion_id=" + list[i].id,
+				                type: "get",
+				                dataType:"json",
+				                success: function (A) {
+				                	console.log(A);
+				                	if(A.err_msg){
+				                		alert("获取活动数据失败");
+				                	}else{
+				                        ep.emit("sum", sum);
+				                	};
+				                  	 
+				                }
+				            });
+							
+							$.ajax({
+				                url: "/merchant/promotion_data_list?promotion_id=" + list[i].id,
+				                type: "get",
+				                dataType:"json",
+				                success: function (B) {
+				                	console.log(B);
+				                	if(B.err_msg){
+				                		alert("获取活动数据失败");
+				                	}else{
+				                        ep.emit("list", list);
+				                	};
+				                  	 
+				                }
+				            });
+
+				            $.ajax({
+				                url: "/merchant/prize_list?promotion_id=" + list[i].id,
+				                type: "get",
+				                dataType:"json",
+				                success: function (C) {
+				                	console.log(C);
+				                	if(C.err_msg){
+				                		alert("获取活动数据失败");
+				                	}else{
+				                        ep.emit("prize", prize);
+				                	};
+				                  	 
+				                }
+				            });
+
+
 	                        
-
-	                        if (list[i].state == "0") {  
-	                              
-	                            Manage.htmlDiv += '<ul class="operation  mt15 mr15 fr"><li class="promotion"><a >未审核，在仓库中</a></li><li class="Deletet"><a Onclick="Manage.DeleteSave(' + list[i].id + ',' + list[i].title + ');">删除</a></li></ul></div>';
-	                        }else if (list[i].state == "1") {          //如果是审核中
-	                            
-	                            Manage.htmlDiv +='<ul class="operation mt15 mr15 fr">' +
-	                              '<li class="application"><a Onclick="Manage.ApplyReturn(' + list[i].id + ',' + list[i].UserId + ');">立即撤回</a></li>' +
-	                             '<li class="analysis"><a Onclick="Manage.EffectAnalysis(' + list[i].id + ')">效果分析</a> </li>' +
-	                                 '<li class="promotion"><a  Onclick="Manage.GetLink(' + list[i].id + ',1);">获取推广链接</a></li>' +
-	                             '</ul>' + '</div>';
-	                        }
-	                        else if (list[i].state == "2") {
-	                            
-	                            Manage.htmlDiv +='<ul class="operation mt15 mr15 fr">' +
-	                             '<li class="applicationtj"><a Onclick="Manage.Detailed(' + list[i].merchant_id + ','+list[i].id+');">编辑</a></li>' +
-	                        '<li class="analysis"><a Onclick="Manage.EffectAnalysis(' + list[i].id + ')">效果分析</a></li>' +
-	                        "<li class='promotion'><a  Onclick=\'Manage.GetLink(" + list[i].id + ",1)\'>获取推广链接</a></li>" +
-	                        '</ul>' + '</div>';
-	                        }
-	                        else if (list[i].state == "3") {
-	                            
-	                            Manage.htmlDiv += '<ul class="operation  mt15 mr15 fr"><li class="promotion"><a >审核失败</a></li><li class="Deletet"><a Onclick="Manage.DeleteSave(' + list[i].id + ',' + list[i].title + ');">删除</a></li></ul></div>';
-	                           
-	                        }
-	                        else if (list[i].state == "4") { 
-	                              
-	                            Manage.htmlDiv +=
-	                                 '<ul class="operation mt55 mr15 fr">' +
-	                            '<li class="analysis"><a Onclick="Manage.EffectAnalysis(' + list[i].id + ')">效果分析</a></li>' +
-	                            '<li class="promotion"><a  Onclick="Manage.GetLink(' + list[i].id + ',1);">获取推广链接</a></li>' +
-	                            '</ul>' + '</div>';
-	                        }
-	                        else if (list[i].state == "64") {   
-	                                          
-	                            Manage.htmlDiv += '<ul class="operation  mt15 mr15 fr"><li class="promotion"><a >已删除</a></li></ul></div>';
-	                        };
 	                    };	
 			        };
 				    Manage.init(StateStr, isnew);
