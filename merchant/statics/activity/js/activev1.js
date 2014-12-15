@@ -20,7 +20,7 @@ active.prototype.ActivityStat = {
     Started: 3,
     Over: 4
 };
-//活动公示
+//活动规则公示点击事件
 active.prototype.Publicity = function () {
     $('#divIconContainer').bind('click', function () {
         var isExpand = $(this).data('expand') == 'true';
@@ -146,6 +146,7 @@ active.prototype.weixinReady = function () {
 };
 //加载集分享信息
 active.prototype.loadInfo = function () {
+    alert(4)
     var self = this;
     $.ajax({
         url:"http://ifx.hi-www.com/merchant/promotion_get?promotion_id=60",
@@ -167,9 +168,8 @@ active.prototype.loadInfo = function () {
                     }[m]
                 }) : '';
             };
-            
-            //alert(data.Content);
-            console.log(data);
+
+            self.title = data.title;
             $("#js-title").html(data.title);
             $("#js-ActivityPicPath").attr("src",data.ActivityPicPath);
             document.getElementById("js-Content").innerHTML = thishtml(data.Content); 
