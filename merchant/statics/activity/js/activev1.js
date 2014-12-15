@@ -163,7 +163,7 @@ active.prototype.loadInfo = function () {
             
             document.getElementById("js-Content-test").innerHTML = data.Content; 
             var ll = $("#js-Content-test").html();
-            console.log(typeof(ll))
+            console.log(ll)
             //$("#js-Content").append(data.Content);
             //alert(data.Content)
             //$("#js-Content").html($("#js-Content").html());
