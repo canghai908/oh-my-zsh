@@ -150,7 +150,7 @@ active.prototype.loadInfo = function () {
     $.ajax({
         url:"http://ifx.hi-www.com/merchant/promotion_get?promotion_id=60",
         type: "GET",
-        async: false, //转化为同步执行
+        async: true, //转化为同步执行
         timeout:30000,//超时时间：30秒
         data: "ajaxtime=true",
         dataType: "json",
