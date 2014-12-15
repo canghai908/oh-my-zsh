@@ -133,10 +133,6 @@
 			        		// EventProxy此时是一个全局变量
 							
 							ep.all('li','sum', 'list', 'prize',function (li, sum, list, prize) {
-								console.log(sum);
-								console.log(list);
-								console.log(prize);
-								console.log(li+"4");
 							  	// 在所有指定的事件触发后，将会被调用执行
 							  	// 参数对应各自的事件名
 							  	function htmlD(){
@@ -177,12 +173,12 @@
 		                            
 		                                Manage.htmlDiv += '</div><ul class="summary_cont clearfix">' +
 		                                '<li  class="w230">开始时间：<strong class="f14">' + null + '</strong></li>' +
-		                                '<li>今日浏览量：<strong class="zancun_color">' + li.visit_num + '</strong></li>' +
-		                                '<li>分享总次数：<strong class="jinxing_color">' + li.share_num + '</strong></li>' +
+		                                '<li>今日浏览量：<strong class="zancun_color">' + sum.today_visit_num + '</strong></li>' +
+		                                '<li>分享总次数：<strong class="jinxing_color">' + sum.total_share_num + '</strong></li>' +
 		                                '<li>获&nbsp;奖&nbsp;人&nbsp;数：<strong class="shenghe_color">' + null + '</strong></li>' +
 		                                '<li class="w230">结束时间：<strong class="f14">' + null + '</strong></li>' +
-		                                '<li>昨日浏览量：<strong class="zancun_color">' + null + '</strong></li>' +
-		                                '<li>传播层级数：<strong class="jinxing_color">' + li.depth + '</strong></li>' +
+		                                '<li>总计浏览量：<strong class="zancun_color">' + sum.total_visit_num + '</strong></li>' +
+		                                '<li>传播层级数：<strong class="jinxing_color">' + sum.max_depth + '</strong></li>' +
 		                                '<li>已兑奖人数：<strong class="shenghe_color">' + null + '</strong></li>' +
 		                        ' </ul>' +
 		                        '</div>';
