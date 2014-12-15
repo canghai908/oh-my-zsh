@@ -148,22 +148,29 @@ active.prototype.weixinReady = function () {
 active.prototype.loadInfo = function () {
     var self = this;
     $.ajax({
-        url: '/activev1/loadinfo',
-        type: 'get',
-        cache: false,
-        success: function (data) {
-            var html = '';
-            var activityInfo = data.ActivityInfo;
-            var visitorInfo = data.VisitorInfo;
-            var nextPrizeCount = data.NextPrizeCount;
-            html += self.createShareHtml(self.visitor == self.parent, visitorInfo.ChildrenShareCount);
-            html += self.createLightHtml(visitorInfo.ChildrenShareCount, nextPrizeCount);
-            html += self.createSurplusHtml(activityInfo.ActivityStat == self.ActivityStat.Over, activityInfo.LeaveTime);
-            html += self.createPrizeHtml(self.visitor == self.parent, activityInfo, visitorInfo);
-            $('#divVisitor').html(html);
-            self.bindSelect();
-            self.bindExchange();
-            self.BindRemind();
+        url:"http://ifx.hi-www.com/merchant/promotion_get?promotion_id=60",
+        type: "GET",
+        async: true, //转化为同步执行
+        timeout:30000,//超时时间：30秒
+        data: "ajaxtime=true",
+        dataType: "json",
+        success: function(data) {
+            //alert(data.Content);
+            console.log(data);
+
+            // 插入字符模板
+            var models = data.models;
+
+            var tpl =  $("#activity-template").html();
+            var activity = $("#activity");
+
+            //预编译模板
+            var template = Handlebars.compile(tpl);
+
+            //匹配json内容
+            var html = template(models);
+            //输入模板
+            activity.html(html);
         }
     });
 };
