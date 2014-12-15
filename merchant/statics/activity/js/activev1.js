@@ -155,7 +155,7 @@ active.prototype.loadInfo = function () {
         data: "ajaxtime=true",
         dataType: "json",
         success: function(data) {
-            alert(data)
+            
             var thishtml = function (str) {
                 return str ? str.replace(/&((g|l|quo)t|amp|#39|nbsp);/g, function (m) {
                     return {
@@ -168,7 +168,7 @@ active.prototype.loadInfo = function () {
                     }[m]
                 }) : '';
             };
-
+alert(thishtml(data.Content))
             self.title = data.title;
             $("#js-title").html(data.title);
             $("#js-ActivityPicPath").attr("src",data.ActivityPicPath);
