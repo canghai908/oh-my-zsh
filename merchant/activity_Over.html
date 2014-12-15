@@ -192,7 +192,7 @@
 							ep.emit("li", list[i]);
 
 							$.ajax({
-				                url: "/merchant/promotion_data_sum?promotion_id=" + li.id,
+				                url: "/merchant/promotion_data_sum?promotion_id=" + list[i].id,
 				                type: "get",
 				                dataType:"json",
 				                async:false,
@@ -209,7 +209,7 @@
 				            });
 							
 							$.ajax({
-				                url: "/merchant/promotion_data_list?promotion_id=" + li.id,
+				                url: "/merchant/promotion_data_list?promotion_id=" + list[i].id,
 				                type: "get",
 				                dataType:"json",
 				                async:false,
@@ -226,7 +226,7 @@
 				            });
 
 				            $.ajax({
-				                url: "/merchant/prize_list?promotion_id=" + li.id,
+				                url: "/merchant/prize_list?promotion_id=" + list[i].id,
 				                type: "get",
 				                dataType:"json",
 				                async:false,
