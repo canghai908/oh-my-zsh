@@ -1,49 +1,215 @@
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<meta name="format-detection" content="telephone=no">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-		<meta http-equiv="Pragma" content="no-cache">
-		<meta http-equiv="Cache-Control" content="no-cache">
-		<meta http-equiv="Expires" content="0">
-		<link href="./css/active.css" rel="stylesheet">
-		<link href="./css/bootstrap.min.css" rel="stylesheet">
-		<link href="./css/bootstrap-theme.min.css" rel="stylesheet">
-		<script src="./js/jquery.min.js"></script>
-		<script src="./js/bootstrap.min.js"></script>
-	    <script src="./js/WeixinApi.js"></script>
-		<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
 
-		<script type="text/javascript">
-	      
-             $.ajax({
-               type:"get",//请求方式
-               url:"http://ifx.hi-www.com/merchant/promotion_get?promotion_id=60",
-               timeout:30000,//超时时间：30秒
-               dataType:"json",//设置返回数据的格式
-               //请求成功后的回调函数 data为json格式
-				success:function(data){
-				 $("#resultJsonText").text("你的名字："+data.title+"  你输入的内容:"+data.description);
-                      alert(data.Content);
-              },
-			 // success:function(data){
-               //   $("#resultJsonText").text("你的名字："+data.yourName+"  你输入的内容:"+data.yourContent);
-            
-              //请求出错的处理
-              error:function(){
-                        alert("请求出错");
-              }
-           });
-          
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Cache-Control" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
+	<link href="/Content/active.css" rel="stylesheet" />
+	<link href="/BootStrap/bootstrap.min.css" rel="stylesheet" />
+	<link href="/BootStrap/bootstrap-theme.min.css" rel="stylesheet" />
+	<script src="/BootStrap/jquery.min.js"></script>
+	<script src="/BootStrap/bootstrap.min.js"></script>
+    <script src="/Scripts/WeixinApi.js"></script>
+    <script type="text/javascript">
+        WeixinApi.ready(function (Api) {
+            Api.showOptionMenu();//显示右上角按钮
+        });
+    </script>
+	<script src="/Scripts/activev1.js?v=635542378585572279"></script>
+	<title>【巧芋工坊】回馈新老客户啦！分享送好礼，超值回馈，尽享美味！</title>
+	<script type="text/javascript">
+		document.addEventListener('touchstart', function () { }, true);
+		var u = '489';
+		var a = '546';
+		var v = '5fea7660c64e4883a1dd336ecf8eb7ef';
+		var p = '5fea7660c64e4883a1dd336ecf8eb7ef';
+		var l = '1';
+		var i = 'http://jfx.jssdw.com/Content/Upload/ShareIcon/489/3042ded811414690a6edb8c87a17cc34.png';
+		var b = 'http://niao.daililianmeng.com//activev1/show/gq6dsljvgq5a';
+		var t = '【巧芋工坊】回馈新老客户啦！分享送好礼，超值回馈，尽享美味！';
+		$(document).ready(function () {
+			var act = new active(u, a, v, p, l, i, b, t);
+			act.loadInfo();
+		});
+
 	</script>
-	</head>
-	<body>
-	
-	
-	</body>
+</head>
+<body>
+				<div class="act_over">活动已结束</div>
+
+	<div class="container" style="background:#FFFFFF">
+		<h3>【巧芋工坊】回馈新老客户啦！分享送好礼，超值回馈，尽享美味！</h3>
+		<img src="http://jfx.jssdw.com/Content/Upload/ActivityPic/489/5742c99ae8d04c348b4be8cc42fe9e0d.jpg" alt="活动图片" class="img-responsive" />
+		<div class="publicity">
+			<div class="publicity_line publicity_businessicon">
+				<div class="publicity_line_business">昆山市玉山镇玉熙宾馆</div>
+				<div class="publicity_line_authtime">认证时间:  2014/11/06</div>
+				<a class="report" href="/ActiveV1/Report">举报</a>;
+			</div>
+			<div class="publicity_line publicity_infoicon" id="divIconContainer" data-expand="false">
+				<div class="publicity_line_title">活动规则公示</div>
+				<div class="publicity_down"></div>
+			</div>
+			<div id="divPublicityInfo" style="display: none;"></div>
+			<div class="publicity_line publicity_howicon" id="divHowContainer" data-expand="false">
+				<div class="publicity_line_title">如何集分享</div>
+				<div class="publicity_down"></div>
+			</div>
+			<div id="divPublicityHow" style="display: none;"></div>
+		</div>
+		<div class="act">
+			<p><br/></p><p style="margin-top: 5px; margin-bottom: 0px; font-size: 16px; font-family:Microsoft YaHei,微软雅黑; max-width: 100%; word-wrap: normal; min-height: 1em; white-space: pre-wrap; line-height: 25px; box-sizing: border-box !important;"><span style="max-width: 100%; padding: 4px 10px; color: rgb(255, 255, 255); box-shadow: rgb(165, 165, 165) 4px 4px 2px; border-top-left-radius: 2em 0.5em; border-top-right-radius: 1em 3em; border-bottom-left-radius: 1em 3em; border-bottom-right-radius: 4em 0.5em; word-wrap: break-word !important; box-sizing: border-box !important; background-color: #0070C0;"><strong style="max-width: 100%; word-wrap: break-word !important; box-sizing: border-box !important;">参与方式<br style="max-width: 100%; word-wrap: break-word !important; box-sizing: border-box !important;"/></strong></span></p><fieldset style="white-space: normal; margin: 0px; padding: 5px; border: 1px solid rgb(204, 204, 204); max-width: 100%; widows: 2; line-height: 24px; orphans: 2; box-shadow: rgb(165, 165, 165) 5px 5px 2px; background-color: rgb(250, 250, 240); word-wrap: break-word !important; box-sizing: border-box !important;"><p style="margin-top: 0px; margin-bottom: 0px; max-width: 100%; word-wrap: normal; min-height: 1em; white-space: pre-wrap; box-sizing: border-box !important;"><span style="font-size: 16px; color: black;"></span><span style="color: rgb(0, 0, 0);">将本页分享到朋友圈，此页面在朋友圈被好友（自己朋友圈的好友哦）分享一次，就可以集一个分享（分享数+1，系统自动计入，在自己分享的活动页面可查看收集分享个数），时刻关注分享页面最下面的分享图标，当灰色图标变成彩色图标的个数达到活动要求时，即可获得兑奖密码。</span></p></fieldset><p><br/></p><p style="margin-bottom: 0px; font-size: 16px; font-family: 'Microsoft YaHei', 微软雅黑; max-width: 100%; word-wrap: normal; min-height: 1em; white-space: pre-wrap; line-height: 25px; box-sizing: border-box !important;"><span style="max-width: 100%; padding: 4px 10px; color: rgb(255, 255, 255); box-shadow: rgb(165, 165, 165) 4px 4px 2px; border-top-left-radius: 2em 0.5em; border-top-right-radius: 1em 3em; border-bottom-left-radius: 1em 3em; border-bottom-right-radius: 4em 0.5em; word-wrap: break-word !important; box-sizing: border-box !important; background-color: rgb(0, 112, 192);"><strong style="max-width: 100%; word-wrap: break-word !important; box-sizing: border-box !important;">奖品设置<br style="max-width: 100%; word-wrap: break-word !important; box-sizing: border-box !important;"/></strong></span></p><fieldset style="white-space: normal; margin: 0px; padding: 5px; border: 1px solid rgb(204, 204, 204); max-width: 100%; widows: 2; line-height: 24px; orphans: 2; box-shadow: rgb(165, 165, 165) 5px 5px 2px; word-wrap: break-word !important; box-sizing: border-box !important; background-color: rgb(250, 250, 240);"><p style="margin-top: 0px; margin-bottom: 0px; max-width: 100%; word-wrap: normal; min-height: 1em; white-space: pre-wrap; box-sizing: border-box !important;"><span style="color: rgb(0, 0, 0);">集满3个分享，可以</span><span style="color: rgb(0, 0, 0);"><strong><span style="color: rgb(0, 0, 0); background-color: rgb(255, 192, 0);">1元购买原</span></strong></span><span style="color: rgb(0, 0, 0);"><strong><span style="color: rgb(0, 0, 0); background-color: rgb(255, 192, 0);">味奶茶或冬瓜茶1份</span></strong>(共888份)<span style="font-size: 16px;"></span></span></p><p><span style="color: rgb(0, 0, 0);">集满10个分享，可<span style="font-family: 微软雅黑, 'Microsoft YaHei'; font-size: 14px; line-height: 24px; orphans: 2; white-space: pre-wrap; widows: 2; background-color: rgb(250, 250, 240);">以</span><strong style="font-family: 微软雅黑, 'Microsoft YaHei'; font-size: 14px; line-height: 24px; orphans: 2; white-space: pre-wrap; widows: 2; background-color: rgb(250, 250, 240);"><span style="background-color: rgb(255, 192, 0);">1元购买</span></strong><strong><span style="color: rgb(0, 0, 0); background-color: rgb(255, 192, 0);">养生热饮共五种任选<strong style="font-family: 微软雅黑, 'Microsoft YaHei'; font-size: 14px; line-height: 24px; orphans: 2; white-space: pre-wrap; widows: 2; background-color: rgb(250, 250, 240);"><span style="background-color: rgb(255, 192, 0);">1</span></strong>份</span></strong></span><span style="color: rgb(0, 0, 0);">(共588份)</span></p><p><span style="color: rgb(0, 0, 0);">集满20个分享，可<span style="font-family: 微软雅黑, 'Microsoft YaHei'; font-size: 14px; line-height: 24px; orphans: 2; white-space: pre-wrap; widows: 2; background-color: rgb(250, 250, 240);">以</span><strong style="font-family: 微软雅黑, 'Microsoft YaHei'; font-size: 14px; line-height: 24px; orphans: 2; white-space: pre-wrap; widows: 2; background-color: rgb(250, 250, 240);"><span style="background-color: rgb(255, 192, 0);">1元购买</span></strong><strong><span style="color: rgb(0, 0, 0); background-color: rgb(255, 192, 0);">特色芋圆、仙草共十种任选<strong style="font-family: 微软雅黑, 'Microsoft YaHei'; font-size: 14px; line-height: 24px; orphans: 2; white-space: pre-wrap; widows: 2; background-color: rgb(250, 250, 240);"><span style="background-color: rgb(255, 192, 0);">1</span></strong>份</span></strong>(共388份)</span></p><p><span style="color: rgb(0, 0, 0);"><span style="font-family: 微软雅黑, 'Microsoft YaHei'; font-size: 14px; line-height: 24px; orphans: 2; widows: 2; background-color: rgb(250, 250, 240);">注：金额须通过微店（</span><strong style="font-family: 微软雅黑, 'Microsoft YaHei'; font-size: 14px; line-height: 24px; orphans: 2; white-space: normal; widows: 2; color: rgb(102, 102, 102); background-color: rgb(250, 250, 240);"><span style="color: rgb(0, 0, 0);"><a href="http://wd.koudai.com/s/215381994" target="_self">巧芋工坊甜品店</a></span></strong><span style="font-family: 微软雅黑, 'Microsoft YaHei'; font-size: 14px; line-height: 24px; orphans: 2; widows: 2; background-color: rgb(250, 250, 240);">）或关注玉熙商城公众号（详见兑奖方式）微支付交易，更可享受所有品种买一送一优惠。</span></span><br/></p><p><span style="color: rgb(0, 0, 0);"><img src="http://jfx.jssdw.com/Content/Upload/ActivityContentPic/489/503ff1e4101f46c8acac18fe7e9c4ab6.jpg" title="503ff1e4101f46c8acac18fe7e9c4ab6.jpg" alt="503ff1e4101f46c8acac18fe7e9c4ab6.jpg" width="100%"/></span></p></fieldset><p style="white-space: normal;"><br/></p><p style="margin-top: 5px; margin-bottom: 0px; font-size: 16px; font-family:Microsoft YaHei,微软雅黑; max-width: 100%; word-wrap: normal; min-height: 1em; white-space: pre-wrap; line-height: 25px; box-sizing: border-box !important;"><span style="max-width: 100%; padding: 4px 10px; color: rgb(255, 255, 255); box-shadow: rgb(165, 165, 165) 4px 4px 2px; border-top-left-radius: 2em 0.5em; border-top-right-radius: 1em 3em; border-bottom-left-radius: 1em 3em; border-bottom-right-radius: 4em 0.5em; word-wrap: break-word !important; box-sizing: border-box !important; background-color: #0070C0;"><strong style="max-width: 100%; word-wrap: break-word !important; box-sizing: border-box !important;">活动时间<br style="max-width: 100%; word-wrap: break-word !important; box-sizing: border-box !important;"/></strong></span></p><fieldset style="white-space: normal; margin: 0px; padding: 5px; border: 1px solid rgb(204, 204, 204); max-width: 100%; widows: 2; line-height: 24px; orphans: 2; box-shadow: rgb(165, 165, 165) 5px 5px 2px; background-color: rgb(250, 250, 240); word-wrap: break-word !important; box-sizing: border-box !important;"><p style="margin-top: 0px; margin-bottom: 0px; max-width: 100%; word-wrap: normal; min-height: 1em; white-space: pre-wrap; box-sizing: border-box !important;"><span style="font-size: 16px; color: black;"></span><strong style="color: rgb(102, 102, 102); font-family: 微软雅黑, 'Microsoft YaHei'; font-size: 14px; line-height: 24px; orphans: 2; white-space: normal; widows: 2; background-color: rgb(250, 250, 240);"><span style="color: rgb(0, 0, 0);">2014.11.8 - 2014.11.30</span></strong></p></fieldset><p><br/></p><p style="margin-bottom: 0px; font-size: 16px; font-family: 'Microsoft YaHei', 微软雅黑; max-width: 100%; word-wrap: normal; min-height: 1em; white-space: pre-wrap; line-height: 25px; box-sizing: border-box !important;"><span style="max-width: 100%; padding: 4px 10px; color: rgb(255, 255, 255); box-shadow: rgb(165, 165, 165) 4px 4px 2px; border-top-left-radius: 2em 0.5em; border-top-right-radius: 1em 3em; border-bottom-left-radius: 1em 3em; border-bottom-right-radius: 4em 0.5em; word-wrap: break-word !important; box-sizing: border-box !important; background-color: rgb(0, 112, 192);"><strong style="max-width: 100%; word-wrap: break-word !important; box-sizing: border-box !important;">兑奖方式<br style="max-width: 100%; word-wrap: break-word !important; box-sizing: border-box !important;"/></strong></span></p><fieldset style="white-space: normal; margin: 0px; padding: 5px; border: 1px solid rgb(204, 204, 204); max-width: 100%; widows: 2; line-height: 24px; orphans: 2; box-shadow: rgb(165, 165, 165) 5px 5px 2px; word-wrap: break-word !important; box-sizing: border-box !important; background-color: rgb(250, 250, 240);"><p style="margin-top: 0px; margin-bottom: 0px; max-width: 100%; word-wrap: normal; min-height: 1em; white-space: pre-wrap; box-sizing: border-box !important;"><span style="color: rgb(0, 0, 0);">凭有效兑奖码到店直接兑奖</span></p><p style="line-height: 24px; orphans: 2; white-space: normal; widows: 2;"><span style="color: rgb(0, 0, 0);">注：金额须通过微店（<strong style="color: rgb(102, 102, 102); background-color: rgb(250, 250, 240);"><span style="color: rgb(0, 0, 0);"><a href="http://wd.koudai.com/s/215381994" target="_self">巧芋工坊甜品店</a></span></strong>）或关注玉熙商城公众号（见下图）微支付交易。</span></p><p style="line-height: 24px; orphans: 2; white-space: normal; widows: 2;"><span style="color: rgb(0, 0, 0);"><img src="http://jfx.jssdw.com/Content/Upload/ActivityContentPic/489/b8cd9d2216a14a098c21653974ce1e3f.jpg" title="b8cd9d2216a14a098c21653974ce1e3f.jpg" alt="b8cd9d2216a14a098c21653974ce1e3f.jpg"/></span></p><p><strong><span style="color: rgb(0, 0, 0);">兑奖日期：2014.11.8 - 2014.11.30</span></strong></p><p><span style="color: rgb(0, 0, 0);"></span></p><p style="line-height: 24px; orphans: 2; white-space: normal; widows: 2;"><span style="color: rgb(0, 0, 0);">地址：昆山市亭林路136号（奥灶馆斜对面）</span></p><p style="line-height: 24px; orphans: 2; white-space: normal; widows: 2;"><span style="color: rgb(0, 0, 0);">电话：</span><a href="tel:0512-55235666"><span style="color: rgb(0, 0, 0); text-decoration: none;">0512-55235666</span></a><span style="color: rgb(0, 0, 0); text-decoration: none;">、<a href="tel:15062678378"></a><a href="tel:18952453119" style="font-family: 微软雅黑, 'Microsoft YaHei'; font-size: 14px; line-height: 24px; orphans: 2; white-space: normal; widows: 2; color: rgb(0, 0, 0); text-decoration: underline;"><span style="color: rgb(0, 0, 0); text-decoration: none;">18952453119</span></a></span></p><p style="line-height: 24px; orphans: 2; white-space: normal; widows: 2;"><strong><span style="color: rgb(0, 0, 0);">注：通过<a href="http://wd.koudai.com/s/213399598" target="_self">香格里拉足浴</a>、<a href="http://wd.koudai.com/s/215381994" target="_self">巧芋工坊甜品店</a><span style="font-family: 微软雅黑, 'Microsoft YaHei'; font-size: 14px; line-height: 24px; orphans: 2; widows: 2; background-color: rgb(250, 250, 240);">或关注玉熙商城公众号</span>微支付购买甜品，客房，足浴，可享受买一送一活动</span></strong></p></fieldset><p style="white-space: normal;"><br/></p><p style="margin-bottom: 0px; font-size: 16px; font-family: 'Microsoft YaHei', 微软雅黑; max-width: 100%; word-wrap: normal; min-height: 1em; white-space: pre-wrap; line-height: 25px; box-sizing: border-box !important;"><span style="max-width: 100%; padding: 4px 10px; color: rgb(255, 255, 255); box-shadow: rgb(165, 165, 165) 4px 4px 2px; border-top-left-radius: 2em 0.5em; border-top-right-radius: 1em 3em; border-bottom-left-radius: 1em 3em; border-bottom-right-radius: 4em 0.5em; word-wrap: break-word !important; box-sizing: border-box !important; background-color: rgb(0, 112, 192);"><strong style="max-width: 100%; word-wrap: break-word !important; box-sizing: border-box !important;">巧芋工坊</strong></span></p><fieldset style="white-space: normal; margin: 0px; padding: 5px; border: 1px solid rgb(204, 204, 204); max-width: 100%; widows: 2; line-height: 24px; orphans: 2; box-shadow: rgb(165, 165, 165) 5px 5px 2px; word-wrap: break-word !important; box-sizing: border-box !important; background-color: rgb(250, 250, 240);"><p style="margin-top: 0px; margin-bottom: 0px; max-width: 100%; word-wrap: normal; min-height: 1em; white-space: pre-wrap; box-sizing: border-box !important;"><span style="color: rgb(0, 0, 0);">巧芋工坊，台湾复合式甜品，大陆复合甜品第一品牌，您巧遇到的美味惊喜和缘分！</span><span style="font-size: 16px; color: black;"></span></p><p style="margin-top: 0px; margin-bottom: 0px; max-width: 100%; word-wrap: normal; min-height: 1em; white-space: pre-wrap; box-sizing: border-box !important;"><span style="color: rgb(0, 0, 0);"><img src="http://jfx.jssdw.com/Content/Upload/ActivityContentPic/489/1f6f2def23e14423b152ba628576ded2.jpg" title="1f6f2def23e14423b152ba628576ded2.jpg" alt="1f6f2def23e14423b152ba628576ded2.jpg" width="100%"/><img src="http://jfx.jssdw.com/Content/Upload/ActivityContentPic/489/bb0243f6e4284e62ba64879d154a1f4f.jpg" title="bb0243f6e4284e62ba64879d154a1f4f.jpg" alt="bb0243f6e4284e62ba64879d154a1f4f.jpg" width="100%"/></span></p><p><span style="color: rgb(0, 0, 0);">巧芋工坊的产品天然取材，原味呈现，手工制作，健康营养；新鲜的芋圆，Q感香甜，独创的混搭，将美味和健康演绎到极致！</span></p><p><span style="color: rgb(0, 0, 0);"><img src="http://jfx.jssdw.com/Content/Upload/ActivityContentPic/489/b57b661f4b0547e7903398ddbeb1951b.jpg" title="b57b661f4b0547e7903398ddbeb1951b.jpg" alt="b57b661f4b0547e7903398ddbeb1951b.jpg" width="100%"/></span></p><p><span style="color: rgb(0, 0, 0);">巧芋工坊，让幸福滑进你的胃，让回忆入驻你的心，让甜蜜嚼到我们一起海枯石烂！</span></p></fieldset><p style="white-space: normal;"><br/></p><p style="margin-bottom: 0px; font-size: 16px; font-family: 'Microsoft YaHei', 微软雅黑; max-width: 100%; word-wrap: normal; min-height: 1em; white-space: pre-wrap; line-height: 25px; box-sizing: border-box !important;"><span style="max-width: 100%; padding: 4px 10px; color: rgb(255, 255, 255); box-shadow: rgb(165, 165, 165) 4px 4px 2px; border-top-left-radius: 2em 0.5em; border-top-right-radius: 1em 3em; border-bottom-left-radius: 1em 3em; border-bottom-right-radius: 4em 0.5em; word-wrap: break-word !important; box-sizing: border-box !important; background-color: rgb(0, 112, 192);"><strong style="max-width: 100%; word-wrap: break-word !important; box-sizing: border-box !important;">联系方式<br style="max-width: 100%; word-wrap: break-word !important; box-sizing: border-box !important;"/></strong></span></p><fieldset style="white-space: normal; margin: 0px; padding: 5px; border: 1px solid rgb(204, 204, 204); max-width: 100%; widows: 2; line-height: 24px; orphans: 2; box-shadow: rgb(165, 165, 165) 5px 5px 2px; word-wrap: break-word !important; box-sizing: border-box !important; background-color: rgb(250, 250, 240);"><p style="margin-top: 0px; margin-bottom: 0px; max-width: 100%; word-wrap: normal; min-height: 1em; white-space: pre-wrap; box-sizing: border-box !important;"><span style="color: rgb(0, 0, 0);">【巧芋工坊】</span><span style="font-size: 16px; color: black;"></span></p><p><span style="color: rgb(0, 0, 0);">地址：昆山市亭林路136号（奥灶馆斜对面）</span></p><p><span style="color: rgb(0, 0, 0);">电话：<a href="tel:0512-55235666" style="color: rgb(0, 0, 0); text-decoration: underline;"><span style="color: rgb(0, 0, 0);"></span></a><a href="tel:0512-55235666" style="font-family: 微软雅黑, 'Microsoft YaHei'; font-size: 14px; line-height: 24px; orphans: 2; white-space: normal; widows: 2; background-color: rgb(250, 250, 240);"><span style="color: rgb(0, 0, 0); text-decoration: none;">0512-55235666</span></a><span style="font-family: 微软雅黑, 'Microsoft YaHei'; font-size: 14px; line-height: 24px; orphans: 2; widows: 2; background-color: rgb(250, 250, 240);">、<a href="tel:18952453119" style="color: rgb(0, 0, 0); text-decoration: underline;"><span style="color: rgb(0, 0, 0); font-family: 微软雅黑, 'Microsoft YaHei'; font-size: 14px; line-height: 24px; orphans: 2; widows: 2; background-color: rgb(250, 250, 240);">18952453119</span></a></span></span></p></fieldset><p><br/></p>
+		</div>
+		<!-- 分享提示向导-->
+		<div id="timelineGuid" onclick="this.style.display='none'" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 2000; display: none;">
+			<img src="/Content/images/guide.png" style="position: fixed; right: 18px; top: 5px; width: 260px; height: 180px; z-index: 2001;" />
+		</div>
+		<button class="share_timeline btn-block" id="btnShare">
+			<span class="share_timeline_button" onclick="document.getElementById('timelineGuid').style.display='block'">点击右上角分享到朋友圈</span>
+		</button>
+		<div class="visitor" id="divVisitor">
+			<div class="loading">
+				<span class="loading_icon"></span>
+				<span class="loading_tip">集分享统计中...</span>
+			</div>
+		</div>
+		<p class="footer"><a class="logo" href="/ActiveV1/intro?AgentId=1"> </a></p>
+	</div>
+
+	<!--弹出层，兑奖 -->
+	<div class="modal fade" id="divExchange" tabindex="-1" role="dialog" aria-labelledby="exchangeLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header exchange-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span>
+						<span class="sr-only">Close</span>
+					</button>
+					<span class="exchange-header-icon"></span>
+					<h4 class="modal-title" id="exchangeLabel">立即兑奖</h4>
+				</div>
+				<div class="modal-body exchange-body">
+					<h2>
+						<label id="lblPrize"></label>
+					</h2>
+					<p>兑奖后不可撤销！</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default exchange-cancel" data-dismiss="modal">取消</button>
+					<button type="button" id="btnExchangeSubmit" class="btn exchange-submit" data-loading-text="正在进行兑奖...">确定</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--弹出层，获奖提醒-->
+	<div class="modal fade" id="divRemind" tabindex="-1" role="dialog" aria-labelledby="remindLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header exchange-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span>
+						<span class="sr-only">Close</span>
+					</button>
+					<span class="exchange-header-icon"></span>
+					<h4 class="modal-title" id="remindLabel">获奖提醒</h4>
+				</div>
+				<div class="modal-body">
+					<p>请输入手机号码，一旦获奖，系统将第一时间短信提醒您！</p>
+					<div id="divPhoneInput" style="display: none;">
+						<input type="tel" class="form-control" placeholder="请输入手机号码..." id="txtRemindPhone" />
+					</div>
+					<div id="divPhoneShow" style="display: none;" class="remind-show">
+						<input type="tel" disabled="disabled" class="form-control" id="txtPhone" /><span id="spanDelPhone" class="remind-del"></span>
+					</div>
+					<div id="divPhoneValidate" style="color: red; margin-top: 5px;"></div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default exchange-cancel" data-dismiss="modal">取消</button>
+					<button type="button" id="btnRemindSubmit" class="btn exchange-submit" data-loading-text="正在提交号码...">提交</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--弹出层，贡献度不足-->
+	<div class="modal fade" id="divContribution" tabindex="-1" role="dialog" aria-labelledby="contributionLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header contribution-header">
+					<span class="contribution-header-icon"></span>
+					<h4 class="modal-title" id="contributionLabel">提示</h4>
+				</div>
+				<div class="modal-body">
+					您的分享贡献值（5次）已用完，此次分享无效！
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn contribution-cancel" data-dismiss="modal">关闭</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--弹出层，恶意分享-->
+	<div class="modal fade" id="divMalicious" tabindex="-1" role="dialog" aria-labelledby="maliciousLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header malicious-header">
+					<span class="malicious-header-icon"></span>
+					<h4 class="modal-title" id="maliciousLabel">提示</h4>
+				</div>
+				<div class="modal-body">
+					您涉嫌恶意集分享，分享无效！
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default malicious-cancel" data-dismiss="modal">关闭</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--弹出层，异常兑奖-->
+	<div class="modal fade" id="divAbnormal" tabindex="-1" role="dialog" aria-labelledby="maliciousLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header malicious-header">
+					<span class="malicious-header-icon"></span>
+					<h4 class="modal-title" id="maliciousLabel">兑奖无效</h4>
+				</div>
+				<div class="modal-body">
+					您涉嫌采用非正常方式集分享数量，本次兑奖资格被取消，如需申诉请致电我公司法务部门，直线电话：0512-69373652
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default malicious-cancel" data-dismiss="modal">关闭</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--首次提醒-->
+	<div class="modal fade" id="divFirstMark" tabindex="-1" role="dialog" aria-labelledby="maliciousLabel" aria-hidden="true">
+		<div class="modal-dialog" style="border-radius: 0!important;">
+			<div class="modal-content" style="border-radius: 0!important;margin-top: 20%;">
+				
+				<div style="color: #32770E; border-bottom: solid 1px #d9d8dc; padding: 10px; margin: 0 10px;">
+					<h4 style="font-weight: bold;">提示</h4>
+				</div>
+				<div class="modal-body" style="font-size: 16px;">
+					参与"集分享"活动期间,请不要切换微信账号,及更换其它设备登录,否则无法兑奖!
+				</div>
+				<div class="modal-footer" style="padding: 0;">
+					<button type="button" style="width: 100%;height: 30px;line-height: 30px;font-size: 16px;background: #fff!important; border: 0!important; border-radius: 0!important;" data-dismiss="modal">我知道了!</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</body>
 </html>
