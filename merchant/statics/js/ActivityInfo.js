@@ -152,7 +152,7 @@ var Manage = {
                     // var ManageViews = data.activityManageViews;        //活动试图
                     // var recordCount = data.pagerInfo.RecordCount;    //活动的记录数
                     var ep = EventProxy.create();
-                    ep.all('step_0)','step_1', function (li) {
+                    ep.all('step_1', function (li) {
                         $("#AllList").html(Manage.htmlDiv);   //HTML拼接赋值
                         var $list = $("#AllList .coupons");
                         $list.each(function (i, n) {
@@ -176,7 +176,6 @@ var Manage = {
                             $.cookie("ismark", null, { path: "/" });                                                        //清除Cookie
                         }
                     });
-                    ep.emit("step_0", list[i]);
 
                     function step1(){
                         Manage.show(list);
