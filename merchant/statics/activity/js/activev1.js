@@ -155,12 +155,24 @@ active.prototype.loadInfo = function () {
         data: "ajaxtime=true",
         dataType: "json",
         success: function(data) {
-          
+            var thishtml = function (str) {
+                return str ? str.replace(/&((g|l|quo)t|amp|#39|nbsp);/g, function (m) {
+                    return {
+                        '&lt;':'<',
+                        '&amp;':'&',
+                        '&quot;':'"',
+                        '&gt;':'>',
+                        '&#39;':"'",
+                        '&nbsp;':' '
+                    }[m]
+                }) : '';
+            };
+            
             //alert(data.Content);
             console.log(data);
             $("#js-title").html(data.title);
             $("#js-ActivityPicPath").attr("src",data.ActivityPicPath);
-            document.getElementById("js-Content").innerHTML = UE.utils.html(data.Content); 
+            document.getElementById("js-Content").innerHTML = thishtml(data.Content); 
 
             //$("#js-Content").append(data.Content);
             //alert(data.Content)
