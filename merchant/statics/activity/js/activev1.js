@@ -190,7 +190,7 @@ active.prototype.loadInfo = function () {
             self.title = content.title;
             document.title = self.title;
             $("#js-business").html(merchant_info.name);
-            $("#js-authtime").html("认证时间: "+merchant_info.creat_datetime);
+            $("#js-authtime").html("认证时间: "+ merchant_info.create_datetime);
             $("#js-title").html(content.title);
             $("#js-ActivityPicPath").attr("src",content.ActivityPicPath); 
             document.getElementById("js-Content").innerHTML = thishtml(content.Content); 
