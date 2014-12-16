@@ -21,7 +21,7 @@ active.prototype.ActivityStat = {
     Over: 4
 };
 //活动规则公示点击事件
-active.prototype.Publicity = function (content) {alert(221)
+active.prototype.Publicity = function (content) {
     $('#divIconContainer').bind('click', function () {
         var isExpand = $(this).data('expand') == 'true';
         alert(isExpand)
@@ -32,6 +32,7 @@ active.prototype.Publicity = function (content) {alert(221)
         } else {
             $(this).data('expand', 'true');
             $(this).children('.publicity_down').addClass('publicity_up');
+            alert($.trim($('#divPublicityInfo').html()))
             if ($.trim($('#divPublicityInfo').html()) == '') {
 
                 var html = '';
