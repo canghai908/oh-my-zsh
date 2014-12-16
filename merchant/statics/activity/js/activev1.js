@@ -168,7 +168,7 @@ active.prototype.loadInfo = function () {
                     }[m]
                 }) : '';
             };
-alert(data.content)
+alert(data)
 alert(data.share_url)
             self.title = data.title;
             $("#js-title").html(data.title);
