@@ -171,22 +171,22 @@ active.prototype.loadInfo = function () {
             var state = data.state;
             switch (state) {
                 case 0:
-                    $("#js-ing").html("未审核");
+                    $("#js-ing").html("活动未审核");
                     break;
                 case 1:
-                    $("#js-ing").html("审核中");
+                    $("#js-ing").html("活动审核中");
                     break;
                 case 2:
                     $("#js-ing").html("活动进行中");
                     break;
                 case 3:
-                    $("#js-ing").html("审核失败");
+                    $("#js-ing").html("活动审核失败");
                     break;
                 case 4:
-                    $("#js-ing").html("活动结束");
+                    $("#js-ing").html("活动已结束");
                     break; 
                 case 64:
-                $("#js-ing").html("活动删除");
+                $("#js-ing").html("活动已删除");
                     break;     
             };
 
@@ -207,6 +207,7 @@ active.prototype.loadInfo = function () {
             };
 
             // 填充页面内容
+            self.state = state;
             self.title = content.title;
             document.title = self.title;
             $("#js-business").html(merchant_info.name);
@@ -225,7 +226,7 @@ active.prototype.loadInfo = function () {
             html += self.createShareHtml(self.visitor == self.parent, userinfo.share_num_by_self);
             html += self.createLightHtml(userinfo.share_num_by_self, userinfo.remain_share_num);
             html += self.createSurplusHtml(content.start_datetime == self.ActivityStat.Over, end_datetime);
-            //html += self.createPrizeHtml(self.visitor == self.parent, activityInfo, visitorInfo);
+            html += self.createPrizeHtml(self.visitor == self.parent, prize_list, userinfo);
             $('#divVisitor').html(html);
             self.bindSelect();
             self.bindExchange();
@@ -258,7 +259,7 @@ active.prototype.createLightHtml = function (childrenShareCount, nextPrizeCount)
                 html += '<span class="v-share-light-gray"></span>';
             }
         }
-    }
+    };
     html += '</div></div>';
     return html;
 };
@@ -275,42 +276,38 @@ active.prototype.createSurplusHtml = function (isOver, leaveTime) {
     return html;
 };
 //生成工活动奖品信息的html代码
-active.prototype.createPrizeHtml = function (isSelf, activityInfo, visitorInfo) {
+active.prototype.createPrizeHtml = function (isSelf, prize_list, userinfo) {
     var html = '';
     var self = this;
     if (isSelf) {
-        if (visitorInfo.Abnormal=="异常") {
-            html += '<div class="v-prize-code">';
-            html += '您涉嫌采用非正常方式爱分享数量，本次兑奖资格被取消，如需申诉请致电我公司法务部门，直线电话：0512-69373652';
-            html += '</div>';
-            return html;
-        }
-        if (visitorInfo.IsGetPrize) {
-            html += '<div class="v-prize-code">';
-            html += '<p>您已获得</p>';
-            html += '<p>' + visitorInfo.GetPrizeInfo.PrizeContent + '</p>';
-            html += '<p>领奖密码：' + visitorInfo.PrizeCode + '</p>';
-            html += '</div>';
-            return html;
-        }
-        if (activityInfo.ActivityStat == self.ActivityStat.Over) {
+        // if (visitorInfo.Abnormal=="异常") {
+        //     html += '<div class="v-prize-code">';
+        //     html += '您涉嫌采用非正常方式爱分享数量，本次兑奖资格被取消，如需申诉请致电我公司法务部门，直线电话：0512-69373652';
+        //     html += '</div>';
+        //     return html;
+        // };
+        // if (visitorInfo.IsGetPrize) {
+        //     html += '<div class="v-prize-code">';
+        //     html += '<p>您已获得</p>';
+        //     html += '<p>' + visitorInfo.GetPrizeInfo.PrizeContent + '</p>';
+        //     html += '<p>领奖密码：' + visitorInfo.PrizeCode + '</p>';
+        //     html += '</div>';
+        //     return html;
+        // };
+        if (self.state == 4) {
             html += '<div>';
             html += '<p>活动已结束</p>';
             html += '</div>';
             return html;
-        }
-    }
+        };
+    };
     html = '<div class="v-prize-get clearfix"><span class="v-prize-get-tip">' + (isSelf ? '您' : '该用户') + '已获得：</span>' + (isSelf ? '<a href="javascript:void(0);" class="v-prize-get-remind" id="btnRemind" data-loading-text="正在加载...">获奖提醒</a>' : '') + '</div>';
-    var prizeInfos = activityInfo.PrizeInfos;
+    var prizeInfos = prize_list;
     var hasSet = false;
     var prizeTemps = [];
     for (var i = prizeInfos.length - 1; i >= 0; i--) {
         var prizeTempHtml = '';
-        var isCanGetPrize = visitorInfo.ChildrenShareCount >= prizeInfos[i].ShareCount;
-        var surplusPrizeCount = (prizeInfos[i].IsLimitPrizeCount ? '剩余' + prizeInfos[i].SurplusPrizeCount + '份' : '');
-        if (prizeInfos[i].IsLimitPrizeCount) {
-            isCanGetPrize = isCanGetPrize && prizeInfos[i].SurplusPrizeCount;
-        }
+
         if (isSelf) {
             if (isCanGetPrize) {
                 if (!hasSet) {
