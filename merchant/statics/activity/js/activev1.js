@@ -32,7 +32,7 @@ active.prototype.Publicity = function (content) {
         } else {
             $(this).data('expand', 'true');
             $(this).children('.publicity_down').addClass('publicity_up');
-            alert($.trim($('#divPublicityInfo').html()))
+            alert($.trim($('#divPublicityInfo').html()) == '')
             if ($.trim($('#divPublicityInfo').html()) == '') {
 
                 var html = '';
