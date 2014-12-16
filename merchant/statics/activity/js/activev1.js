@@ -155,7 +155,7 @@ active.prototype.loadInfo = function () {
         data: "ajaxtime=true",
         dataType: "json",
         success: function(data) {
-
+console.log(data)
             var thishtml = function (str) {
                 return str ? str.replace(/&((g|l|quo)t|amp|#39|nbsp);/g, function (m) {
                     return {
