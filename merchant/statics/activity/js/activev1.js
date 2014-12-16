@@ -174,8 +174,8 @@ active.prototype.loadInfo = function () {
             // 填充页面内容
             self.title = content.title;
             $("#js-title").html(content.title);
-            $("#js-ActivityPicPath").attr("src",data.ActivityPicPath);
-            document.getElementById("js-Content").innerHTML = thishtml(data.Content); 
+            $("#js-ActivityPicPath").attr("src",content.ActivityPicPath);
+            document.getElementById("js-Content").innerHTML = thishtml(content.Content); 
 
             // 您已分享的代码部分
             var html = '';
