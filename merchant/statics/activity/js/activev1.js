@@ -101,14 +101,16 @@ active.dateFormat = function (date) {
 active.prototype.weixinReady = function () {
     var self = this;
     WeixinJSBridge.on('menu:share:timeline', function () {
+        alert("timeline")
         WeixinJSBridge.invoke('shareTimeline', {
             'link': self.share_url,
             'img_url': self.icon,
             'desc': self.title,
             'title': self.title
         }, function (res) {
+            alert(res)
             if (res.err_msg == 'share_timeline:ok') {
-                alert("weixinReady")
+                
                 $.ajax({
                     url: '/activev1/StartShare',
                     type: 'post',
