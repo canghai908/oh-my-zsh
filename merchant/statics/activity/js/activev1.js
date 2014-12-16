@@ -183,14 +183,14 @@ active.prototype.loadInfo = function () {
                     }[m]
                 }) : '';
             };
-
+ alert(1)
             // 填充页面内容
             self.title = content.title;
             document.title = self.title;
             $("#js-title").html(content.title);
-            $("#js-ActivityPicPath").attr("src",content.ActivityPicPath);
-            document.getElementById("js-Content").innerHTML = thishtml(content.Content); 
-            var end_datetime = active.dateFormat(content.end_datetime);
+            $("#js-ActivityPicPath").attr("src",content.ActivityPicPath); alert(2)
+            document.getElementById("js-Content").innerHTML = thishtml(content.Content); alert(3)
+            var end_datetime = active.dateFormat(content.end_datetime);alert(4)
 
             // 您已分享的代码部分
             var html = '';
