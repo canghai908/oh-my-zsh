@@ -148,13 +148,14 @@ active.prototype.weixinReady = function () {
 active.prototype.loadInfo = function () {
     var self = this;
     $.ajax({
-        url:"http://ifx.hi-www.com/activity/promotion_get?promotion_id=60",
+        url:"http://ifx.hi-www.com/activity/promotion_get",
         type: "GET",
         async: true, //转化为同步执行
         timeout:30000,//超时时间：30秒
         data: "ajaxtime=true",
         dataType: "json",
         success: function(data) {
+
             var thishtml = function (str) {
                 return str ? str.replace(/&((g|l|quo)t|amp|#39|nbsp);/g, function (m) {
                     return {
@@ -168,7 +169,7 @@ active.prototype.loadInfo = function () {
                 }) : '';
             };
 
-            self.title = data.title;
+            self.title = data.title;alert(data.title)
             $("#js-title").html(data.title);
             $("#js-ActivityPicPath").attr("src",data.ActivityPicPath);
             document.getElementById("js-Content").innerHTML = thishtml(data.Content); 
