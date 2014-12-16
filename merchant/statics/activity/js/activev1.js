@@ -100,11 +100,7 @@ active.dateFormat = function (date) {
 //活动微信接口加载完成
 active.prototype.weixinReady = function () {
     var self = this;
-    if(typeof WeixinJSBridge == 'undefined' || typeof WeixinJSBridge.invoke == 'undefined'){
-        alert("no")
-    }else{
-        alert("yes")
-    }
+    // 分享到微信朋友圈
     WeixinJSBridge.on('menu:share:timeline', function () {
         alert("timeline");
         alert(self.share_url)
