@@ -190,7 +190,7 @@ active.prototype.loadInfo = function () {
             $("#js-title").html(content.title);
             $("#js-ActivityPicPath").attr("src",content.ActivityPicPath); 
             document.getElementById("js-Content").innerHTML = thishtml(content.Content); 
-            alert(content.end_datetime)
+            alert(active.dateFormat(content.end_datetime))
             var end_datetime = active.dateFormat(content.end_datetime);alert(4)
 
             // 您已分享的代码部分
