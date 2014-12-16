@@ -176,12 +176,13 @@ active.prototype.loadInfo = function () {
             $("#js-title").html(content.title);
             $("#js-ActivityPicPath").attr("src",content.ActivityPicPath);
             document.getElementById("js-Content").innerHTML = thishtml(content.Content); 
+            var end_datetime = active.dateFormat(content.end_datetime);
 
             // 您已分享的代码部分
             var html = '';
-            html += self.createShareHtml(self.visitor == self.parent, content.share_num);
-            html += self.createLightHtml(content.num, 5);
-            html += self.createSurplusHtml(content.start_datetime == self.ActivityStat.Over, content.end_datetime);
+            html += self.createShareHtml(self.visitor == self.parent, userinfo.share_num_by_self);
+            html += self.createLightHtml(userinfo.share_num_by_self, userinfo.remain_share_num);
+            html += self.createSurplusHtml(content.start_datetime == self.ActivityStat.Over, end_datetime);
             //html += self.createPrizeHtml(self.visitor == self.parent, activityInfo, visitorInfo);
             $('#divVisitor').html(html);
             self.bindSelect();
