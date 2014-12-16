@@ -43,13 +43,12 @@ active.prototype.Publicity = function (content) {
                 $.each(content.prize_policy_array, function (i, n) {
                     html += '<li><span class="publicity-num">' + (i + 1) + '.</span>集 <b>' + n.condition_min + '</b> 个分享获 <b>' + n.prize + ' </b>' + (!n.IsLimitPrizeCount ? '' : '共' + n.total_number + '份') + '</li>';
                 });
-                alert(html)
                 html += '<li class="publicity-title publicity-topline">活动时间</li>';
                 html += '<li>' + active.dateFormat(startDate) + ' — ' + active.dateFormat(endDate) + '</li>';
                 html += '<li class="publicity-title publicity-topline">兑奖方法</li>';
                 html += '<li>' + content.ExchangeMethod + '</li>';
                 html += '<li class="publicity-title publicity-topline">咨询电话</li>';
-                html += '<li>' + content.Phone + '<a href="tel:' + data.Phone + '" class="publicity-call"><span class="publicity-call-icon"></span> 直接拨打</a></li>';
+                html += '<li>' + content.Phone + '<a href="tel:' + content.Phone + '" class="publicity-call"><span class="publicity-call-icon"></span> 直接拨打</a></li>';
                 html += '</ul>';
                 alert(html)
                 $('#divPublicityInfo').html(html).slideDown(100);
