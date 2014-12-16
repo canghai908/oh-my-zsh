@@ -169,7 +169,6 @@ active.prototype.loadInfo = function () {
             var prize_list = data.prize_list;
             var merchant_info = data.merchant_info;
             var state = data.state;
-alert(state)
             switch (state) {
                 case 0:
                     $("#js-ing").html("未审核");
@@ -178,7 +177,7 @@ alert(state)
                     $("#js-ing").html("审核中");
                     break;
                 case 2:
-                    $("#js-ing").html("正式进行");
+                    $("#js-ing").html("活动进行中");
                     break;
                 case 3:
                     $("#js-ing").html("审核失败");
