@@ -100,12 +100,11 @@ active.dateFormat = function (date) {
 //活动微信接口加载完成
 active.prototype.weixinReady = function () {
     var self = this;
-    // 分享到微信朋友圈
+    // 分享到微信朋友圈的动作事件
     WeixinJSBridge.on('menu:share:timeline', function () {
-        alert("timeline");
-        alert(self.share_url)
+         alert(self.icon)
         WeixinJSBridge.invoke('shareTimeline', {
-            'link': self.share_url,
+            'link': self.baseUrl +self.share_url,
             'img_url': self.icon,
             'desc': self.title,
             'title': self.title
@@ -135,7 +134,7 @@ active.prototype.weixinReady = function () {
     });
     WeixinJSBridge.on('menu:share:appmessage', function () {
         WeixinJSBridge.invoke('sendAppMessage', {
-            'link': self.share_url,
+            'link': self.baseUrl +self.share_url,
             'img_url': self.icon,
             'desc': self.title,
             'title': self.title
