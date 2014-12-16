@@ -622,7 +622,7 @@ var Manage = {
                           '<div class="mb10"><img id="imgQr" src="./statics/images/system/code_erwei.png" /></div>' +
                           '<div><input   class="down_btn" type="button" onclick="Manage.Download();" /></div>';
                         if (Qrtype == "Save") {
-                            html += '<div class="l30 color_b7">以上链接仅供集分享活动测试使用，活动未审核通过前，请勿传播</div>';
+                            html += '<div class="l30 color_b7">以上链接仅供爱分享活动测试使用，活动未审核通过前，请勿传播</div>';
                         }
                         else {
                             html += '<div class="l30 color_b7">可将本二维码印到户外广告，嵌入网页等处，供网友浏览分享</div>';

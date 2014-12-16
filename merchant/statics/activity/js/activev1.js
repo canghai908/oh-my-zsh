@@ -66,7 +66,7 @@ active.prototype.Publicity = function (content) {
             if ($.trim($('#divPublicityHow').html()) == '') {
                 var html = '';
                 html += '<ul class="publicity-expand">';
-                html += '<li class="clearfix"><div class="publicity-right publicity-pic-1"><span class="publicity-num">1.</span>累集分享个数</div></li>';
+                html += '<li class="clearfix"><div class="publicity-right publicity-pic-1"><span class="publicity-num">1.</span>累爱分享个数</div></li>';
                 html += '<li class="clearfix"><div class="publicity-left publicity-pic-2"><span class="publicity-num">2.</span>选择奖品</div></li>';
                 html += '<li class="clearfix"><div class="publicity-right publicity-pic-3"><span class="publicity-num">3.</span>获得兑奖码</div></li>';
                 html += '</ul>';
@@ -154,7 +154,7 @@ active.prototype.weixinReady = function () {
         });
     });
 };
-//加载集分享信息
+//加载爱分享信息
 active.prototype.loadInfo = function () {
     var self = this;
     $.ajax({
@@ -256,7 +256,7 @@ active.prototype.createPrizeHtml = function (isSelf, activityInfo, visitorInfo) 
     if (isSelf) {
         if (visitorInfo.Abnormal=="异常") {
             html += '<div class="v-prize-code">';
-            html += '您涉嫌采用非正常方式集分享数量，本次兑奖资格被取消，如需申诉请致电我公司法务部门，直线电话：0512-69373652';
+            html += '您涉嫌采用非正常方式爱分享数量，本次兑奖资格被取消，如需申诉请致电我公司法务部门，直线电话：0512-69373652';
             html += '</div>';
             return html;
         }
