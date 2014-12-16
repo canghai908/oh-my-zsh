@@ -179,8 +179,8 @@ active.prototype.loadInfo = function () {
 
             // 您已分享的代码部分
             var html = '';
-            html += self.createShareHtml(self.visitor == self.parent, content.share_cycle);
-            html += self.createLightHtml(content.share_cycle, 5);
+            html += self.createShareHtml(self.visitor == self.parent, content.share_num);
+            html += self.createLightHtml(content.num, 5);
             html += self.createSurplusHtml(content.start_datetime == self.ActivityStat.Over, content.end_datetime);
             //html += self.createPrizeHtml(self.visitor == self.parent, activityInfo, visitorInfo);
             $('#divVisitor').html(html);
