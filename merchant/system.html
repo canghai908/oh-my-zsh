@@ -359,30 +359,6 @@
         alert(formatDate((new Date()),"yyyy-MM-dd")); //2013-07-15 
         alert(formatDate((new Date()),"yyyy/M/d")); //2013/7/15 
       } */
-       
-     
-
-
-
-
-    
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </script>
 <script src="./statics/js/subpage.js"></script>
@@ -398,86 +374,84 @@ $(function() {
     
     var ep = new EventProxy();
 
-    for (var i = 0; i < list.length; i++) {
-
-        // EventProxy此时是一个全局变量
-        ep.all('li','sum', 'list', 'prize',function (li, sum, list, prize) {
-            
-            //背景图中分阴影
-            function changeShadowPosition() {
-                var windowWidth = parseInt($(window).width());
-                var pos = 1400 - ((windowWidth - 1000) / 2 + 700) - 10;
-                $('.page-shadow').css("backgroundPosition", -pos + "px 0");
-            }
-            changeShadowPosition();
-            $(window).resize(function() {
-                changeShadowPosition();
-            });
-            summary.LastSevenDaysViewCount = [4, 2, 1, 5, 15, 3, 5];
-            summary.LastSevenDaysShareCount = [0, 0, 0, 0, 0, 0, 0];
-            summary.NoGetPrizeCount = 1;
-            summary.ExchangePrizeCount = 3;
-            summary.TotalCanGetPrizeCount = 9;
-            summary.UsedCount = 1;
-            summary.SurplusCount = 4;
-            summary.init();
-            
-        });
-            
-        ep.emit("li", list[i]);
-
-        $.ajax({
-            url: "/merchant/promotion_data_sum?promotion_id=" + list[i].id,
-            type: "get",
-            dataType:"json",
-            async:false,
-            success: function (A) {
-
-                var sum = A;
-                if(A.err_msg){
-                    alert("获取活动数据失败");
-                }else{
-                    ep.emit("sum", sum);
-                };
-                 
-            }
-        });
+    // EventProxy此时是一个全局变量
+    ep.all('li','sum', 'list', 'prize',function (li, sum, list, prize) {
         
-        $.ajax({
-            url: "/merchant/promotion_data_list?promotion_id=" + list[i].id,
-            type: "get",
-            dataType:"json",
-            async:false,
-            success: function (B) {
-
-                var list = B;
-                if(B.err_msg){
-                    alert("获取活动数据失败");
-                }else{
-                    ep.emit("list", list);
-                };
-                 
-            }
+        //背景图中分阴影
+        function changeShadowPosition() {
+            var windowWidth = parseInt($(window).width());
+            var pos = 1400 - ((windowWidth - 1000) / 2 + 700) - 10;
+            $('.page-shadow').css("backgroundPosition", -pos + "px 0");
+        }
+        changeShadowPosition();
+        $(window).resize(function() {
+            changeShadowPosition();
         });
+        summary.LastSevenDaysViewCount = [4, 2, 1, 5, 15, 3, 5];
+        summary.LastSevenDaysShareCount = [0, 0, 0, 0, 0, 0, 0];
+        summary.NoGetPrizeCount = 1;
+        summary.ExchangePrizeCount = 3;
+        summary.TotalCanGetPrizeCount = 9;
+        summary.UsedCount = 1;
+        summary.SurplusCount = 4;
+        summary.init();
 
-        $.ajax({
-            url: "/merchant/prize_list?promotion_id=" + list[i].id,
-            type: "get",
-            dataType:"json",
-            async:false,
-            success: function (C) {
+    });
+        
+    ep.emit("li", list[i]);
 
-                var prize = C;
-                if(C.err_msg){
-                    alert("获取活动数据失败");
-                }else{
-                    ep.emit("prize", prize);
-                };
-                 
-            }
-        });
+    $.ajax({
+        url: "/merchant/promotion_data_sum?promotion_id=" + list[i].id,
+        type: "get",
+        dataType:"json",
+        async:false,
+        success: function (A) {
+            console.log(A);
+            var sum = A;
+            if(A.err_msg){
+                alert("获取活动数据失败");
+            }else{
+                ep.emit("sum", sum);
+            };
+             
+        }
+    });
+    
+    $.ajax({
+        url: "/merchant/promotion_data_list?promotion_id=" + list[i].id,
+        type: "get",
+        dataType:"json",
+        async:false,
+        success: function (B) {
+            console.log(B);
+            var list = B;
+            if(B.err_msg){
+                alert("获取活动数据失败");
+            }else{
+                ep.emit("list", list);
+            };
+             
+        }
+    });
 
-    };  
+    $.ajax({
+        url: "/merchant/prize_list?promotion_id=" + list[i].id,
+        type: "get",
+        dataType:"json",
+        async:false,
+        success: function (C) {
+            console.log(C);
+            var prize = C;
+            if(C.err_msg){
+                alert("获取活动数据失败");
+            }else{
+                ep.emit("prize", prize);
+            };
+             
+        }
+    });
+
+
 
 
 
