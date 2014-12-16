@@ -24,11 +24,12 @@ active.prototype.ActivityStat = {
 active.prototype.Publicity = function (content) {
     $('#divIconContainer').bind('click', function () {
         var isExpand = $(this).data('expand') == 'true';
-        if (isExpand) {
+        alert(isExpand)
+        if (isExpand) { alert(1)
             $(this).data('expand', 'false');
             $(this).children('.publicity_down').removeClass('publicity_up');
             $('#divPublicityInfo').slideUp(100);
-        } else {
+        } else {alert(2)
             $(this).data('expand', 'true');
             $(this).children('.publicity_down').addClass('publicity_up');
             if ($.trim($('#divPublicityInfo').html()) == '') {
