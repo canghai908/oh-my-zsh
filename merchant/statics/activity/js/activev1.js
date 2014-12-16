@@ -153,7 +153,7 @@ active.prototype.loadInfo = function () {
 
         dataType: "json",
         success: function(data) {
-console.log(data)
+
             var thishtml = function (str) {
                 return str ? str.replace(/&((g|l|quo)t|amp|#39|nbsp);/g, function (m) {
                     return {
@@ -166,7 +166,7 @@ console.log(data)
                     }[m]
                 }) : '';
             };
-alert(data.err_msg)
+alert(data.Content)
 alert(data.share_url)
             self.title = data.title;
             $("#js-title").html(data.title);
@@ -193,10 +193,10 @@ alert(data.share_url)
            
         },
         error: function(XMLHttpRequest, textStatus, errorThrown) {
-                        alert(XMLHttpRequest.status);
-                        alert(XMLHttpRequest.readyState);
-                        alert(textStatus);
-                    }
+            alert(XMLHttpRequest.status);
+            alert(XMLHttpRequest.readyState);
+            alert(textStatus);
+        }
     });
 };
 //生成分享数的html代码
