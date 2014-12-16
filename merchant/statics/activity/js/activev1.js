@@ -195,7 +195,7 @@ alert(data.share_url)
            
         },
         error:function(){
-            alert("获取数据失败1")
+            alert("获取数据失败2")
         }
     });
 };
