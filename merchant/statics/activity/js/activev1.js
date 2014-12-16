@@ -167,6 +167,8 @@ active.prototype.loadInfo = function () {
             var share_url = data.share_url;  
             var userinfo = data.userinfo;
             var prize_list = data.prize_list;
+            var merchant_info = data.merchant_info;
+            var state = data.state;
 
             self.Publicity(content);
             self.share_url = share_url;
@@ -187,6 +189,8 @@ active.prototype.loadInfo = function () {
             // 填充页面内容
             self.title = content.title;
             document.title = self.title;
+            $("#js-business").html(merchant_info.name);
+            $("#js-authtime").html(merchant_info.creat_datetime);
             $("#js-title").html(content.title);
             $("#js-ActivityPicPath").attr("src",content.ActivityPicPath); 
             document.getElementById("js-Content").innerHTML = thishtml(content.Content); 
