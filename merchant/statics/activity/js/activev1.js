@@ -4,7 +4,7 @@ var active = function (u, a, v, p, l, i, b, t) {
     this.parent = p;
     this.level = l;
     this.icon = i;
-    this.baseUrl = b;
+    this.baseUrl = "http://ifx.hi-www.com";
     this.title = t;
     var self = this;
     
