@@ -148,7 +148,7 @@ active.prototype.weixinReady = function () {
 active.prototype.loadInfo = function () {
     var self = this;
     $.ajax({
-        url:"http://ifx.hi-www.com/activity/promotion_get",
+        url:"http://ifx.hi-www.com/activity/promotion_get?promotion_id=14",
         type: "GET",
         async: true, //转化为同步执行
         timeout:30000,//超时时间：30秒
@@ -195,7 +195,7 @@ alert(data.share_url)
            
         },
         error:function(){
-            alert("获取数据失败")
+            alert("获取数据失败1")
         }
     });
 };
