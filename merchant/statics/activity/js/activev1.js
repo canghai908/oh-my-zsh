@@ -29,7 +29,7 @@ active.prototype.Publicity = function (content) {alert(221)
             $(this).data('expand', 'false');
             $(this).children('.publicity_down').removeClass('publicity_up');
             $('#divPublicityInfo').slideUp(100);
-        } else {alert(2)
+        } else {
             $(this).data('expand', 'true');
             $(this).children('.publicity_down').addClass('publicity_up');
             if ($.trim($('#divPublicityInfo').html()) == '') {
@@ -49,6 +49,7 @@ active.prototype.Publicity = function (content) {alert(221)
                 html += '<li class="publicity-title publicity-topline">咨询电话</li>';
                 html += '<li>' + content.Phone + '<a href="tel:' + data.Phone + '" class="publicity-call"><span class="publicity-call-icon"></span> 直接拨打</a></li>';
                 html += '</ul>';
+                alert(html)
                 $('#divPublicityInfo').html(html).slideDown(100);
                     
             } else {
