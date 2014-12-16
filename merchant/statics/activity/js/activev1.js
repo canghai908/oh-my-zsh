@@ -102,7 +102,7 @@ active.prototype.weixinReady = function () {
     var self = this;alert(self.icon)
     // 分享到微信朋友圈的动作事件
     WeixinJSBridge.on('menu:share:timeline', function () {
-        
+
         WeixinJSBridge.invoke('shareTimeline', {
             'link': self.baseUrl +self.share_url,
             'img_url': self.icon,
@@ -131,12 +131,19 @@ active.prototype.weixinReady = function () {
             }
         });
     });
+    // 发送给好友
     WeixinJSBridge.on('menu:share:appmessage', function () {
         WeixinJSBridge.invoke('sendAppMessage', {
             'link': self.baseUrl +self.share_url,
             'img_url': self.icon,
             'desc': self.title,
             'title': self.title
+        },
+        function(res) {
+            //分享给好友成功
+            if (res.err_msg == "send_app_msg:ok") {
+                alert("分享成功");
+            };
         });
     });
 };
