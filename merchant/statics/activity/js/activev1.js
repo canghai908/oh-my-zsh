@@ -190,7 +190,7 @@ active.prototype.loadInfo = function () {
             $("#js-title").html(content.title);
             $("#js-ActivityPicPath").attr("src",content.ActivityPicPath); 
             document.getElementById("js-Content").innerHTML = thishtml(content.Content); 
-            var startDate = new Date(parseInt(content.start_datetime.substr(6)));
+            var startDate = new Date(content.start_datetime);
             var endDate = new Date(parseInt(content.end_datetime.substr(6)));
 
             alert(content.start_datetime)
