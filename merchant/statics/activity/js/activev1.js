@@ -110,6 +110,7 @@ active.prototype.weixinReady = function () {
             'desc': self.title,
             'title': self.title
         }, function (res) {
+            alert(self.baseUrl +self.share_url)
             alert(res.err_msg)
             if (res.err_msg == 'share_timeline:ok') {
                 
