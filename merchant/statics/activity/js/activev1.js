@@ -194,7 +194,7 @@ active.prototype.loadInfo = function () {
            
         },
         error:function(){
-            alert(888)
+            alert("获取数据失败")
         }
     });
 };
