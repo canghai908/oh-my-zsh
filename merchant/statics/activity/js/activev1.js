@@ -39,10 +39,11 @@ active.prototype.Publicity = function (content) {
                 html += '<li class="publicity-title">奖品设置</li>';
                 var startDate = new Date(parseInt(content.start_datetime.substr(6)));
                 var endDate = new Date(parseInt(content.end_datetime.substr(6)));
-                alert(endDate)
+
                 $.each(content.prize_policy_array, function (i, n) {
                     html += '<li><span class="publicity-num">' + (i + 1) + '.</span>集 <b>' + n.condition_min + '</b> 个分享获 <b>' + n.prize + ' </b>' + (!n.IsLimitPrizeCount ? '' : '共' + n.total_number + '份') + '</li>';
                 });
+                alert(html)
                 html += '<li class="publicity-title publicity-topline">活动时间</li>';
                 html += '<li>' + active.dateFormat(startDate) + ' — ' + active.dateFormat(endDate) + '</li>';
                 html += '<li class="publicity-title publicity-topline">兑奖方法</li>';
