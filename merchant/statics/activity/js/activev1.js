@@ -168,8 +168,9 @@ active.prototype.loadInfo = function () {
                     }[m]
                 }) : '';
             };
-
-            self.title = data.title;alert(data.title)
+alert(data.content)
+alert(data.share_url)
+            self.title = data.title;
             $("#js-title").html(data.title);
             $("#js-ActivityPicPath").attr("src",data.ActivityPicPath);
             document.getElementById("js-Content").innerHTML = thishtml(data.Content); 
