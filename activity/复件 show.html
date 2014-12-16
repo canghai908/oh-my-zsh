@@ -1,0 +1,76 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Cache-Control" content="no-cache">
+		<meta http-equiv="Expires" content="0">
+		<link href="./css/active.css" rel="stylesheet">
+		<link href="./css/bootstrap.min.css" rel="stylesheet">
+		<link href="./css/bootstrap-theme.min.css" rel="stylesheet">
+		<script src="./js/jquery.min.js"></script>
+		<script src="./js/bootstrap.min.js"></script>
+	    <script src="./js/WeixinApi.js"></script>
+		<!--
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	-->
+
+		<script type="text/javascript">
+	      
+             $.ajax({
+               type:"get",//请求方式
+               url:"http://ifx.hi-www.com/merchant/promotion_get?promotion_id=60",
+               timeout:30000,//超时时间：30秒
+               dataType:"json",//设置返回数据的格式
+               //请求成功后的回调函数 data为json格式
+				success:function(data){
+				 $("#resultJsonText").text("你的名字："+data.title+"  你输入的内容:"+data.description);
+                      alert(data.Content);
+              },
+			 // success:function(data){
+               //   $("#resultJsonText").text("你的名字："+data.yourName+"  你输入的内容:"+data.yourContent);
+            
+              //请求出错的处理
+              error:function(){
+                        alert("请求出错");
+              }
+           });
+          
+	</script>
+	</head>
+	<body>
+	
+	
+	</body>
+</html>
+
+
+<script id="table-template" type="text/x-handlebars-template">
+                            {{#each this}} 
+                                <table id="{{value}}" class="ui-models-table">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="2" valign="middle">{{name}}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{#each brands}} 
+                                            <tr id="{{value}}">
+                                                <td valign="middle" class="ui-td-1"><img src="./statics/images/system/models/{{value}}.png"> {{name}}</td>
+                                                <td>
+                                                    <dl class="fn-clear ui-models-dl">
+                                                        {{#each series}} 
+                                                            <dd>{{this}}</dd>
+                                                        {{/each}}
+                                                    </dl>
+                                                </td>
+                                            </tr>
+                                        {{/each}}
+                                    </tbody>
+                                </table>
+                            {{/each}}
+                        </script>
