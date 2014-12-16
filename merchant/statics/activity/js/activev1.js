@@ -193,9 +193,7 @@ active.prototype.loadInfo = function () {
             var startDate = new Date(content.start_datetime);
             var endDate = new Date(content.end_datetime);
 
-            alert(content.end_datetime)
-            alert(endDate)
-            var end_datetime = active.dateFormat(content.end_datetime);alert(4)
+            var end_datetime = active.dateFormat(endDate);alert(end_datetime)
 
             // 您已分享的代码部分
             var html = '';
