@@ -7,7 +7,7 @@ var active = function (u, a, v, p, l, i, b, t) {
     this.baseUrl = b;
     this.title = t;
     var self = this;
-    self.Publicity();
+    
     if (document.addEventListener) {
         document.addEventListener('WeixinJSBridgeReady', function () { self.weixinReady.call(self); }, false);
     } else if (document.attachEvent) {
@@ -21,7 +21,7 @@ active.prototype.ActivityStat = {
     Over: 4
 };
 //活动规则公示点击事件
-active.prototype.Publicity = function () {
+active.prototype.Publicity = function (content) {
     $('#divIconContainer').bind('click', function () {
         var isExpand = $(this).data('expand') == 'true';
         if (isExpand) {
@@ -32,30 +32,24 @@ active.prototype.Publicity = function () {
             $(this).data('expand', 'true');
             $(this).children('.publicity_down').addClass('publicity_up');
             if ($.trim($('#divPublicityInfo').html()) == '') {
-                $.ajax({
-                    url: '/activev1/LoadActivityInfo',
-                    type: 'get',
-                    dataType: 'json',
-                    cache: true,
-                    success: function (data) {
-                        var html = '';
-                        html += '<ul class="publicity-expand">';
-                        html += '<li class="publicity-title">奖品设置</li>';
-                        var startDate = new Date(parseInt(data.LimitStartTime.substr(6)));
-                        var endDate = new Date(parseInt(data.LimitEndTime.substr(6)));
-                        $.each(data.PrizeInfos, function (i, n) {
-                            html += '<li><span class="publicity-num">' + (i + 1) + '.</span>集 <b>' + n.ShareCount + '</b> 个分享获 <b>' + n.PrizeContent + ' </b>' + (!n.IsLimitPrizeCount ? '' : '共' + n.LimitPrizeCount + '份') + '</li>';
-                        });
-                        html += '<li class="publicity-title publicity-topline">活动时间</li>';
-                        html += '<li>' + active.dateFormat(startDate) + ' — ' + active.dateFormat(endDate) + '</li>';
-                        html += '<li class="publicity-title publicity-topline">兑奖方法</li>';
-                        html += '<li>' + data.ExchangeMethod + '</li>';
-                        html += '<li class="publicity-title publicity-topline">咨询电话</li>';
-                        html += '<li>' + data.Phone + '<a href="tel:' + data.Phone + '" class="publicity-call"><span class="publicity-call-icon"></span> 直接拨打</a></li>';
-                        html += '</ul>';
-                        $('#divPublicityInfo').html(html).slideDown(100);
-                    }
+
+                var html = '';
+                html += '<ul class="publicity-expand">';
+                html += '<li class="publicity-title">奖品设置</li>';
+                var startDate = new Date(parseInt(content.start_datetime.substr(6)));
+                var endDate = new Date(parseInt(content.end_datetime.substr(6)));
+                $.each(content.prize_policy_array, function (i, n) {
+                    html += '<li><span class="publicity-num">' + (i + 1) + '.</span>集 <b>' + n.condition_min + '</b> 个分享获 <b>' + n.prize + ' </b>' + (!n.IsLimitPrizeCount ? '' : '共' + n.total_number + '份') + '</li>';
                 });
+                html += '<li class="publicity-title publicity-topline">活动时间</li>';
+                html += '<li>' + active.dateFormat(startDate) + ' — ' + active.dateFormat(endDate) + '</li>';
+                html += '<li class="publicity-title publicity-topline">兑奖方法</li>';
+                html += '<li>' + content.ExchangeMethod + '</li>';
+                html += '<li class="publicity-title publicity-topline">咨询电话</li>';
+                html += '<li>' + content.Phone + '<a href="tel:' + data.Phone + '" class="publicity-call"><span class="publicity-call-icon"></span> 直接拨打</a></li>';
+                html += '</ul>';
+                $('#divPublicityInfo').html(html).slideDown(100);
+                    
             } else {
                 $('#divPublicityInfo').slideDown(100);
             }
@@ -188,8 +182,7 @@ active.prototype.loadInfo = function () {
             self.bindSelect();
             self.bindExchange();
             self.BindRemind();
-
-           
+            self.Publicity(content);
         },
         error: function(XMLHttpRequest, textStatus, errorThrown) {
             alert(XMLHttpRequest.status);
