@@ -20,12 +20,11 @@ active.prototype.ActivityStat = {
     Started: 3,
     Over: 4
 };
-//活动规则公示点击事件
+//活动规则公示点击事件(完成)
 active.prototype.Publicity = function (content) {
     $('#divIconContainer').bind('click', function () {
         var isExpand = $(this).data('expand') == 'true';
-        alert(isExpand)
-        if (isExpand) { alert(1)
+        if (isExpand) {
             $(this).data('expand', 'false');
             $(this).children('.publicity_down').removeClass('publicity_up');
             $('#divPublicityInfo').slideUp(100);
@@ -33,13 +32,11 @@ active.prototype.Publicity = function (content) {
             $(this).data('expand', 'true');
             $(this).children('.publicity_down').addClass('publicity_up');
             if ($.trim($('#divPublicityInfo').html()) == '') {
-
                 var html = '';
                 html += '<ul class="publicity-expand">';
                 html += '<li class="publicity-title">奖品设置</li>';
                 var startDate = new Date(parseInt(content.start_datetime.substr(6)));
                 var endDate = new Date(parseInt(content.end_datetime.substr(6)));
-
                 $.each(content.prize_policy_array, function (i, n) {
                     html += '<li><span class="publicity-num">' + (i + 1) + '.</span>集 <b>' + n.condition_min + '</b> 个分享获 <b>' + n.prize + ' </b>' + (!n.IsLimitPrizeCount ? '' : '共' + n.total_number + '份') + '</li>';
                 });
@@ -50,7 +47,6 @@ active.prototype.Publicity = function (content) {
                 html += '<li class="publicity-title publicity-topline">咨询电话</li>';
                 html += '<li>' + content.Phone + '<a href="tel:' + content.Phone + '" class="publicity-call"><span class="publicity-call-icon"></span> 直接拨打</a></li>';
                 html += '</ul>';
-                alert(html)
                 $('#divPublicityInfo').html(html).slideDown(100);
                     
             } else {
@@ -106,12 +102,13 @@ active.prototype.weixinReady = function () {
     var self = this;
     WeixinJSBridge.on('menu:share:timeline', function () {
         WeixinJSBridge.invoke('shareTimeline', {
-            'link': self.baseUrl + '?v=' + self.visitor + '&parent=' + self.parent + '&l=' + (parseInt(self.level) + 1),
+            'link': self.share_url,
             'img_url': self.icon,
             'desc': self.title,
             'title': self.title
         }, function (res) {
             if (res.err_msg == 'share_timeline:ok') {
+                alert("weixinReady")
                 $.ajax({
                     url: '/activev1/StartShare',
                     type: 'post',
@@ -134,7 +131,7 @@ active.prototype.weixinReady = function () {
     });
     WeixinJSBridge.on('menu:share:appmessage', function () {
         WeixinJSBridge.invoke('sendAppMessage', {
-            'link': self.baseUrl + '?v=' + self.visitor + '&parent=' + self.parent + '&l=' + self.level,
+            'link': self.share_url,
             'img_url': self.icon,
             'desc': self.title,
             'title': self.title
@@ -156,6 +153,7 @@ active.prototype.loadInfo = function () {
             var prize_list = data.prize_list;
 
             self.Publicity(content);
+            self.share_url = share_url;
 
             var thishtml = function (str) {
                 return str ? str.replace(/&((g|l|quo)t|amp|#39|nbsp);/g, function (m) {
