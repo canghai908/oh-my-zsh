@@ -168,7 +168,7 @@ console.log(data)
                     }[m]
                 }) : '';
             };
-alert(data)
+alert(data.err_msg)
 alert(data.share_url)
             self.title = data.title;
             $("#js-title").html(data.title);
