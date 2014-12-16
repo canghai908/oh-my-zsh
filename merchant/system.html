@@ -375,7 +375,7 @@ $(function() {
     var ep = new EventProxy();
 
     // EventProxy此时是一个全局变量
-    ep.all('li','sum', 'list', 'prize',function (li, sum, list, prize) {
+    ep.all('sum', 'list', 'prize',function (sum, list, prize) {
         
         //背景图中分阴影
         function changeShadowPosition() {
@@ -398,7 +398,6 @@ $(function() {
 
     });
         
-    ep.emit("li", list[i]);
 
     $.ajax({
         url: "/merchant/promotion_data_sum?promotion_id=" + list[i].id,
