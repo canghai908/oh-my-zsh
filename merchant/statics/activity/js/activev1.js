@@ -32,7 +32,6 @@ active.prototype.Publicity = function (content) {
         } else {
             $(this).data('expand', 'true');
             $(this).children('.publicity_down').addClass('publicity_up');
-            alert($.trim($('#divPublicityInfo').html()) == '')
             if ($.trim($('#divPublicityInfo').html()) == '') {
 
                 var html = '';
@@ -40,6 +39,7 @@ active.prototype.Publicity = function (content) {
                 html += '<li class="publicity-title">奖品设置</li>';
                 var startDate = new Date(parseInt(content.start_datetime.substr(6)));
                 var endDate = new Date(parseInt(content.end_datetime.substr(6)));
+                alert(endDate)
                 $.each(content.prize_policy_array, function (i, n) {
                     html += '<li><span class="publicity-num">' + (i + 1) + '.</span>集 <b>' + n.condition_min + '</b> 个分享获 <b>' + n.prize + ' </b>' + (!n.IsLimitPrizeCount ? '' : '共' + n.total_number + '份') + '</li>';
                 });
