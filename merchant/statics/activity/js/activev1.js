@@ -99,7 +99,7 @@ active.dateFormat = function (date) {
 };
 //活动微信接口加载完成
 active.prototype.weixinReady = function () {
-    var self = this;alert(self.share_url)
+    var self = this;
     // 分享到微信朋友圈的动作事件
     WeixinJSBridge.on('menu:share:timeline', function () {
 
@@ -109,29 +109,36 @@ active.prototype.weixinReady = function () {
             'desc': self.title,
             'title': self.title
         }, function (res) {
+            // 分享成功
             if (res.err_msg == 'share_timeline:ok') {
-                
                 $.ajax({
-                    url: '/activev1/StartShare',
+                    url: '/activity/share_handler',
                     type: 'post',
                     success: function (data) {
-                        if (data == 'False_Contribution') {
-                            $('#divContribution').modal('show');
-                        } else if (data == 'False_ShareLimit') {
-                            $('#divMalicious').modal('show');                            
-                        }
-                        var cookevalue = getCookie("isFirst2");
-                        if (cookevalue == "")
-                        {
-                        	setCookie("isFirst2", "true", 10000);
-                            $('#divFirstMark').modal('show');
-                        }
+                        //if (data == 'False_Contribution') {
+                            // 弹出层，贡献度不足
+                            //$('#divContribution').modal('show');
+                       // } else if (data == 'False_ShareLimit') {
+                       //     // 弹出层，恶意分享
+                        //    $('#divMalicious').modal('show');                            
+                       // };
+                       if(data.err_msg){
+                            alert("分享成功，谢谢参与！");
+                       }else{
+                            var cookevalue = getCookie("isFirst2");
+                            if (cookevalue == ""){
+                                setCookie("isFirst2", "true", 10000);
+                                // 弹出层，首次提醒
+                                $('#divFirstMark').modal('show');
+                            };
+                       }
+                        
                     }
                 });
-            }
+            };
         });
     });
-    // 发送给好友
+    // 分享给好友的动作事件
     WeixinJSBridge.on('menu:share:appmessage', function () {
         WeixinJSBridge.invoke('sendAppMessage', {
             'link': self.baseUrl +self.share_url,
@@ -142,7 +149,7 @@ active.prototype.weixinReady = function () {
         function(res) {
             //分享给好友成功
             if (res.err_msg == "send_app_msg:ok") {
-                alert("分享成功");
+                alert("分享成功，谢谢参与！");
             };
         });
     });
