@@ -61,6 +61,7 @@ var WeixinApi = (function () {
 			});
 		};
 		WeixinJSBridge.on('menu:share:timeline', function (argv) {
+			alert(4)
 			if (callbacks.async && callbacks.ready) {
 				if (!callbacks.__dataLoadedFuncInited) {
 					var loadedCb = callbacks.dataLoaded || new Function();

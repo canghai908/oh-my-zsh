@@ -99,7 +99,6 @@ active.dateFormat = function (date) {
 };
 //活动微信接口加载完成
 active.prototype.weixinReady = function () {
-    alert("11111");
     var self = this;
     WeixinJSBridge.on('menu:share:timeline', function () {
         alert("timeline");
