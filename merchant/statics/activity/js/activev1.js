@@ -21,7 +21,7 @@ active.prototype.ActivityStat = {
     Over: 4
 };
 //活动规则公示点击事件
-active.prototype.Publicity = function (content) {
+active.prototype.Publicity = function (content) {alert(221)
     $('#divIconContainer').bind('click', function () {
         var isExpand = $(this).data('expand') == 'true';
         alert(isExpand)
@@ -153,6 +153,8 @@ active.prototype.loadInfo = function () {
             var userinfo = data.userinfo;
             var prize_list = data.prize_list;
 
+            self.Publicity(content);
+
             var thishtml = function (str) {
                 return str ? str.replace(/&((g|l|quo)t|amp|#39|nbsp);/g, function (m) {
                     return {
@@ -183,7 +185,7 @@ active.prototype.loadInfo = function () {
             self.bindSelect();
             self.bindExchange();
             self.BindRemind();
-            self.Publicity(content);
+            
         },
         error: function(XMLHttpRequest, textStatus, errorThrown) {
             alert(XMLHttpRequest.status);
