@@ -35,8 +35,8 @@ active.prototype.Publicity = function (content) {
                 var html = '';
                 html += '<ul class="publicity-expand">';
                 html += '<li class="publicity-title">奖品设置</li>';
-                var startDate = new Date(parseInt(content.start_datetime.substr(6)));
-                var endDate = new Date(parseInt(content.end_datetime.substr(6)));
+                var startDate = new Date(content.start_datetime);
+                var endDate = new Date(content.end_datetime);
                 $.each(content.prize_policy_array, function (i, n) {
                     html += '<li><span class="publicity-num">' + (i + 1) + '.</span>集 <b>' + n.condition_min + '</b> 个分享获 <b>' + n.prize + ' </b>' + (!n.IsLimitPrizeCount ? '' : '共' + n.total_number + '份') + '</li>';
                 });
