@@ -169,6 +169,27 @@ active.prototype.loadInfo = function () {
             var prize_list = data.prize_list;
             var merchant_info = data.merchant_info;
             var state = data.state;
+alert(state)
+            switch (state) {
+                case 0:
+                    $("#js-ing").html("未审核");
+                    break;
+                case 1:
+                    $("#js-ing").html("审核中");
+                    break;
+                case 2:
+                    $("#js-ing").html("正式进行");
+                    break;
+                case 3:
+                    $("#js-ing").html("审核失败");
+                    break;
+                case 4:
+                    $("#js-ing").html("活动结束");
+                    break; 
+                case 64:
+                $("#js-ing").html("活动删除");
+                    break;     
+            };
 
             self.Publicity(content);
             self.share_url = share_url;
