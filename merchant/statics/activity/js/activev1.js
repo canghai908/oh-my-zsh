@@ -153,6 +153,10 @@ active.prototype.loadInfo = function () {
         cache: false,
         dataType: "json",
         success: function(data) {
+            var content = data.content;
+            var share_url = data.share_url;  
+            var userinfo = data.userinfo;
+            var prize_list = data.prize_list;
 
             var thishtml = function (str) {
                 return str ? str.replace(/&((g|l|quo)t|amp|#39|nbsp);/g, function (m) {
@@ -166,21 +170,15 @@ active.prototype.loadInfo = function () {
                     }[m]
                 }) : '';
             };
-alert(data.Content)
-alert(data.share_url)
-            self.title = data.content.title;
-            $("#js-title").html(data.content.title);
-            $("#js-ActivityPicPath").attr("src",data.content.ActivityPicPath);
-            document.getElementById("js-Content").innerHTML = thishtml(data.content.Content); 
 
-            //$("#js-Content").append(data.Content);
-            //alert(data.Content)
-            //$("#js-Content").html($("#js-Content").html());
-            //$(data.Content).appendTo("#js-Content");
+            self.title = content.title;
+            $("#js-title").html(content.title);
+            $("#js-ActivityPicPath").attr("src",data.ActivityPicPath);
+            document.getElementById("js-Content").innerHTML = thishtml(data.Content); 
+
             var html = '';
             var activityInfo = data;
-            // //var visitorInfo = data.VisitorInfo;
-            // //var nextPrizeCount = data.NextPrizeCount;
+            
             html += self.createShareHtml(self.visitor == self.parent, activityInfo.share_cycle);
             html += self.createLightHtml(activityInfo.share_cycle, 5);
             html += self.createSurplusHtml(activityInfo.start_datetime == self.ActivityStat.Over, activityInfo.end_datetime);
