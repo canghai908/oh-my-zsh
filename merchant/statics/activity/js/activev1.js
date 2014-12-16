@@ -171,17 +171,17 @@ active.prototype.loadInfo = function () {
                 }) : '';
             };
 
+            // 填充页面内容
             self.title = content.title;
             $("#js-title").html(content.title);
             $("#js-ActivityPicPath").attr("src",data.ActivityPicPath);
             document.getElementById("js-Content").innerHTML = thishtml(data.Content); 
 
+            // 您已分享的代码部分
             var html = '';
-            var activityInfo = data;
-            
-            html += self.createShareHtml(self.visitor == self.parent, activityInfo.share_cycle);
-            html += self.createLightHtml(activityInfo.share_cycle, 5);
-            html += self.createSurplusHtml(activityInfo.start_datetime == self.ActivityStat.Over, activityInfo.end_datetime);
+            html += self.createShareHtml(self.visitor == self.parent, content.share_cycle);
+            html += self.createLightHtml(content.share_cycle, 5);
+            html += self.createSurplusHtml(content.start_datetime == self.ActivityStat.Over, content.end_datetime);
             //html += self.createPrizeHtml(self.visitor == self.parent, activityInfo, visitorInfo);
             $('#divVisitor').html(html);
             self.bindSelect();
