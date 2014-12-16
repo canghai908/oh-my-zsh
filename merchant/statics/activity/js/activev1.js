@@ -150,7 +150,7 @@ active.prototype.loadInfo = function () {
     $.ajax({
         url:"http://ifx.hi-www.com/activity/promotion_get",
         type: "GET",
-
+        cache: false,
         dataType: "json",
         success: function(data) {
 
@@ -168,10 +168,10 @@ active.prototype.loadInfo = function () {
             };
 alert(data.Content)
 alert(data.share_url)
-            self.title = data.title;
-            $("#js-title").html(data.title);
-            $("#js-ActivityPicPath").attr("src",data.ActivityPicPath);
-            document.getElementById("js-Content").innerHTML = thishtml(data.Content); 
+            self.title = data.content.title;
+            $("#js-title").html(data.content.title);
+            $("#js-ActivityPicPath").attr("src",data.content.ActivityPicPath);
+            document.getElementById("js-Content").innerHTML = thishtml(data.content.Content); 
 
             //$("#js-Content").append(data.Content);
             //alert(data.Content)
