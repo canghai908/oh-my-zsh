@@ -191,10 +191,10 @@ active.prototype.loadInfo = function () {
             $("#js-ActivityPicPath").attr("src",content.ActivityPicPath); 
             document.getElementById("js-Content").innerHTML = thishtml(content.Content); 
             var startDate = new Date(content.start_datetime);
-            var endDate = new Date(parseInt(content.end_datetime.substr(6)));
+            var endDate = new Date(content.end_datetime);
 
-            alert(content.start_datetime)
-            alert(startDate)
+            alert(content.end_datetime)
+            alert(endDate)
             var end_datetime = active.dateFormat(content.end_datetime);alert(4)
 
             // 您已分享的代码部分
