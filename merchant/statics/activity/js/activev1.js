@@ -193,7 +193,7 @@ active.prototype.loadInfo = function () {
             var startDate = new Date(content.start_datetime);
             var endDate = new Date(content.end_datetime);
 
-            var end_datetime = active.dateFormat(endDate);alert(end_datetime)
+            var end_datetime = active.dateFormat(endDate);
 
             // 您已分享的代码部分
             var html = '';
@@ -239,10 +239,11 @@ active.prototype.createLightHtml = function (childrenShareCount, nextPrizeCount)
 };
 //生成活动剩余时间的html代码
 active.prototype.createSurplusHtml = function (isOver, leaveTime) {
-    var html = '<div class="v-share-surplus">活动剩余时间：';
     if (isOver) {
+        var html = '<div class="v-share-surplus">活动剩余时间：';
         html += '<span class="visitor_over_time">0</span>天<span class="visitor_over_time">0</span>小时<span class="visitor_over_time">0</span>分钟';
     } else {
+        var html = '<div class="v-share-surplus">活动结束时间：';
         html += leaveTime;
     }
     html += '</div>';
