@@ -99,7 +99,7 @@ active.dateFormat = function (date) {
 };
 //活动微信接口加载完成
 active.prototype.weixinReady = function () {
-    var self = this;alert(self.icon)
+    var self = this;alert(self.share_url)
     // 分享到微信朋友圈的动作事件
     WeixinJSBridge.on('menu:share:timeline', function () {
 
