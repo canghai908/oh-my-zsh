@@ -197,13 +197,10 @@ active.prototype.loadInfo = function () {
 
             // 您已分享的代码部分
             var html = '';
-            alert(html)
             html += self.createShareHtml(self.visitor == self.parent, userinfo.share_num_by_self);
-            alert(html)
             html += self.createLightHtml(userinfo.share_num_by_self, userinfo.remain_share_num);
             html += self.createSurplusHtml(content.start_datetime == self.ActivityStat.Over, end_datetime);
             //html += self.createPrizeHtml(self.visitor == self.parent, activityInfo, visitorInfo);
-            alert(html)
             $('#divVisitor').html(html);
             self.bindSelect();
             self.bindExchange();
