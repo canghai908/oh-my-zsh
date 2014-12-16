@@ -192,9 +192,11 @@ alert(data.share_url)
 
            
         },
-        error:function(){
-            alert("获取数据失败3")
-        }
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        alert(XMLHttpRequest.status);
+                        alert(XMLHttpRequest.readyState);
+                        alert(textStatus);
+                    }
     });
 };
 //生成分享数的html代码
